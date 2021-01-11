@@ -2,9 +2,9 @@ server:
     port: 8088
 spring:
     datasource:
-        url: jdbc:mysql://localhost:3306/youran?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false&useSSL=false&serverTimezone=Asia/Shanghai
+        url: jdbc:mysql://10.182.10.28:3358/youran?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false&useSSL=false&serverTimezone=Asia/Shanghai
         username: root
-        password: root
+        password: wmsroot
 logging:
     level:
         root: info
@@ -15,7 +15,7 @@ logging:
 
 youran:
     # 缓存数据目录，用来临时存储模板文件、生成的代码文件，每次启动都会清空该目录
-    data-dir: D:\\youran
+    data-dir: /Users/yanghuai/Documents/youran
     # 启动时初始化用户表
     default-user-init: true
     # 是否启用小组管理及项目共享功能，默认关闭（只有集成了统一登录才有意义）
