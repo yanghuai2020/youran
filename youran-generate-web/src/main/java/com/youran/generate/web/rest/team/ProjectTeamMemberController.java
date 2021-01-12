@@ -38,8 +38,7 @@ public class ProjectTeamMemberController extends AbstractController implements P
     @PostMapping
     public ResponseEntity<Integer> save(@Valid @RequestBody ProjectTeamMemberAddDTO projectTeamMemberAddDTO) throws Exception {
         // 校验用户操作权限
-        this.projectTeamService.checkTeamOperatePermissions(
-            projectTeamMemberAddDTO.getTeamId(), this.loginContext.getCurrentUser(), true);
+        this.projectTeamService.checkTeamOperatePermissions(projectTeamMemberAddDTO.getTeamId(), this.loginContext.getCurrentUser(), true);
         int count = projectTeamMemberService.saveBatch(projectTeamMemberAddDTO);
         return ResponseEntity.ok(count);
     }
@@ -63,8 +62,7 @@ public class ProjectTeamMemberController extends AbstractController implements P
                 continue;
             }
             // 校验用户操作权限
-            this.projectTeamService.checkTeamOperatePermissions(
-                po.getTeamId(), this.loginContext.getCurrentUser(), true);
+            this.projectTeamService.checkTeamOperatePermissions(po.getTeamId(), this.loginContext.getCurrentUser(), true);
         }
         int count = projectTeamMemberService.delete(id);
         return ResponseEntity.ok(count);

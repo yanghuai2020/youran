@@ -72,7 +72,7 @@ public class MetricsPO extends MetaChartSourceItemPO {
     public void assembleItem(MetaChartSourcePO chartSource) {
         super.assembleItem(chartSource);
         // 非自定义的情况下，需要装配实体和字段对象
-        if(!custom) {
+        if (!custom) {
             if (this.getJoinIndex() == 0) {
                 this.entity = chartSource.getEntity();
             } else {
@@ -97,8 +97,7 @@ public class MetricsPO extends MetaChartSourceItemPO {
      * @param featureDeserialize
      * @return
      */
-    public static MetricsPO fromSuperType(MetaChartSourceItemPO superPO,
-                                          boolean featureDeserialize) {
+    public static MetricsPO fromSuperType(MetaChartSourceItemPO superPO, boolean featureDeserialize) {
         if (!SourceItemType.METRICS.getValue().equals(superPO.getType())) {
             throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "类型转换异常");
         }
@@ -197,7 +196,7 @@ public class MetricsPO extends MetaChartSourceItemPO {
         this.field = field;
     }
 
-    static class FeatureDTO{
+    static class FeatureDTO {
         private Integer fieldId;
         private Integer aggFunction;
         private Boolean custom;

@@ -24,6 +24,7 @@ public class DetailOrderService {
     private MetaChartSourceItemService metaChartSourceItemService;
     @Autowired
     private MetaProjectService metaProjectService;
+
     /**
      * 【明细排序】数据预处理
      *
@@ -50,8 +51,7 @@ public class DetailOrderService {
     }
 
     public DetailOrderPO doSave(DetailOrderAddDTO addDTO) {
-        DetailOrderPO po = MetaChartSourceItemMapper.INSTANCE
-            .fromDetailOrderAddDTO(addDTO);
+        DetailOrderPO po = MetaChartSourceItemMapper.INSTANCE.fromDetailOrderAddDTO(addDTO);
         this.preparePO(po);
         metaChartSourceItemService.doSave(po);
         return po;

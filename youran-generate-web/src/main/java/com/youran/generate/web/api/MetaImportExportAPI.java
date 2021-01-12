@@ -27,9 +27,7 @@ public interface MetaImportExportAPI {
      * @param response
      */
     @ApiOperation(value = "元数据导出")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "path"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "path"),})
     void metaExport(Integer projectId, HttpServletResponse response);
 
     /**

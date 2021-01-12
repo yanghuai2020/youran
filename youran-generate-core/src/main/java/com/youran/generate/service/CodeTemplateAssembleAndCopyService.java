@@ -45,11 +45,9 @@ public class CodeTemplateAssembleAndCopyService {
         }
         // 校验并组装每个模板文件
         if (checkAndAssembleFile) {
-            Map<TemplateFileType, List<TemplateFilePO>> map = templateFiles.stream()
-                .collect(Collectors.groupingBy(e -> TemplateFileType.find(e.getFileType())));
+            Map<TemplateFileType, List<TemplateFilePO>> map = templateFiles.stream().collect(Collectors.groupingBy(e -> TemplateFileType.find(e.getFileType())));
 
-            if (CollectionUtils.isEmpty(map.get(TemplateFileType.GENERAL))
-                && CollectionUtils.isEmpty(map.get(TemplateFileType.BINARY))) {
+            if (CollectionUtils.isEmpty(map.get(TemplateFileType.GENERAL)) && CollectionUtils.isEmpty(map.get(TemplateFileType.BINARY))) {
                 throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "模板中不存在有效的模板文件");
             }
             List<TemplateFilePO> dirFiles = map.get(TemplateFileType.PARENT_PATH);
@@ -58,9 +56,8 @@ public class CodeTemplateAssembleAndCopyService {
                 // 校验同一个目录多个目录渲染文件的情况
                 TemplateFilePO lastDirFile = null;
                 for (TemplateFilePO dirFile : dirFiles) {
-                    if(lastDirFile!=null && Objects.equals(lastDirFile.getFileDir(),dirFile.getFileDir())){
-                        throw new BusinessException(ErrorCode.INNER_DATA_ERROR,
-                            String.format("该目录下存在多个目录渲染文件：%s", dirFile.getFileDir()));
+                    if (lastDirFile != null && Objects.equals(lastDirFile.getFileDir(), dirFile.getFileDir())) {
+                        throw new BusinessException(ErrorCode.INNER_DATA_ERROR, String.format("该目录下存在多个目录渲染文件：%s", dirFile.getFileDir()));
                     }
                     lastDirFile = dirFile;
                 }
@@ -70,8 +67,7 @@ public class CodeTemplateAssembleAndCopyService {
 
             Map<String, TemplateFilePO> filenameFilesMap = new HashMap<>();
             if (CollectionUtils.isNotEmpty(filenameFiles)) {
-                filenameFilesMap = filenameFiles.stream()
-                    .collect(Collectors.toMap(e -> e.fetchContentPathForFilenameFile(), e -> e));
+                filenameFilesMap = filenameFiles.stream().collect(Collectors.toMap(e -> e.fetchContentPathForFilenameFile(), e -> e));
             }
 
             // 组装每个模板文件
@@ -87,20 +83,16 @@ public class CodeTemplateAssembleAndCopyService {
      * 组装模板文件
      *
      * @param filePO
-     * @param dirFiles      所有目录渲染文件
+     * @param dirFiles         所有目录渲染文件
      * @param filenameFilesMap 所有文件名渲染文件
      */
-    private void assembleTemplateFilePO(TemplateFilePO filePO,
-                                        List<TemplateFilePO> dirFiles,
-                                        Map<String, TemplateFilePO> filenameFilesMap) {
+    private void assembleTemplateFilePO(TemplateFilePO filePO, List<TemplateFilePO> dirFiles, Map<String, TemplateFilePO> filenameFilesMap) {
         // 非内容文件不需要组装
         if (!filePO.isContentFile()) {
             return;
         }
-        if (CollectionUtils.isNotEmpty(dirFiles)){
-            List<TemplateFilePO> collect = dirFiles.stream()
-                .filter(dirFile -> filePO.getFileDir().startsWith(dirFile.getFileDir()))
-                .collect(Collectors.toList());
+        if (CollectionUtils.isNotEmpty(dirFiles)) {
+            List<TemplateFilePO> collect = dirFiles.stream().filter(dirFile -> filePO.getFileDir().startsWith(dirFile.getFileDir())).collect(Collectors.toList());
             filePO.setDirTemplateFiles(collect);
         }
         TemplateFilePO filenameFile = filenameFilesMap.get(filePO.fetchFilePath());

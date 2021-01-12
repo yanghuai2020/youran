@@ -94,11 +94,8 @@ public class SqlTemplateFunction {
     public static boolean ifDefaultValueNeedWrap(MetaFieldPO field) {
         String defaultValue = field.getDefaultValue();
         // 字符型或数字需要引号包裹
-        if (MySqlType.isStringType(field.getFieldType())
-            || MySqlType.isNumberType(field.getFieldType())) {
-            if (defaultValue != null
-                && defaultValue.startsWith(DefaultValue.SINGLE_QUOTE)
-                && defaultValue.endsWith(DefaultValue.SINGLE_QUOTE)) {
+        if (MySqlType.isStringType(field.getFieldType()) || MySqlType.isNumberType(field.getFieldType())) {
+            if (defaultValue != null && defaultValue.startsWith(DefaultValue.SINGLE_QUOTE) && defaultValue.endsWith(DefaultValue.SINGLE_QUOTE)) {
                 return false;
             }
             return true;
@@ -136,13 +133,9 @@ public class SqlTemplateFunction {
         } else {
             sb.append("=");
         }
-        sb.append("'")
-            .append(CommonTemplateFunction.convertCommentDisplay(comment))
-            .append("'");
+        sb.append("'").append(CommonTemplateFunction.convertCommentDisplay(comment)).append("'");
         return sb.toString();
     }
-
-
 
 
     /**
@@ -174,9 +167,7 @@ public class SqlTemplateFunction {
      * @return
      */
     public static boolean showFieldLength(String fieldType) {
-        return !MySqlType.DATE.equals(fieldType)
-            && !MySqlType.DATETIME.equals(fieldType)
-            && !MySqlType.TEXT.equals(fieldType);
+        return !MySqlType.DATE.equals(fieldType) && !MySqlType.DATETIME.equals(fieldType) && !MySqlType.TEXT.equals(fieldType);
     }
 
     /**
@@ -186,9 +177,7 @@ public class SqlTemplateFunction {
      * @return
      */
     public static boolean showFieldScale(String fieldType) {
-        return MySqlType.DECIMAL.equals(fieldType)
-            || MySqlType.DOUBLE.equals(fieldType)
-            || MySqlType.FLOAT.equals(fieldType);
+        return MySqlType.DECIMAL.equals(fieldType) || MySqlType.DOUBLE.equals(fieldType) || MySqlType.FLOAT.equals(fieldType);
     }
 
 
@@ -198,8 +187,7 @@ public class SqlTemplateFunction {
      * @return
      */
     public static String getAutoIncrementDisplay(MetaFieldPO field) {
-        if (field.getPrimaryKey()
-            && PrimaryKeyStrategy.AUTO_INCREMENT.getValue().equals(field.getPkStrategy())) {
+        if (field.getPrimaryKey() && PrimaryKeyStrategy.AUTO_INCREMENT.getValue().equals(field.getPkStrategy())) {
             return " AUTO_INCREMENT";
         }
         return "";
@@ -211,8 +199,7 @@ public class SqlTemplateFunction {
      * @return
      */
     public static String getNotNullDisplay(MetaFieldPO field) {
-        if (!field.getPrimaryKey()
-            && field.getNotNull()) {
+        if (!field.getPrimaryKey() && field.getNotNull()) {
             return " NOT NULL";
         }
         return "";

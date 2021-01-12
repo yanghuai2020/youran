@@ -46,53 +46,35 @@ public class MetaCascadeExtControllerTest extends AbstractWebTest {
 
     @Test
     public void save() throws Exception {
-        MetaCascadeExtAddDTO addDTO = MetaCascadeExtHelper.getAddDTO(metaField1.getFieldId(), metaEntity1.getEntityId(),
-            metaField2.getFieldId(), metaEntity2.getEntityId());
-        restMockMvc.perform(post(getApiPath() + "/meta_cascade_ext/save")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(addDTO)))
-            .andExpect(MockMvcResultMatchers.status().isCreated());
+        MetaCascadeExtAddDTO addDTO = MetaCascadeExtHelper.getAddDTO(metaField1.getFieldId(), metaEntity1.getEntityId(), metaField2.getFieldId(), metaEntity2.getEntityId());
+        restMockMvc.perform(post(getApiPath() + "/meta_cascade_ext/save").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(addDTO))).andExpect(MockMvcResultMatchers.status().isCreated());
 
     }
 
     @Test
     public void update() throws Exception {
-        MetaCascadeExtPO metaCascadeExt = generateHelper.saveCascadeExtExample(metaField1.getFieldId(), metaEntity1.getEntityId(),
-            metaField2.getFieldId(), metaEntity2.getEntityId());
+        MetaCascadeExtPO metaCascadeExt = generateHelper.saveCascadeExtExample(metaField1.getFieldId(), metaEntity1.getEntityId(), metaField2.getFieldId(), metaEntity2.getEntityId());
         MetaCascadeExtUpdateDTO updateDTO = MetaCascadeExtHelper.getUpdateDTO(metaCascadeExt);
-        restMockMvc.perform(put(getApiPath() + "/meta_cascade_ext/update")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(updateDTO)))
-            .andExpect(MockMvcResultMatchers.status().isOk());
+        restMockMvc.perform(put(getApiPath() + "/meta_cascade_ext/update").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(updateDTO))).andExpect(MockMvcResultMatchers.status().isOk());
     }
 
 
     @Test
     public void list() throws Exception {
-        generateHelper.saveCascadeExtExample(metaField1.getFieldId(), metaEntity1.getEntityId(),
-            metaField2.getFieldId(), metaEntity2.getEntityId());
-        restMockMvc.perform(get(getApiPath() + "/meta_cascade_ext/list")
-            .param("fieldId", metaField1.getFieldId() + ""))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(jsonPath("$.length()").value(is(1)));
+        generateHelper.saveCascadeExtExample(metaField1.getFieldId(), metaEntity1.getEntityId(), metaField2.getFieldId(), metaEntity2.getEntityId());
+        restMockMvc.perform(get(getApiPath() + "/meta_cascade_ext/list").param("fieldId", metaField1.getFieldId() + "")).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(jsonPath("$.length()").value(is(1)));
     }
 
     @Test
     public void show() throws Exception {
-        MetaCascadeExtPO metaCascadeExt = generateHelper.saveCascadeExtExample(metaField1.getFieldId(), metaEntity1.getEntityId(),
-            metaField2.getFieldId(), metaEntity2.getEntityId());
-        restMockMvc.perform(get(getApiPath() + "/meta_cascade_ext/{cascadeExtId}", metaCascadeExt.getCascadeExtId()))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(jsonPath("$.cascadeExtId").value(is(metaCascadeExt.getCascadeExtId())));
+        MetaCascadeExtPO metaCascadeExt = generateHelper.saveCascadeExtExample(metaField1.getFieldId(), metaEntity1.getEntityId(), metaField2.getFieldId(), metaEntity2.getEntityId());
+        restMockMvc.perform(get(getApiPath() + "/meta_cascade_ext/{cascadeExtId}", metaCascadeExt.getCascadeExtId())).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(jsonPath("$.cascadeExtId").value(is(metaCascadeExt.getCascadeExtId())));
     }
 
     @Test
     public void del() throws Exception {
-        MetaCascadeExtPO metaCascadeExt = generateHelper.saveCascadeExtExample(metaField1.getFieldId(), metaEntity1.getEntityId(),
-            metaField2.getFieldId(), metaEntity2.getEntityId());
-        restMockMvc.perform(delete(getApiPath() + "/meta_cascade_ext/{cascadeExtId}", metaCascadeExt.getCascadeExtId()))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(jsonPath("$").value(is(1)));
+        MetaCascadeExtPO metaCascadeExt = generateHelper.saveCascadeExtExample(metaField1.getFieldId(), metaEntity1.getEntityId(), metaField2.getFieldId(), metaEntity2.getEntityId());
+        restMockMvc.perform(delete(getApiPath() + "/meta_cascade_ext/{cascadeExtId}", metaCascadeExt.getCascadeExtId())).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(jsonPath("$").value(is(1)));
     }
 
 

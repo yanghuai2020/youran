@@ -14,7 +14,7 @@ import java.util.function.Consumer
 @ContextConfiguration(classes = AppStart.class)
 @SpringBootTest
 @ActiveProfiles("local")
-class ProcessCase001TestITTest  extends Specification {
+class ProcessCase001TestITTest extends Specification {
 
     @Autowired
     private MetaCodeGenService metaCodeGenService
@@ -24,10 +24,10 @@ class ProcessCase001TestITTest  extends Specification {
         given:
         String str = "hello"
         when:
-        Consumer<ProgressVO> progressConsumer = {progressVO -> this.replyProgress(progressVO)}
+        Consumer<ProgressVO> progressConsumer = { progressVO -> this.replyProgress(progressVO) }
         metaCodeGenService.genCodeZip(1, 1, progressConsumer)
         then:
-        1==1
+        1 == 1
     }
 
 

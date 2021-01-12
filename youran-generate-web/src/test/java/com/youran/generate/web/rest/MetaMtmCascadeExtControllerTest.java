@@ -43,66 +43,44 @@ public class MetaMtmCascadeExtControllerTest extends AbstractWebTest {
         this.metaEntity2 = generateHelper.saveEntityExample(metaProject.getProjectId(), 2);
         this.metaField1 = generateHelper.saveFieldExample(this.metaEntity1.getEntityId());
         this.metaField2 = generateHelper.saveFieldExample(this.metaEntity2.getEntityId());
-        this.metaManyToMany = generateHelper.saveManyToManyExample(metaProject.getProjectId(),
-            metaEntity1.getEntityId(), metaEntity2.getEntityId());
+        this.metaManyToMany = generateHelper.saveManyToManyExample(metaProject.getProjectId(), metaEntity1.getEntityId(), metaEntity2.getEntityId());
     }
 
     @Test
     public void save() throws Exception {
-        MetaMtmCascadeExtAddDTO addDTO = MetaMtmCascadeExtHelper.getAddDTO(this.metaManyToMany.getMtmId(),
-            metaEntity1.getEntityId(), metaEntity2.getEntityId(), metaField2.getFieldId());
-        restMockMvc.perform(post(getApiPath() + "/meta_mtm_cascade_ext/save")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(addDTO)))
-            .andExpect(status().isCreated());
+        MetaMtmCascadeExtAddDTO addDTO = MetaMtmCascadeExtHelper.getAddDTO(this.metaManyToMany.getMtmId(), metaEntity1.getEntityId(), metaEntity2.getEntityId(), metaField2.getFieldId());
+        restMockMvc.perform(post(getApiPath() + "/meta_mtm_cascade_ext/save").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(addDTO))).andExpect(status().isCreated());
     }
 
     @Test
     public void update() throws Exception {
-        MetaMtmCascadeExtPO metaMtmCascadeExt = generateHelper.saveMtmCascadeExtExample(this.metaManyToMany.getMtmId(),
-            metaEntity1.getEntityId(), metaEntity2.getEntityId(), metaField2.getFieldId());
+        MetaMtmCascadeExtPO metaMtmCascadeExt = generateHelper.saveMtmCascadeExtExample(this.metaManyToMany.getMtmId(), metaEntity1.getEntityId(), metaEntity2.getEntityId(), metaField2.getFieldId());
         MetaMtmCascadeExtUpdateDTO updateDTO = MetaMtmCascadeExtHelper.getUpdateDTO(metaMtmCascadeExt);
-        restMockMvc.perform(put(getApiPath() + "/meta_mtm_cascade_ext/update")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(updateDTO)))
-            .andExpect(status().isOk());
+        restMockMvc.perform(put(getApiPath() + "/meta_mtm_cascade_ext/update").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(updateDTO))).andExpect(status().isOk());
     }
 
     @Test
     public void list() throws Exception {
-        MetaMtmCascadeExtPO metaMtmCascadeExt = generateHelper.saveMtmCascadeExtExample(this.metaManyToMany.getMtmId(),
-            metaEntity1.getEntityId(), metaEntity2.getEntityId(), metaField2.getFieldId());
-        restMockMvc.perform(get(getApiPath() + "/meta_mtm_cascade_ext/list"))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.length()").value(is(1)));
+        MetaMtmCascadeExtPO metaMtmCascadeExt = generateHelper.saveMtmCascadeExtExample(this.metaManyToMany.getMtmId(), metaEntity1.getEntityId(), metaEntity2.getEntityId(), metaField2.getFieldId());
+        restMockMvc.perform(get(getApiPath() + "/meta_mtm_cascade_ext/list")).andExpect(status().isOk()).andExpect(jsonPath("$.length()").value(is(1)));
     }
 
     @Test
     public void show() throws Exception {
-        MetaMtmCascadeExtPO metaMtmCascadeExt = generateHelper.saveMtmCascadeExtExample(this.metaManyToMany.getMtmId(),
-            metaEntity1.getEntityId(), metaEntity2.getEntityId(), metaField2.getFieldId());
-        restMockMvc.perform(get(getApiPath() + "/meta_mtm_cascade_ext/{mtmCascadeExtId}", metaMtmCascadeExt.getMtmCascadeExtId()))
-            .andExpect(status().isOk());
+        MetaMtmCascadeExtPO metaMtmCascadeExt = generateHelper.saveMtmCascadeExtExample(this.metaManyToMany.getMtmId(), metaEntity1.getEntityId(), metaEntity2.getEntityId(), metaField2.getFieldId());
+        restMockMvc.perform(get(getApiPath() + "/meta_mtm_cascade_ext/{mtmCascadeExtId}", metaMtmCascadeExt.getMtmCascadeExtId())).andExpect(status().isOk());
     }
 
     @Test
     public void del() throws Exception {
-        MetaMtmCascadeExtPO metaMtmCascadeExt = generateHelper.saveMtmCascadeExtExample(this.metaManyToMany.getMtmId(),
-            metaEntity1.getEntityId(), metaEntity2.getEntityId(), metaField2.getFieldId());
-        restMockMvc.perform(delete(getApiPath() + "/meta_mtm_cascade_ext/{mtmCascadeExtId}", metaMtmCascadeExt.getMtmCascadeExtId()))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$").value(is(1)));
+        MetaMtmCascadeExtPO metaMtmCascadeExt = generateHelper.saveMtmCascadeExtExample(this.metaManyToMany.getMtmId(), metaEntity1.getEntityId(), metaEntity2.getEntityId(), metaField2.getFieldId());
+        restMockMvc.perform(delete(getApiPath() + "/meta_mtm_cascade_ext/{mtmCascadeExtId}", metaMtmCascadeExt.getMtmCascadeExtId())).andExpect(status().isOk()).andExpect(jsonPath("$").value(is(1)));
     }
 
     @Test
     public void deleteBatch() throws Exception {
-        MetaMtmCascadeExtPO metaMtmCascadeExt = generateHelper.saveMtmCascadeExtExample(this.metaManyToMany.getMtmId(),
-            metaEntity1.getEntityId(), metaEntity2.getEntityId(), metaField2.getFieldId());
-        restMockMvc.perform(put(getApiPath() + "/meta_mtm_cascade_ext")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(Lists.newArrayList(metaMtmCascadeExt.getMtmCascadeExtId()))))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$").value(is(1)));
+        MetaMtmCascadeExtPO metaMtmCascadeExt = generateHelper.saveMtmCascadeExtExample(this.metaManyToMany.getMtmId(), metaEntity1.getEntityId(), metaEntity2.getEntityId(), metaField2.getFieldId());
+        restMockMvc.perform(put(getApiPath() + "/meta_mtm_cascade_ext").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(Lists.newArrayList(metaMtmCascadeExt.getMtmCascadeExtId())))).andExpect(status().isOk()).andExpect(jsonPath("$").value(is(1)));
     }
 
 

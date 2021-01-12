@@ -39,17 +39,6 @@ public class MetaMtmEntityListVO extends MetaEntityListVO {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
-            .append("mtmId", mtmId)
-            .append("cascadeFieldNum", cascadeFieldNum)
-            .append("entityId", this.getEntityId())
-            .append("projectId", this.getProjectId())
-            .append("schemaName", this.getSchemaName())
-            .append("className", this.getClassName())
-            .append("tableName", this.getTableName())
-            .append("title", this.getTitle())
-            .append("desc", this.getDesc())
-            .append("pageSign", this.getPageSign())
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("mtmId", mtmId).append("cascadeFieldNum", cascadeFieldNum).append("entityId", this.getEntityId()).append("projectId", this.getProjectId()).append("schemaName", this.getSchemaName()).append("className", this.getClassName()).append("tableName", this.getTableName()).append("title", this.getTitle()).append("desc", this.getDesc()).append("pageSign", this.getPageSign()).toString();
     }
 }

@@ -17,7 +17,7 @@ import static com.youran.generate.pojo.example.chart.MetaDashboardExample.N_DASH
 @ApiModel(description = "修改【看板】的参数")
 public class MetaDashboardUpdateDTO extends MetaDashboardAddDTO {
 
-    @ApiModelProperty(notes = N_DASHBOARD_ID,example = E_DASHBOARD_ID,required = true)
+    @ApiModelProperty(notes = N_DASHBOARD_ID, example = E_DASHBOARD_ID, required = true)
     @NotNull
     private Integer dashboardId;
 

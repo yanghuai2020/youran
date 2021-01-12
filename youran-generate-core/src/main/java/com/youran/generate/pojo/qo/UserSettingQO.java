@@ -14,17 +14,17 @@ import static com.youran.generate.pojo.example.UserSettingExample.*;
  */
 public class UserSettingQO extends PageQO {
 
-    @ApiParam(value = N_USERNAME,example = E_USERNAME)
-    @Length(max = 32,message = "username最大长度不能超过{max}")
+    @ApiParam(value = N_USERNAME, example = E_USERNAME)
+    @Length(max = 32, message = "username最大长度不能超过{max}")
     private String username;
 
-    @ApiParam(value = N_TEMPLATE_ENABLED,example = E_TEMPLATE_ENABLED)
+    @ApiParam(value = N_TEMPLATE_ENABLED, example = E_TEMPLATE_ENABLED)
     private Boolean templateEnabled;
 
-    @ApiParam(value = "创建时间排序标识【1升序,-1降序,0不排序】",example = "1")
+    @ApiParam(value = "创建时间排序标识【1升序,-1降序,0不排序】", example = "1")
     private Integer createdTimeSortSign;
 
-    @ApiParam(value = "修改时间排序标识【1升序,-1降序,0不排序】",example = "1")
+    @ApiParam(value = "修改时间排序标识【1升序,-1降序,0不排序】", example = "1")
     private Integer operatedTimeSortSign;
 
 

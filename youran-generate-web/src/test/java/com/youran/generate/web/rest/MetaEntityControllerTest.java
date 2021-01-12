@@ -37,10 +37,7 @@ public class MetaEntityControllerTest extends AbstractWebTest {
     @Test
     public void save() throws Exception {
         MetaEntityAddDTO addDTO = MetaEntityHelper.getAddDTO(metaProject.getProjectId(), 0);
-        restMockMvc.perform(post(getApiPath() + "/meta_entity/save")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(addDTO)))
-            .andExpect(MockMvcResultMatchers.status().isCreated());
+        restMockMvc.perform(post(getApiPath() + "/meta_entity/save").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(addDTO))).andExpect(MockMvcResultMatchers.status().isCreated());
 
     }
 
@@ -48,36 +45,26 @@ public class MetaEntityControllerTest extends AbstractWebTest {
     public void update() throws Exception {
         MetaEntityPO metaEntity = generateHelper.saveEntityExample(metaProject.getProjectId(), 0);
         MetaEntityUpdateDTO updateDTO = MetaEntityHelper.getUpdateDTO(metaEntity);
-        restMockMvc.perform(put(getApiPath() + "/meta_entity/update")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(updateDTO)))
-            .andExpect(MockMvcResultMatchers.status().isOk());
+        restMockMvc.perform(put(getApiPath() + "/meta_entity/update").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(updateDTO))).andExpect(MockMvcResultMatchers.status().isOk());
     }
 
 
     @Test
     public void list() throws Exception {
         generateHelper.saveEntityExample(metaProject.getProjectId(), 0);
-        restMockMvc.perform(get(getApiPath() + "/meta_entity/list")
-            .param("projectId", metaProject.getProjectId() + ""))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(jsonPath("$.length()").value(is(1)));
+        restMockMvc.perform(get(getApiPath() + "/meta_entity/list").param("projectId", metaProject.getProjectId() + "")).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(jsonPath("$.length()").value(is(1)));
     }
 
     @Test
     public void show() throws Exception {
         MetaEntityPO metaEntity = generateHelper.saveEntityExample(metaProject.getProjectId(), 0);
-        restMockMvc.perform(get(getApiPath() + "/meta_entity/{entityId}", metaEntity.getEntityId()))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(jsonPath("$.entityId").value(is(metaEntity.getEntityId())));
+        restMockMvc.perform(get(getApiPath() + "/meta_entity/{entityId}", metaEntity.getEntityId())).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(jsonPath("$.entityId").value(is(metaEntity.getEntityId())));
     }
 
     @Test
     public void del() throws Exception {
         MetaEntityPO metaEntity = generateHelper.saveEntityExample(metaProject.getProjectId(), 0);
-        restMockMvc.perform(delete(getApiPath() + "/meta_entity/{entityId}", metaEntity.getEntityId()))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(jsonPath("$").value(is(1)));
+        restMockMvc.perform(delete(getApiPath() + "/meta_entity/{entityId}", metaEntity.getEntityId())).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(jsonPath("$").value(is(1)));
     }
 
 

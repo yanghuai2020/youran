@@ -207,14 +207,6 @@ public class MetaProjectListVO extends AbstractVO {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
-            .append("projectId", projectId)
-            .append("packageName", packageName)
-            .append("projectName", projectName)
-            .append("projectDesc", projectDesc)
-            .append("groupId", groupId)
-            .append("author", author)
-            .append("remote", remote)
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("projectId", projectId).append("packageName", packageName).append("projectName", projectName).append("projectDesc", projectDesc).append("groupId", groupId).append("author", author).append("remote", remote).toString();
     }
 }

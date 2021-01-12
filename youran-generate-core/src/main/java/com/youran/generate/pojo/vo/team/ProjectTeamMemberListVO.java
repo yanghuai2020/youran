@@ -55,6 +55,5 @@ public class ProjectTeamMemberListVO extends AbstractVO {
     }
 
 
-
 }
 

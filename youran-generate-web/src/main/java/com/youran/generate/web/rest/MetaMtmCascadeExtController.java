@@ -41,8 +41,7 @@ public class MetaMtmCascadeExtController extends AbstractController implements M
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<MetaMtmCascadeExtShowVO> save(@Valid @RequestBody MetaMtmCascadeExtAddDTO metaMtmCascadeExtAddDTO) throws Exception {
         MetaMtmCascadeExtPO metaMtmCascadeExt = metaMtmCascadeExtService.save(metaMtmCascadeExtAddDTO);
-        return ResponseEntity.created(new URI(apiPath + "/metaMtmCascadeExt/" + metaMtmCascadeExt.getMtmCascadeExtId()))
-            .body(MetaMtmCascadeExtMapper.INSTANCE.toShowVO(metaMtmCascadeExt));
+        return ResponseEntity.created(new URI(apiPath + "/metaMtmCascadeExt/" + metaMtmCascadeExt.getMtmCascadeExtId())).body(MetaMtmCascadeExtMapper.INSTANCE.toShowVO(metaMtmCascadeExt));
     }
 
     @Override

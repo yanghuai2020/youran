@@ -55,10 +55,6 @@ public class FieldDiagramVO extends AbstractVO {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
-            .append("name", name)
-            .append("type", type)
-            .append("desc", desc)
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("name", name).append("type", type).append("desc", desc).toString();
     }
 }

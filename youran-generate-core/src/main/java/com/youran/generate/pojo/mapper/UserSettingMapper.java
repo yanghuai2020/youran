@@ -17,27 +17,30 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface UserSettingMapper {
 
-    UserSettingMapper INSTANCE = Mappers.getMapper( UserSettingMapper.class );
+    UserSettingMapper INSTANCE = Mappers.getMapper(UserSettingMapper.class);
 
     /**
-    * addDTO映射po
-    * @param userSettingAddDTO
-    * @return
-    */
+     * addDTO映射po
+     *
+     * @param userSettingAddDTO
+     * @return
+     */
     UserSettingPO fromAddDTO(UserSettingAddDTO userSettingAddDTO);
 
     /**
-    * 将updateDTO中的值设置到po
-    * @param userSettingPO
-    * @param userSettingUpdateDTO
-    */
+     * 将updateDTO中的值设置到po
+     *
+     * @param userSettingPO
+     * @param userSettingUpdateDTO
+     */
     void setUpdateDTO(@MappingTarget UserSettingPO userSettingPO, UserSettingUpdateDTO userSettingUpdateDTO);
 
     /**
-    * po映射showVO
-    * @param userSettingPO
-    * @return
-    */
+     * po映射showVO
+     *
+     * @param userSettingPO
+     * @return
+     */
     UserSettingShowVO toShowVO(UserSettingPO userSettingPO);
 
 }

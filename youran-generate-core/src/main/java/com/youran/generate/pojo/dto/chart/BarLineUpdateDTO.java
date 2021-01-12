@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @ApiModel(description = "修改【柱线图】入参")
 public class BarLineUpdateDTO extends BarLineAddDTO {
 
-    @ApiModelProperty(notes = "图表主键",example = "1",required = true)
+    @ApiModelProperty(notes = "图表主键", example = "1", required = true)
     @NotNull
     private Integer chartId;
 

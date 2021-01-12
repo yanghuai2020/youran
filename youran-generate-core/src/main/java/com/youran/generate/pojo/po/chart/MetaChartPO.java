@@ -67,7 +67,8 @@ public class MetaChartPO extends BasePO {
     private transient MetaChartSourcePO chartSource;
 
 
-    public MetaChartPO() {}
+    public MetaChartPO() {
+    }
 
     /**
      * 装配数据
@@ -80,13 +81,13 @@ public class MetaChartPO extends BasePO {
 
     /**
      * 校验数据是否有误
+     *
      * @param entityMap
      * @param mtmMap
      */
     public void check(Map<Integer, MetaEntityPO> entityMap, Map<Integer, MetaManyToManyPO> mtmMap) {
-        if(chartSource == null){
-            throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "图表【" + this.chartName +
-                "】无数据源");
+        if (chartSource == null) {
+            throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "图表【" + this.chartName + "】无数据源");
         }
     }
 

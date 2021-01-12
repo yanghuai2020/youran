@@ -29,9 +29,8 @@ public class InitUserCommandLineRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        UserSettingPO userSetting = userSettingService.getUserSettingByUsername(
-            GenerateLoginContext.MOCK_LOGIN_USER, false);
-        if(userSetting==null){
+        UserSettingPO userSetting = userSettingService.getUserSettingByUsername(GenerateLoginContext.MOCK_LOGIN_USER, false);
+        if (userSetting == null) {
             UserSettingAddDTO addDTO = new UserSettingAddDTO();
             addDTO.setUsername(GenerateLoginContext.MOCK_LOGIN_USER);
             addDTO.setTemplateEnabled(false);

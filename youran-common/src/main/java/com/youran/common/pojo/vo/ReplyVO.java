@@ -107,10 +107,6 @@ public class ReplyVO<T> extends AbstractVO {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
-            .append("code", code)
-            .append("message", message)
-            .append("data", data)
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("code", code).append("message", message).append("data", data).toString();
     }
 }

@@ -58,13 +58,8 @@ public class DetailListControllerTest extends AbstractWebTest {
         this.metaProject = generateHelper.saveProjectExample();
         this.metaEntity = generateHelper.saveEntityExample(metaProject.getProjectId(), 0);
         this.metaField = generateHelper.saveFieldExample(metaEntity.getEntityId());
-        this.metaChartSource = metaChartSourceHelper.saveMetaChartSourceExample(
-            this.metaProject.getProjectId(), this.metaEntity.getEntityId());
-        this.detailColumnPO = metaChartSourceItemHelper.saveDetailColumnExample(
-            this.metaProject.getProjectId(),
-            this.metaChartSource.getSourceId(),
-            this.metaField.getFieldId()
-        );
+        this.metaChartSource = metaChartSourceHelper.saveMetaChartSourceExample(this.metaProject.getProjectId(), this.metaEntity.getEntityId());
+        this.detailColumnPO = metaChartSourceItemHelper.saveDetailColumnExample(this.metaProject.getProjectId(), this.metaChartSource.getSourceId(), this.metaField.getFieldId());
     }
 
     /**
@@ -72,13 +67,8 @@ public class DetailListControllerTest extends AbstractWebTest {
      */
     @Test
     public void save() throws Exception {
-        DetailListAddDTO addDTO = detailListHelper.getAddDTO(
-            metaProject.getProjectId(),metaChartSource.getSourceId(),
-            Arrays.asList(metaChartHelper.getChartItemDTOExample(detailColumnPO.getSourceItemId())));
-        restMockMvc.perform(post(getApiPath() + "/meta_chart/detail_list")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(addDTO)))
-            .andExpect(status().isCreated());
+        DetailListAddDTO addDTO = detailListHelper.getAddDTO(metaProject.getProjectId(), metaChartSource.getSourceId(), Arrays.asList(metaChartHelper.getChartItemDTOExample(detailColumnPO.getSourceItemId())));
+        restMockMvc.perform(post(getApiPath() + "/meta_chart/detail_list").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(addDTO))).andExpect(status().isCreated());
     }
 
     /**
@@ -86,14 +76,9 @@ public class DetailListControllerTest extends AbstractWebTest {
      */
     @Test
     public void update() throws Exception {
-        DetailListPO metaChart = detailListHelper.saveExample(
-            metaProject.getProjectId(),metaChartSource.getSourceId(),
-            Arrays.asList(metaChartHelper.getChartItemDTOExample(detailColumnPO.getSourceItemId())));
+        DetailListPO metaChart = detailListHelper.saveExample(metaProject.getProjectId(), metaChartSource.getSourceId(), Arrays.asList(metaChartHelper.getChartItemDTOExample(detailColumnPO.getSourceItemId())));
         DetailListUpdateDTO updateDTO = detailListHelper.getUpdateDTO(metaChart);
-        restMockMvc.perform(put(getApiPath() + "/meta_chart/detail_list")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(updateDTO)))
-            .andExpect(status().isOk());
+        restMockMvc.perform(put(getApiPath() + "/meta_chart/detail_list").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(updateDTO))).andExpect(status().isOk());
     }
 
     /**
@@ -101,12 +86,8 @@ public class DetailListControllerTest extends AbstractWebTest {
      */
     @Test
     public void list() throws Exception {
-        DetailListPO metaChart = detailListHelper.saveExample(
-            metaProject.getProjectId(),metaChartSource.getSourceId(),
-            Arrays.asList(metaChartHelper.getChartItemDTOExample(detailColumnPO.getSourceItemId())));
-        restMockMvc.perform(get(getApiPath() + "/meta_chart"))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.length()").value(is(1)));
+        DetailListPO metaChart = detailListHelper.saveExample(metaProject.getProjectId(), metaChartSource.getSourceId(), Arrays.asList(metaChartHelper.getChartItemDTOExample(detailColumnPO.getSourceItemId())));
+        restMockMvc.perform(get(getApiPath() + "/meta_chart")).andExpect(status().isOk()).andExpect(jsonPath("$.length()").value(is(1)));
     }
 
     /**
@@ -114,11 +95,8 @@ public class DetailListControllerTest extends AbstractWebTest {
      */
     @Test
     public void show() throws Exception {
-        DetailListPO metaChart = detailListHelper.saveExample(
-            metaProject.getProjectId(),metaChartSource.getSourceId(),
-            Arrays.asList(metaChartHelper.getChartItemDTOExample(detailColumnPO.getSourceItemId())));
-        restMockMvc.perform(get(getApiPath() + "/meta_chart/detail_list/{chartId}", metaChart.getChartId()))
-            .andExpect(status().isOk());
+        DetailListPO metaChart = detailListHelper.saveExample(metaProject.getProjectId(), metaChartSource.getSourceId(), Arrays.asList(metaChartHelper.getChartItemDTOExample(detailColumnPO.getSourceItemId())));
+        restMockMvc.perform(get(getApiPath() + "/meta_chart/detail_list/{chartId}", metaChart.getChartId())).andExpect(status().isOk());
     }
 
     /**
@@ -126,16 +104,9 @@ public class DetailListControllerTest extends AbstractWebTest {
      */
     @Test
     public void deleteBatch() throws Exception {
-        DetailListPO metaChart = detailListHelper.saveExample(
-            metaProject.getProjectId(),metaChartSource.getSourceId(),
-            Arrays.asList(metaChartHelper.getChartItemDTOExample(detailColumnPO.getSourceItemId())));
-        restMockMvc.perform(delete(getApiPath() + "/meta_chart")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(Lists.newArrayList(metaChart.getChartId()))))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$").value(is(1)));
+        DetailListPO metaChart = detailListHelper.saveExample(metaProject.getProjectId(), metaChartSource.getSourceId(), Arrays.asList(metaChartHelper.getChartItemDTOExample(detailColumnPO.getSourceItemId())));
+        restMockMvc.perform(delete(getApiPath() + "/meta_chart").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(Lists.newArrayList(metaChart.getChartId())))).andExpect(status().isOk()).andExpect(jsonPath("$").value(is(1)));
     }
-
 
 
 }

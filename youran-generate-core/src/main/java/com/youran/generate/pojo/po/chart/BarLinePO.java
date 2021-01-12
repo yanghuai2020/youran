@@ -58,8 +58,7 @@ public class BarLinePO extends MetaChartPO {
      * @param featureDeserialize
      * @return
      */
-    public static BarLinePO fromSuperType(MetaChartPO superPO,
-                                          boolean featureDeserialize) {
+    public static BarLinePO fromSuperType(MetaChartPO superPO, boolean featureDeserialize) {
         if (!ChartType.BAR_LINE.getValue().equals(superPO.getChartType())) {
             throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "类型转换异常");
         }
@@ -80,8 +79,7 @@ public class BarLinePO extends MetaChartPO {
         if (axisXDimension != null) {
             axisX.setSourceItem(axisXDimension);
         } else {
-            throw new BusinessException(ErrorCode.INNER_DATA_ERROR,
-                "图表【" + this.getTitle() + "】主X轴不存在，sourceItemId=" + axisXSourceItemId);
+            throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "图表【" + this.getTitle() + "】主X轴不存在，sourceItemId=" + axisXSourceItemId);
         }
 
         if (axisX2 != null) {
@@ -90,8 +88,7 @@ public class BarLinePO extends MetaChartPO {
             if (axisX2Dimension != null) {
                 axisX2.setSourceItem(axisX2Dimension);
             } else {
-                throw new BusinessException(ErrorCode.INNER_DATA_ERROR,
-                    "图表【" + this.getTitle() + "】副X轴不存在，sourceItemId=" + axisX2SourceItemId);
+                throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "图表【" + this.getTitle() + "】副X轴不存在，sourceItemId=" + axisX2SourceItemId);
             }
         }
 
@@ -101,8 +98,7 @@ public class BarLinePO extends MetaChartPO {
             if (metrics != null) {
                 chartItem.setSourceItem(metrics);
             } else {
-                throw new BusinessException(ErrorCode.INNER_DATA_ERROR,
-                    "图表【" + this.getTitle() + "】Y轴不存在，sourceItemId=" + sourceItemId);
+                throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "图表【" + this.getTitle() + "】Y轴不存在，sourceItemId=" + sourceItemId);
             }
         }
     }

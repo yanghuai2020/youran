@@ -69,10 +69,7 @@ public class MetaCodeGenWsController extends AbstractController {
      * @param authentication 当前用户授权信息
      */
     @MessageMapping(value = "/gen_code/{sessionId}")
-    public void genCode(@DestinationVariable String sessionId,
-                        @Header Integer projectId,
-                        @Header Integer templateId,
-                        GenerateAuthentication authentication) {
+    public void genCode(@DestinationVariable String sessionId, @Header Integer projectId, @Header Integer templateId, GenerateAuthentication authentication) {
         this.checkAuthentication(authentication);
         // 进度响应主题
         String topic = "/code_gen/gen_code_progress/" + sessionId;
@@ -101,10 +98,7 @@ public class MetaCodeGenWsController extends AbstractController {
      * @param authentication 当前用户授权信息
      */
     @MessageMapping(value = "/gen_code_and_zip/{sessionId}")
-    public void genCodeAndZip(@DestinationVariable String sessionId,
-                              @Header Integer projectId,
-                              @Header Integer templateId,
-                              GenerateAuthentication authentication) {
+    public void genCodeAndZip(@DestinationVariable String sessionId, @Header Integer projectId, @Header Integer templateId, GenerateAuthentication authentication) {
         this.checkAuthentication(authentication);
         // 进度响应主题
         String topic = "/code_gen/gen_code_and_zip_progress/" + sessionId;
@@ -112,8 +106,7 @@ public class MetaCodeGenWsController extends AbstractController {
             // 初始化进度条
             ProgressVO.initProgress(sessionId);
             // 生成代码压缩包
-            File zipFile = metaCodeGenService.genCodeZip(projectId, templateId,
-                progressVO -> this.replyProgress(topic, progressVO));
+            File zipFile = metaCodeGenService.genCodeZip(projectId, templateId, progressVO -> this.replyProgress(topic, progressVO));
             // 将zip文件路径存入缓存，随后浏览器就能下载了
             lruCache.put(sessionId, new Object[]{projectId, zipFile.getPath()});
             this.replyProgress(topic, ProgressVO.success("代码生成完毕"));
@@ -163,10 +156,7 @@ public class MetaCodeGenWsController extends AbstractController {
      * @param authentication 当前用户授权信息
      */
     @MessageMapping(value = "/git_commit/{sessionId}")
-    public void gitCommit(@DestinationVariable String sessionId,
-                          @Header Integer projectId,
-                          @Header Integer templateId,
-                          GenerateAuthentication authentication) {
+    public void gitCommit(@DestinationVariable String sessionId, @Header Integer projectId, @Header Integer templateId, GenerateAuthentication authentication) {
         this.checkAuthentication(authentication);
         // 进度响应主题
         String topic = "/code_gen/git_commit_progress/" + sessionId;
@@ -196,10 +186,7 @@ public class MetaCodeGenWsController extends AbstractController {
      * @param authentication 当前用户授权信息
      */
     @MessageMapping(value = "/git_diff/{sessionId}")
-    public void gitDiff(@DestinationVariable String sessionId,
-                          @Header Integer projectId,
-                          @Header Integer templateId,
-                          GenerateAuthentication authentication) {
+    public void gitDiff(@DestinationVariable String sessionId, @Header Integer projectId, @Header Integer templateId, GenerateAuthentication authentication) {
         this.checkAuthentication(authentication);
         // 进度响应主题
         String topic = "/code_gen/git_diff_progress/" + sessionId;

@@ -74,7 +74,7 @@ public class MetaEntityAddDTO extends AbstractDTO {
     private List<LabelDTO> labels;
 
     @AssertTrue(message = "类名不合法")
-    public boolean isClassNameValid(){
+    public boolean isClassNameValid() {
         return !WordBlacklist.isClassNameBlacklist(this.className);
     }
 

@@ -109,8 +109,7 @@ public enum ErrorCode {
      * @deprecated in favor of {@link #PAYLOAD_TOO_LARGE} which will be
      * returned from {@code HttpStatus.valueOf(413)}
      */
-    @Deprecated
-    REQUEST_ENTITY_TOO_LARGE(413, "Request Entity Too Large"),
+    @Deprecated REQUEST_ENTITY_TOO_LARGE(413, "Request Entity Too Large"),
     /**
      * {@code 414 URI Too Long}.
      *
@@ -125,8 +124,7 @@ public enum ErrorCode {
      * @see <a href="http://tools.ietf.org/html/rfc2616#section-10.4.15">HTTP/1.1, section 10.4.15</a>
      * @deprecated in favor of {@link #URI_TOO_LONG} which will be returned from {@code HttpStatus.valueOf(414)}
      */
-    @Deprecated
-    REQUEST_URI_TOO_LONG(414, "Request-URI Too Long"),
+    @Deprecated REQUEST_URI_TOO_LONG(414, "Request-URI Too Long"),
     /**
      * {@code 415 Unsupported Media Type}.
      *
@@ -158,21 +156,18 @@ public enum ErrorCode {
      * <a href="http://tools.ietf.org/rfcdiff?difftype=--hwdiff&url2=draft-ietf-webdav-protocol-06.txt">
      * WebDAV Draft Changes</a>
      */
-    @Deprecated
-    INSUFFICIENT_SPACE_ON_RESOURCE(419, "Insufficient Space On Resource"),
+    @Deprecated INSUFFICIENT_SPACE_ON_RESOURCE(419, "Insufficient Space On Resource"),
     /**
      * @deprecated See
      * <a href="http://tools.ietf.org/rfcdiff?difftype=--hwdiff&url2=draft-ietf-webdav-protocol-06.txt">
      * WebDAV Draft Changes</a>
      */
-    @Deprecated
-    METHOD_FAILURE(420, "Method Failure"),
+    @Deprecated METHOD_FAILURE(420, "Method Failure"),
     /**
      * @deprecated See <a href="http://tools.ietf.org/rfcdiff?difftype=--hwdiff&url2=draft-ietf-webdav-protocol-06.txt">
      * WebDAV Draft Changes</a>
      */
-    @Deprecated
-    DESTINATION_LOCKED(421, "Destination Locked"),
+    @Deprecated DESTINATION_LOCKED(421, "Destination Locked"),
     /**
      * {@code 422 Unprocessable Entity}.
      *

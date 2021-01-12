@@ -24,10 +24,7 @@ public interface MetaManyToManyMapper {
      * @param dto
      * @return
      */
-    @Mappings(value = {
-        @Mapping(target = "f1", expression = "java(dto.getFeature()==null ? null:dto.getFeature().getF1())"),
-        @Mapping(target = "f2", expression = "java(dto.getFeature()==null ? null:dto.getFeature().getF2())")
-    })
+    @Mappings(value = {@Mapping(target = "f1", expression = "java(dto.getFeature()==null ? null:dto.getFeature().getF1())"), @Mapping(target = "f2", expression = "java(dto.getFeature()==null ? null:dto.getFeature().getF2())")})
     MetaManyToManyPO fromAddDTO(MetaManyToManyAddDTO dto);
 
     /**
@@ -36,10 +33,7 @@ public interface MetaManyToManyMapper {
      * @param metaManyToManyPO
      * @param dto
      */
-    @Mappings(value = {
-        @Mapping(target = "f1", expression = "java(dto.getFeature()==null ? null:dto.getFeature().getF1())"),
-        @Mapping(target = "f2", expression = "java(dto.getFeature()==null ? null:dto.getFeature().getF2())")
-    })
+    @Mappings(value = {@Mapping(target = "f1", expression = "java(dto.getFeature()==null ? null:dto.getFeature().getF1())"), @Mapping(target = "f2", expression = "java(dto.getFeature()==null ? null:dto.getFeature().getF2())")})
     void setPO(@MappingTarget MetaManyToManyPO metaManyToManyPO, MetaManyToManyUpdateDTO dto);
 
 
@@ -53,18 +47,7 @@ public interface MetaManyToManyMapper {
 
 
     @BeanMapping(ignoreByDefault = true)
-    @Mappings({
-        @Mapping(target = "tableName"),
-        @Mapping(target = "schemaName"),
-        @Mapping(target = "desc"),
-        @Mapping(target = "holdRefer1"),
-        @Mapping(target = "holdRefer2"),
-        @Mapping(target = "entityIdField1"),
-        @Mapping(target = "entityIdField2"),
-        @Mapping(target = "needId"),
-        @Mapping(target = "bigId"),
-        @Mapping(target = "feature"),
-    })
+    @Mappings({@Mapping(target = "tableName"), @Mapping(target = "schemaName"), @Mapping(target = "desc"), @Mapping(target = "holdRefer1"), @Mapping(target = "holdRefer2"), @Mapping(target = "entityIdField1"), @Mapping(target = "entityIdField2"), @Mapping(target = "needId"), @Mapping(target = "bigId"), @Mapping(target = "feature"),})
     MetaManyToManyPO copy(MetaManyToManyPO mtmFromJson);
 
 

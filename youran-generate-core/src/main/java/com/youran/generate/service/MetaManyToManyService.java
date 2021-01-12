@@ -92,8 +92,7 @@ public class MetaManyToManyService {
      * @param mtm
      */
     private void checkManyToMany(MetaManyToManyPO mtm) {
-        if (!mtm.getHoldRefer1()
-            && !mtm.getHoldRefer2()) {
+        if (!mtm.getHoldRefer1() && !mtm.getHoldRefer2()) {
             throw new BusinessException(ErrorCode.BAD_PARAMETER, "至少要有一个实体持有对方引用");
         }
         if (!metaEntityDAO.exist(mtm.getEntityId1())) {
@@ -105,24 +104,19 @@ public class MetaManyToManyService {
         if (Objects.equals(mtm.getEntityId1(), mtm.getEntityId2())) {
             throw new BusinessException(ErrorCode.BAD_PARAMETER, "不支持同一个实体跟自己建立多对多关系");
         }
-        boolean exists = metaManyToManyDAO.findManyToManyExists(mtm.getEntityId1(), mtm.getEntityId2(),
-            mtm.getMtmId());
+        boolean exists = metaManyToManyDAO.findManyToManyExists(mtm.getEntityId1(), mtm.getEntityId2(), mtm.getMtmId());
         if (exists) {
             throw new BusinessException(ErrorCode.BAD_PARAMETER, "两实体已经存在多对多关系");
         }
         if (mtm.getHoldRefer1()) {
             MetaMtmEntityFeatureDTO f1 = mtm.getF1();
-            if (!f1.getAddRemove()
-                && !f1.getSet()
-                && !f1.getWithinEntity()) {
+            if (!f1.getAddRemove() && !f1.getSet() && !f1.getWithinEntity()) {
                 throw new BusinessException(ErrorCode.BAD_PARAMETER, "请选择\"实体1级联模式\"");
             }
         }
         if (mtm.getHoldRefer2()) {
             MetaMtmEntityFeatureDTO f2 = mtm.getF2();
-            if (!f2.getAddRemove()
-                && !f2.getSet()
-                && !f2.getWithinEntity()) {
+            if (!f2.getAddRemove() && !f2.getSet() && !f2.getWithinEntity()) {
                 throw new BusinessException(ErrorCode.BAD_PARAMETER, "请选择\"实体2级联模式\"");
             }
         }

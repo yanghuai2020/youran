@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 
 /**
  * 代码预览API
+ *
  * @author cbb
  * @date 2019/8/29
  */
@@ -32,10 +33,7 @@ public interface CodePreviewAPI {
      * @return
      */
     @ApiOperation(value = "查看代码目录结构")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "query"),
-        @ApiImplicitParam(name = "templateId", dataType = "int", value = "模板id", paramType = "query")
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "query"), @ApiImplicitParam(name = "templateId", dataType = "int", value = "模板id", paramType = "query")})
     ResponseEntity<CodeTreeVO> codeTree(Integer projectId, Integer templateId);
 
 

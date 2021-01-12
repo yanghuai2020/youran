@@ -23,6 +23,7 @@ public interface ProjectTeamDAO extends DAO<ProjectTeamPO> {
 
     /**
      * 根据条件查询【项目组】列表
+     *
      * @param projectTeamQO
      * @return
      */

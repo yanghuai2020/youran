@@ -24,6 +24,7 @@ public class AggOrderService {
     private MetaChartSourceItemService metaChartSourceItemService;
     @Autowired
     private MetaProjectService metaProjectService;
+
     /**
      * 【聚合排序】数据预处理
      *
@@ -49,9 +50,8 @@ public class AggOrderService {
         return po;
     }
 
-    public AggOrderPO doSave(AggOrderAddDTO addDTO){
-        AggOrderPO po = MetaChartSourceItemMapper.INSTANCE
-            .fromAggOrderAddDTO(addDTO);
+    public AggOrderPO doSave(AggOrderAddDTO addDTO) {
+        AggOrderPO po = MetaChartSourceItemMapper.INSTANCE.fromAggOrderAddDTO(addDTO);
         this.preparePO(po);
         metaChartSourceItemService.doSave(po);
         return po;

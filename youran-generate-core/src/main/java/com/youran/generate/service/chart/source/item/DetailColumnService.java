@@ -24,6 +24,7 @@ public class DetailColumnService {
     private MetaChartSourceItemService metaChartSourceItemService;
     @Autowired
     private MetaProjectService metaProjectService;
+
     /**
      * 【明细列】数据预处理
      *
@@ -50,8 +51,7 @@ public class DetailColumnService {
     }
 
     public DetailColumnPO doSave(DetailColumnAddDTO addDTO) {
-        DetailColumnPO po = MetaChartSourceItemMapper.INSTANCE
-            .fromDetailColumnAddDTO(addDTO);
+        DetailColumnPO po = MetaChartSourceItemMapper.INSTANCE.fromDetailColumnAddDTO(addDTO);
         this.preparePO(po);
         metaChartSourceItemService.doSave(po);
         return po;

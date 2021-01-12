@@ -26,52 +26,42 @@ public interface MetaDashboardAPI {
     /**
      * 新增【看板】
      */
-    @ApiOperation(value="新增【看板】")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "metaDashboardAddDTO", dataType = "MetaDashboardAddDTO", value = "新增【看板】参数", paramType = "body"),
-    })
+    @ApiOperation(value = "新增【看板】")
+    @ApiImplicitParams({@ApiImplicitParam(name = "metaDashboardAddDTO", dataType = "MetaDashboardAddDTO", value = "新增【看板】参数", paramType = "body"),})
     ResponseEntity<MetaDashboardShowVO> save(MetaDashboardAddDTO metaDashboardAddDTO) throws Exception;
 
     /**
      * 修改【看板】
      */
-    @ApiOperation(value="修改【看板】")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "metaDashboardUpdateDTO", dataType = "MetaDashboardUpdateDTO", value = "修改【看板】参数", paramType = "body"),
-    })
+    @ApiOperation(value = "修改【看板】")
+    @ApiImplicitParams({@ApiImplicitParam(name = "metaDashboardUpdateDTO", dataType = "MetaDashboardUpdateDTO", value = "修改【看板】参数", paramType = "body"),})
     ResponseEntity<MetaDashboardShowVO> update(MetaDashboardUpdateDTO metaDashboardUpdateDTO);
 
     /**
      * 列表查询【看板】
      */
-    @ApiOperation(value="列表查询【看板】")
+    @ApiOperation(value = "列表查询【看板】")
     ResponseEntity<List<MetaDashboardListVO>> list(MetaDashboardQO metaDashboardQO);
 
     /**
      * 查看【看板】详情
      */
-    @ApiOperation(value="查看【看板】详情")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "dashboardId", dataType = "int", value = "【看板】id", paramType = "path"),
-    })
+    @ApiOperation(value = "查看【看板】详情")
+    @ApiImplicitParams({@ApiImplicitParam(name = "dashboardId", dataType = "int", value = "【看板】id", paramType = "path"),})
     ResponseEntity<MetaDashboardShowVO> show(Integer dashboardId);
 
     /**
      * 删除单个【看板】
      */
-    @ApiOperation(value="删除单个【看板】")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "dashboardId", dataType = "int", value = "【看板】id", paramType = "path"),
-    })
+    @ApiOperation(value = "删除单个【看板】")
+    @ApiImplicitParams({@ApiImplicitParam(name = "dashboardId", dataType = "int", value = "【看板】id", paramType = "path"),})
     ResponseEntity<Integer> delete(Integer dashboardId);
 
     /**
      * 批量删除【看板】
      */
     @ApiOperation(value = "批量删除【看板】")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "id", dataType = "int", value = "id数组", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "id", dataType = "int", value = "id数组", paramType = "body"),})
     ResponseEntity<Integer> deleteBatch(Integer[] id);
 
 }

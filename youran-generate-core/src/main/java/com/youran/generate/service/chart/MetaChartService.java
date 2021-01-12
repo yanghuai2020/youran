@@ -44,10 +44,10 @@ public class MetaChartService {
      * 根据主键获取【图表】
      *
      * @param chartId 主键
-     * @param force 是否强制获取
+     * @param force   是否强制获取
      * @return
      */
-    public <T extends MetaChartPO> T getMetaChart(Integer chartId, boolean force){
+    public <T extends MetaChartPO> T getMetaChart(Integer chartId, boolean force) {
         MetaChartPO metaChart = metaChartDAO.findById(chartId);
         if (force && metaChart == null) {
             throw new BusinessException(ErrorCode.RECORD_NOT_FIND);
@@ -82,18 +82,17 @@ public class MetaChartService {
 
     /**
      * 根据项目id查询所有图表实体
+     *
      * @param projectId
      * @param cast
      * @return
      */
     public List<MetaChartPO> findByProjectId(Integer projectId, boolean cast) {
         List<MetaChartPO> list = metaChartDAO.findByProjectId(projectId);
-        if(!cast){
+        if (!cast) {
             return list;
         }
-        return list.stream()
-            .<MetaChartPO>map(po -> po.castSubType(true))
-            .collect(Collectors.toList());
+        return list.stream().<MetaChartPO>map(po -> po.castSubType(true)).collect(Collectors.toList());
     }
 
     public void doSave(MetaChartPO metaChartPO) {

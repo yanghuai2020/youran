@@ -49,16 +49,13 @@ public class TemplateFileController extends AbstractController implements Templa
             templateFileService.checkDirPathExists(templateFileAddDTO.getTemplateId(), templateFileAddDTO.getFileDir());
         }
         TemplateFilePO templateFile = templateFileService.save(templateFileAddDTO);
-        return ResponseEntity.created(new URI(apiPath + "/template_file/" + templateFile.getFileId()))
-            .body(TemplateFileMapper.INSTANCE.toShowVO(templateFile));
+        return ResponseEntity.created(new URI(apiPath + "/template_file/" + templateFile.getFileId())).body(TemplateFileMapper.INSTANCE.toShowVO(templateFile));
     }
 
     @Override
     @PostMapping(value = "/upload")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<TemplateFileShowVO> upload(@RequestParam Integer templateId,
-                                                     @RequestParam String fileDir,
-                                                     MultipartFile file) throws Exception {
+    public ResponseEntity<TemplateFileShowVO> upload(@RequestParam Integer templateId, @RequestParam String fileDir, MultipartFile file) throws Exception {
         if (file == null) {
             throw new BusinessException(ErrorCode.BAD_PARAMETER, "文件为空");
         }
@@ -74,12 +71,10 @@ public class TemplateFileController extends AbstractController implements Templa
             throw new BusinessException(ErrorCode.BAD_PARAMETER, "文件内容不能为空");
         }
         if (file.getSize() > TemplateFilePO.TEMPLATE_FILE_LENGTH_LIMIT) {
-            throw new BusinessException(ErrorCode.BAD_PARAMETER, "文件超过最大长度限制:" +
-                FileUtils.byteCountToDisplaySize(TemplateFilePO.TEMPLATE_FILE_LENGTH_LIMIT));
+            throw new BusinessException(ErrorCode.BAD_PARAMETER, "文件超过最大长度限制:" + FileUtils.byteCountToDisplaySize(TemplateFilePO.TEMPLATE_FILE_LENGTH_LIMIT));
         }
         TemplateFilePO templateFile = templateFileService.saveBinary(templateId, fileDir, filename, bytes);
-        return ResponseEntity.created(new URI(apiPath + "/template_file/" + templateFile.getFileId()))
-            .body(TemplateFileMapper.INSTANCE.toShowVO(templateFile));
+        return ResponseEntity.created(new URI(apiPath + "/template_file/" + templateFile.getFileId())).body(TemplateFileMapper.INSTANCE.toShowVO(templateFile));
     }
 
 
@@ -92,8 +87,7 @@ public class TemplateFileController extends AbstractController implements Templa
 
     @Override
     @PutMapping(value = "/{fileId}/content")
-    public ResponseEntity<Integer> updateContent(@PathVariable Integer fileId,
-                                                 @Valid @RequestBody TemplateFileContentUpdateDTO dto) {
+    public ResponseEntity<Integer> updateContent(@PathVariable Integer fileId, @Valid @RequestBody TemplateFileContentUpdateDTO dto) {
         dto.setFileId(fileId);
         TemplateFilePO templateFile = templateFileService.updateContent(dto);
         return ResponseEntity.ok(templateFile.getVersion());

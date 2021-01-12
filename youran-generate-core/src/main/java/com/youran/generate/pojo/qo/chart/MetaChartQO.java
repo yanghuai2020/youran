@@ -14,14 +14,14 @@ import static com.youran.generate.pojo.example.chart.MetaChartExample.*;
  */
 public class MetaChartQO extends AbstractQO {
 
-    @ApiParam(value = N_PROJECT_ID,example = E_PROJECT_ID)
+    @ApiParam(value = N_PROJECT_ID, example = E_PROJECT_ID)
     private Integer projectId;
 
-    @ApiParam(value = N_CHART_TYPE,example = E_CHART_TYPE)
+    @ApiParam(value = N_CHART_TYPE, example = E_CHART_TYPE)
     private Integer chartType;
 
-    @ApiParam(value = N_CHART_NAME,example = E_CHART_NAME)
-    @Length(max = 64,message = "chartName最大长度不能超过{max}")
+    @ApiParam(value = N_CHART_NAME, example = E_CHART_NAME)
+    @Length(max = 64, message = "chartName最大长度不能超过{max}")
     private String chartName;
 
     @ApiParam(value = "模块排序标识【1升序,-1降序,0不排序】", example = "1")

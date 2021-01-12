@@ -218,9 +218,7 @@ public class GuessUtil {
             }
 
         }
-        if (jFieldType == JFieldType.INTEGER || jFieldType == JFieldType.LONG
-            || jFieldType == JFieldType.SHORT || jFieldType == JFieldType.FLOAT
-            || jFieldType == JFieldType.DOUBLE || jFieldType == JFieldType.BIGDECIMAL) {
+        if (jFieldType == JFieldType.INTEGER || jFieldType == JFieldType.LONG || jFieldType == JFieldType.SHORT || jFieldType == JFieldType.FLOAT || jFieldType == JFieldType.DOUBLE || jFieldType == JFieldType.BIGDECIMAL) {
             return "1";
         }
         if (jFieldType == JFieldType.BOOLEAN) {
@@ -287,9 +285,7 @@ public class GuessUtil {
      * @param autoIncrement
      * @return
      */
-    public static PrimaryKeyStrategy guessPkStrategy(String fieldType,
-                                                     int fieldLength,
-                                                     boolean autoIncrement) {
+    public static PrimaryKeyStrategy guessPkStrategy(String fieldType, int fieldLength, boolean autoIncrement) {
         if (autoIncrement) {
             return PrimaryKeyStrategy.AUTO_INCREMENT;
         }
@@ -302,7 +298,6 @@ public class GuessUtil {
         }
         return PrimaryKeyStrategy.NONE;
     }
-
 
 
 }

@@ -32,5 +32,4 @@ public class MetaEntityExample extends AbstractExample {
     public static final String E_LABELS = "role:admin";
 
 
-
 }

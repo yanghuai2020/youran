@@ -13,18 +13,7 @@ import org.junit.runners.Suite;
  * @date: 2017/09/13
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({
-    MetaProjectControllerTest.class,
-    MetaEntityControllerTest.class,
-    MetaFieldControllerTest.class,
-    MetaIndexControllerTest.class,
-    MetaConstControllerTest.class,
-    MetaConstDetailControllerTest.class,
-    MetaManyToManyControllerTest.class,
-    MetaCascadeExtControllerTest.class,
-    ProjectTeamControllerTest.class,
-    ProjectTeamMemberControllerTest.class,
-})
+@Suite.SuiteClasses({MetaProjectControllerTest.class, MetaEntityControllerTest.class, MetaFieldControllerTest.class, MetaIndexControllerTest.class, MetaConstControllerTest.class, MetaConstDetailControllerTest.class, MetaManyToManyControllerTest.class, MetaCascadeExtControllerTest.class, ProjectTeamControllerTest.class, ProjectTeamMemberControllerTest.class,})
 public class Main {
 
 

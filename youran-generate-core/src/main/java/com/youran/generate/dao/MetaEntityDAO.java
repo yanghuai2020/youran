@@ -31,18 +31,14 @@ public interface MetaEntityDAO extends DAO<MetaEntityPO> {
      *
      * @return
      */
-    boolean classNameNotUnique(@Param("projectId") Integer projectId,
-                               @Param("className") String className,
-                               @Param("entityId") Integer entityId);
+    boolean classNameNotUnique(@Param("projectId") Integer projectId, @Param("className") String className, @Param("entityId") Integer entityId);
 
     /**
      * 校验表名是否不唯一
      *
      * @return
      */
-    boolean tableNameNotUnique(@Param("projectId") Integer projectId,
-                               @Param("tableName") String tableName,
-                               @Param("entityId") Integer entityId);
+    boolean tableNameNotUnique(@Param("projectId") Integer projectId, @Param("tableName") String tableName, @Param("entityId") Integer entityId);
 
     /**
      * 查询某实体下的多对多关联实体列表
@@ -51,8 +47,7 @@ public interface MetaEntityDAO extends DAO<MetaEntityPO> {
      * @param hold     是否持有引用
      * @return
      */
-    List<MetaMtmEntityListVO> findMtmEntityList(@Param("entityId") Integer entityId,
-                                                @Param("hold") boolean hold);
+    List<MetaMtmEntityListVO> findMtmEntityList(@Param("entityId") Integer entityId, @Param("hold") boolean hold);
 
 
 }

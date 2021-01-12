@@ -56,8 +56,7 @@ public class JsonUtil {
 
     public static String toJSONString(Object object, boolean prettyFormat) {
         if (prettyFormat) {
-            return doConvertRuntimeException(() ->
-                mapper.writerWithDefaultPrettyPrinter().writeValueAsString(object));
+            return doConvertRuntimeException(() -> mapper.writerWithDefaultPrettyPrinter().writeValueAsString(object));
         }
         return toJSONString(object);
     }
@@ -101,7 +100,7 @@ public class JsonUtil {
         }
         JavaType javaType = getCollectionType(ArrayList.class, clazz);
         List<T> ts = doConvertRuntimeException(() -> mapper.readValue(file, javaType));
-        if(ts == null){
+        if (ts == null) {
             return Collections.emptyList();
         }
         return ts;
@@ -109,6 +108,7 @@ public class JsonUtil {
 
     /**
      * 将声明式异常包装成运行时异常抛出
+     *
      * @param callable
      * @param <T>
      * @return
@@ -118,9 +118,9 @@ public class JsonUtil {
             return callable.call();
         } catch (Exception e) {
             LOGGER.error("json序列化异常", e);
-            if(e instanceof RuntimeException){
-                throw (RuntimeException)e;
-            }else {
+            if (e instanceof RuntimeException) {
+                throw (RuntimeException) e;
+            } else {
                 throw new RuntimeException("json序列化异常", e);
             }
         }

@@ -16,7 +16,7 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface MetaDashboardMapper {
 
-    MetaDashboardMapper INSTANCE = Mappers.getMapper( MetaDashboardMapper.class );
+    MetaDashboardMapper INSTANCE = Mappers.getMapper(MetaDashboardMapper.class);
 
     /**
      * addDTO映射po
@@ -43,12 +43,7 @@ public interface MetaDashboardMapper {
     MetaDashboardShowVO toShowVO(MetaDashboardPO metaDashboardPO);
 
     @BeanMapping(ignoreByDefault = true)
-    @Mappings({
-        @Mapping(target = "name"),
-        @Mapping(target = "title"),
-        @Mapping(target = "module"),
-        @Mapping(target = "feature"),
-    })
+    @Mappings({@Mapping(target = "name"), @Mapping(target = "title"), @Mapping(target = "module"), @Mapping(target = "feature"),})
     MetaDashboardPO copy(MetaDashboardPO metaDashboardFromJson);
 
 

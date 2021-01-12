@@ -44,15 +44,7 @@ public interface CodeTemplateMapper {
 
 
     @BeanMapping(ignoreByDefault = true)
-    @Mappings({
-        @Mapping(target = "code"),
-        @Mapping(target = "name"),
-        @Mapping(target = "templateVersion"),
-        @Mapping(target = "sysLowVersion"),
-        @Mapping(target = "sysDefault"),
-        @Mapping(target = "remark"),
-        @Mapping(target = "metaLabel"),
-    })
+    @Mappings({@Mapping(target = "code"), @Mapping(target = "name"), @Mapping(target = "templateVersion"), @Mapping(target = "sysLowVersion"), @Mapping(target = "sysDefault"), @Mapping(target = "remark"), @Mapping(target = "metaLabel"),})
     CodeTemplatePO copy(CodeTemplatePO project);
 
 }

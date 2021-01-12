@@ -56,11 +56,11 @@ public class DimensionPO extends MetaChartSourceItemPO {
         } else {
             this.entity = this.getJoin().getRight().getEntity();
         }
-        if(this.entity==null){
+        if (this.entity == null) {
             throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "图表维度异常，所属实体不存在");
         }
         this.field = this.entity.getFields().get(this.fieldId);
-        if(this.field==null){
+        if (this.field == null) {
             throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "图表维度异常，所属字段不存在");
         }
     }
@@ -72,8 +72,7 @@ public class DimensionPO extends MetaChartSourceItemPO {
      * @param featureDeserialize
      * @return
      */
-    public static DimensionPO fromSuperType(MetaChartSourceItemPO superPO,
-                                            boolean featureDeserialize) {
+    public static DimensionPO fromSuperType(MetaChartSourceItemPO superPO, boolean featureDeserialize) {
         if (!SourceItemType.DIMENSION.getValue().equals(superPO.getType())) {
             throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "类型转换异常");
         }
@@ -142,7 +141,7 @@ public class DimensionPO extends MetaChartSourceItemPO {
         this.field = field;
     }
 
-    static class FeatureDTO{
+    static class FeatureDTO {
         private Integer fieldId;
         private Integer granularity;
 

@@ -40,8 +40,7 @@ public class CodeTemplateService {
      * @param isUpdate     是否更新校验
      */
     private void checkUnique(CodeTemplatePO codeTemplate, boolean isUpdate) {
-        if (codeTemplateDAO.notUnique(codeTemplate.getCode(), codeTemplate.getTemplateVersion(),
-            isUpdate ? codeTemplate.getTemplateId() : null)) {
+        if (codeTemplateDAO.notUnique(codeTemplate.getCode(), codeTemplate.getTemplateVersion(), isUpdate ? codeTemplate.getTemplateId() : null)) {
             throw new BusinessException(ErrorCode.DUPLICATE_KEY, "模板编码+版本号有重复");
         }
     }

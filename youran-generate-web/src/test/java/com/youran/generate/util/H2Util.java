@@ -332,10 +332,7 @@ public class H2Util {
 
         @Override
         public String toString() {
-            return "CREATE" + (unique ? " UNIQUE" : "") + (indexType != null ? " " + indexType : "") + " INDEX" + (ifNotExists ? " IF NOT EXISTS" : "") +
-                (indexName != null ? " " + indexName : "") +
-                " ON " + tableName + " (" + Joiner.on(',').join(columnNames) + ")"
-                ;
+            return "CREATE" + (unique ? " UNIQUE" : "") + (indexType != null ? " " + indexType : "") + " INDEX" + (ifNotExists ? " IF NOT EXISTS" : "") + (indexName != null ? " " + indexName : "") + " ON " + tableName + " (" + Joiner.on(',').join(columnNames) + ")";
         }
     }
 }

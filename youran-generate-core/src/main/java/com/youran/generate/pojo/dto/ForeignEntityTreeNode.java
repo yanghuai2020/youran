@@ -112,16 +112,12 @@ public class ForeignEntityTreeNode {
             return false;
         }
         ForeignEntityTreeNode that = (ForeignEntityTreeNode) o;
-        return new EqualsBuilder()
-            .append(entityId, that.entityId)
-            .isEquals();
+        return new EqualsBuilder().append(entityId, that.entityId).isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37)
-            .append(entityId)
-            .toHashCode();
+        return new HashCodeBuilder(17, 37).append(entityId).toHashCode();
     }
 
 

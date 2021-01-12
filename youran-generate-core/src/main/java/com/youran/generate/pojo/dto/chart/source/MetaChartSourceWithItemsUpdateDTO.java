@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 /**
  * 修改【图表数据源】带数据项的参数
+ *
  * @author: cbb
  * @date: 2020-05-20
  */
@@ -25,26 +26,23 @@ public class MetaChartSourceWithItemsUpdateDTO extends MetaChartSourceUpdateDTO 
     private List<AggOrderUpdateDTO> aggOrderList;
 
 
-    public List<Integer> fetchSourceItemIds(){
+    public List<Integer> fetchSourceItemIds() {
         List<Integer> list = new ArrayList<>();
-        list.addAll(this.convertIdList(detailColumnList,DetailColumnUpdateDTO::getSourceItemId));
-        list.addAll(this.convertIdList(whereList,WhereUpdateDTO::getSourceItemId));
-        list.addAll(this.convertIdList(detailOrderList,DetailOrderUpdateDTO::getSourceItemId));
-        list.addAll(this.convertIdList(dimensionList,DimensionUpdateDTO::getSourceItemId));
-        list.addAll(this.convertIdList(metricsList,MetricsUpdateDTO::getSourceItemId));
-        list.addAll(this.convertIdList(havingList,HavingUpdateDTO::getSourceItemId));
-        list.addAll(this.convertIdList(aggOrderList,AggOrderUpdateDTO::getSourceItemId));
+        list.addAll(this.convertIdList(detailColumnList, DetailColumnUpdateDTO::getSourceItemId));
+        list.addAll(this.convertIdList(whereList, WhereUpdateDTO::getSourceItemId));
+        list.addAll(this.convertIdList(detailOrderList, DetailOrderUpdateDTO::getSourceItemId));
+        list.addAll(this.convertIdList(dimensionList, DimensionUpdateDTO::getSourceItemId));
+        list.addAll(this.convertIdList(metricsList, MetricsUpdateDTO::getSourceItemId));
+        list.addAll(this.convertIdList(havingList, HavingUpdateDTO::getSourceItemId));
+        list.addAll(this.convertIdList(aggOrderList, AggOrderUpdateDTO::getSourceItemId));
         return list;
     }
 
-    private <T> List<Integer> convertIdList(List<T> list, Function<T,Integer> mapper){
-        if(CollectionUtils.isEmpty(list)){
+    private <T> List<Integer> convertIdList(List<T> list, Function<T, Integer> mapper) {
+        if (CollectionUtils.isEmpty(list)) {
             return Collections.emptyList();
         }
-        return list.stream()
-            .map(mapper)
-            .filter(id -> id != null)
-            .collect(Collectors.toList());
+        return list.stream().map(mapper).filter(id -> id != null).collect(Collectors.toList());
     }
 
     public List<DetailColumnUpdateDTO> getDetailColumnList() {

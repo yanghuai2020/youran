@@ -30,18 +30,14 @@ public interface CodeTemplateAPI {
      * 新增【代码模板】
      */
     @ApiOperation(value = "新增【代码模板】")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "codeTemplateAddDTO", dataType = "CodeTemplateAddDTO", value = "新增【代码模板】参数", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "codeTemplateAddDTO", dataType = "CodeTemplateAddDTO", value = "新增【代码模板】参数", paramType = "body"),})
     ResponseEntity<CodeTemplateShowVO> save(CodeTemplateAddDTO codeTemplateAddDTO) throws Exception;
 
     /**
      * 修改【代码模板】
      */
     @ApiOperation(value = "修改【代码模板】")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "codeTemplateUpdateDTO", dataType = "CodeTemplateUpdateDTO", value = "修改【代码模板】参数", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "codeTemplateUpdateDTO", dataType = "CodeTemplateUpdateDTO", value = "修改【代码模板】参数", paramType = "body"),})
     ResponseEntity<CodeTemplateShowVO> update(CodeTemplateUpdateDTO codeTemplateUpdateDTO);
 
     /**
@@ -54,27 +50,21 @@ public interface CodeTemplateAPI {
      * 查看【代码模板】详情
      */
     @ApiOperation(value = "查看【代码模板】详情")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "templateId", dataType = "int", value = "【代码模板】id", paramType = "path"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "templateId", dataType = "int", value = "【代码模板】id", paramType = "path"),})
     ResponseEntity<CodeTemplateShowVO> show(Integer templateId);
 
     /**
      * 删除单个【代码模板】
      */
     @ApiOperation(value = "删除单个【代码模板】")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "templateId", dataType = "int", value = "【代码模板】id", paramType = "path"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "templateId", dataType = "int", value = "【代码模板】id", paramType = "path"),})
     ResponseEntity<Integer> delete(Integer templateId);
 
     /**
      * 批量删除【代码模板】
      */
     @ApiOperation(value = "批量删除【代码模板】")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "id", dataType = "int", value = "id数组", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "id", dataType = "int", value = "id数组", paramType = "body"),})
     ResponseEntity<Integer> deleteBatch(Integer[] id);
 
 
@@ -85,9 +75,7 @@ public interface CodeTemplateAPI {
      * @return
      */
     @ApiOperation(value = "查看模板文件目录结构")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "templateId", dataType = "int", value = "模板id", paramType = "path")
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "templateId", dataType = "int", value = "模板id", paramType = "path")})
     ResponseEntity<TemplateDirTreeVO> dirTree(Integer templateId);
 
     /**
@@ -97,9 +85,7 @@ public interface CodeTemplateAPI {
      * @param response
      */
     @ApiOperation(value = "模板导出")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "templateId", dataType = "int", value = "模板id", paramType = "path")
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "templateId", dataType = "int", value = "模板id", paramType = "path")})
     void export(Integer templateId, HttpServletResponse response);
 
     /**
@@ -108,9 +94,7 @@ public interface CodeTemplateAPI {
      * @param templateId
      */
     @ApiOperation(value = "模板复制")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "templateId", dataType = "int", value = "模板id", paramType = "path")
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "templateId", dataType = "int", value = "模板id", paramType = "path")})
     ResponseEntity<CodeTemplateShowVO> copy(Integer templateId) throws Exception;
 
     /**

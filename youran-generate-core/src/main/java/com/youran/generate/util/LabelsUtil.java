@@ -12,9 +12,6 @@ public class LabelsUtil {
         if (CollectionUtils.isEmpty(labels)) {
             return null;
         }
-        return labels.stream()
-            .filter(labelDTO -> Objects.equals(key, labelDTO.getKey()))
-            .findFirst()
-            .orElse(null);
+        return labels.stream().filter(labelDTO -> Objects.equals(key, labelDTO.getKey())).findFirst().orElse(null);
     }
 }

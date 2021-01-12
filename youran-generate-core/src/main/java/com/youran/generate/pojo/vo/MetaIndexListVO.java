@@ -86,13 +86,6 @@ public class MetaIndexListVO extends AbstractVO {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
-            .append("indexId", indexId)
-            .append("indexName", indexName)
-            .append("entityId", entityId)
-            .append("unique", unique)
-            .append("uniqueCheck", uniqueCheck)
-            .append("fields", fields)
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("indexId", indexId).append("indexName", indexName).append("entityId", entityId).append("unique", unique).append("uniqueCheck", uniqueCheck).append("fields", fields).toString();
     }
 }

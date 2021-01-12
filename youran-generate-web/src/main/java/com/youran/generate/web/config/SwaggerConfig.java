@@ -16,11 +16,7 @@ import springfox.documentation.spring.web.plugins.Docket;
  * @date: 2018/1/16
  */
 @Configuration
-@ConditionalOnProperty(
-    value = "springfox.documentation.enabled",
-    havingValue = "true",
-    matchIfMissing = true
-)
+@ConditionalOnProperty(value = "springfox.documentation.enabled", havingValue = "true", matchIfMissing = true)
 public class SwaggerConfig {
 
     @Value(WebConst.API_PATH)
@@ -28,10 +24,7 @@ public class SwaggerConfig {
 
     @Bean
     public Docket createRestApi() {
-        return new Docket(DocumentationType.OAS_30)
-            .select()
-            .paths(PathSelectors.ant(apiPath + "/**"))
-            .build();
+        return new Docket(DocumentationType.OAS_30).select().paths(PathSelectors.ant(apiPath + "/**")).build();
     }
 
 }

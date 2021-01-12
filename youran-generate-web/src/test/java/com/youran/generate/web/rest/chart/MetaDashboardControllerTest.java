@@ -34,10 +34,7 @@ public class MetaDashboardControllerTest extends AbstractWebTest {
     @Test
     public void save() throws Exception {
         MetaDashboardAddDTO addDTO = metaDashboardHelper.getMetaDashboardAddDTO();
-        restMockMvc.perform(post(getApiPath() + "/meta_dashboard")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(addDTO)))
-            .andExpect(status().isCreated());
+        restMockMvc.perform(post(getApiPath() + "/meta_dashboard").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(addDTO))).andExpect(status().isCreated());
     }
 
     /**
@@ -47,10 +44,7 @@ public class MetaDashboardControllerTest extends AbstractWebTest {
     public void update() throws Exception {
         MetaDashboardPO metaDashboard = metaDashboardHelper.saveMetaDashboardExample();
         MetaDashboardUpdateDTO updateDTO = metaDashboardHelper.getMetaDashboardUpdateDTO(metaDashboard);
-        restMockMvc.perform(put(getApiPath() + "/meta_dashboard")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(updateDTO)))
-            .andExpect(status().isOk());
+        restMockMvc.perform(put(getApiPath() + "/meta_dashboard").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(updateDTO))).andExpect(status().isOk());
     }
 
     /**
@@ -59,9 +53,7 @@ public class MetaDashboardControllerTest extends AbstractWebTest {
     @Test
     public void list() throws Exception {
         MetaDashboardPO metaDashboard = metaDashboardHelper.saveMetaDashboardExample();
-        restMockMvc.perform(get(getApiPath() + "/meta_dashboard"))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.length()").value(is(1)));
+        restMockMvc.perform(get(getApiPath() + "/meta_dashboard")).andExpect(status().isOk()).andExpect(jsonPath("$.length()").value(is(1)));
     }
 
     /**
@@ -70,8 +62,7 @@ public class MetaDashboardControllerTest extends AbstractWebTest {
     @Test
     public void show() throws Exception {
         MetaDashboardPO metaDashboard = metaDashboardHelper.saveMetaDashboardExample();
-        restMockMvc.perform(get(getApiPath() + "/meta_dashboard/{dashboardId}", metaDashboard.getDashboardId()))
-            .andExpect(status().isOk());
+        restMockMvc.perform(get(getApiPath() + "/meta_dashboard/{dashboardId}", metaDashboard.getDashboardId())).andExpect(status().isOk());
     }
 
     /**
@@ -80,9 +71,7 @@ public class MetaDashboardControllerTest extends AbstractWebTest {
     @Test
     public void del() throws Exception {
         MetaDashboardPO metaDashboard = metaDashboardHelper.saveMetaDashboardExample();
-        restMockMvc.perform(delete(getApiPath() + "/meta_dashboard/{dashboardId}", metaDashboard.getDashboardId()))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$").value(is(1)));
+        restMockMvc.perform(delete(getApiPath() + "/meta_dashboard/{dashboardId}", metaDashboard.getDashboardId())).andExpect(status().isOk()).andExpect(jsonPath("$").value(is(1)));
     }
 
     /**
@@ -91,13 +80,8 @@ public class MetaDashboardControllerTest extends AbstractWebTest {
     @Test
     public void deleteBatch() throws Exception {
         MetaDashboardPO metaDashboard = metaDashboardHelper.saveMetaDashboardExample();
-        restMockMvc.perform(delete(getApiPath() + "/meta_dashboard")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(Lists.newArrayList(metaDashboard.getDashboardId()))))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$").value(is(1)));
+        restMockMvc.perform(delete(getApiPath() + "/meta_dashboard").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(Lists.newArrayList(metaDashboard.getDashboardId())))).andExpect(status().isOk()).andExpect(jsonPath("$").value(is(1)));
     }
-
 
 
 }

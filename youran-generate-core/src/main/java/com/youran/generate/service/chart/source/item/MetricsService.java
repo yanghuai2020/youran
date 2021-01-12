@@ -24,6 +24,7 @@ public class MetricsService {
     private MetaChartSourceItemService metaChartSourceItemService;
     @Autowired
     private MetaProjectService metaProjectService;
+
     /**
      * 【指标】数据预处理
      *
@@ -50,8 +51,7 @@ public class MetricsService {
     }
 
     public MetricsPO doSave(MetricsAddDTO addDTO) {
-        MetricsPO po = MetaChartSourceItemMapper.INSTANCE
-            .fromMetricsAddDTO(addDTO);
+        MetricsPO po = MetaChartSourceItemMapper.INSTANCE.fromMetricsAddDTO(addDTO);
         this.preparePO(po);
         metaChartSourceItemService.doSave(po);
         return po;

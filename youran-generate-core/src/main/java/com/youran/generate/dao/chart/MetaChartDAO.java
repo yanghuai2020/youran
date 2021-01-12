@@ -21,6 +21,7 @@ public interface MetaChartDAO extends DAO<MetaChartPO> {
 
     /**
      * 根据条件查询【图表】列表
+     *
      * @param metaChartQO
      * @return
      */

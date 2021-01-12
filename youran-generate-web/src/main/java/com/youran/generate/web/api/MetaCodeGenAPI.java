@@ -22,50 +22,34 @@ public interface MetaCodeGenAPI {
      * 仅生成代码，不下载
      */
     @ApiOperation(value = "仅生成代码，不下载")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "query"),
-        @ApiImplicitParam(name = "templateId", dataType = "int", value = "模板id", paramType = "query"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "query"), @ApiImplicitParam(name = "templateId", dataType = "int", value = "模板id", paramType = "query"),})
     ResponseEntity<Void> genCode(Integer projectId, Integer templateId);
 
     /**
      * 生成代码并下载压缩包
      */
     @ApiOperation(value = "生成代码并下载压缩包")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "query"),
-        @ApiImplicitParam(name = "templateId", dataType = "int", value = "模板id", paramType = "query"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "query"), @ApiImplicitParam(name = "templateId", dataType = "int", value = "模板id", paramType = "query"),})
     void genCodeAndDownload(Integer projectId, Integer templateId, HttpServletResponse response);
 
     /**
      * 提交到仓库
      */
     @ApiOperation(value = "提交到仓库")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "query"),
-        @ApiImplicitParam(name = "templateId", dataType = "int", value = "模板id", paramType = "query"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "query"), @ApiImplicitParam(name = "templateId", dataType = "int", value = "模板id", paramType = "query"),})
     ResponseEntity<String> gitCommit(Integer projectId, Integer templateId);
 
     /**
      * 显示git代码差异
      */
     @ApiOperation(value = "显示git代码差异")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "query"),
-        @ApiImplicitParam(name = "templateId", dataType = "int", value = "模板id", paramType = "query"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "query"), @ApiImplicitParam(name = "templateId", dataType = "int", value = "模板id", paramType = "query"),})
     ResponseEntity<String> gitDiff(Integer projectId, Integer templateId);
 
     /**
      * git提交前校验
      */
     @ApiOperation(value = "git提交前校验")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "query"),
-        @ApiImplicitParam(name = "templateId", dataType = "int", value = "模板id", paramType = "query"),
-    })
-    ResponseEntity<CheckCommitVO> checkCommit(Integer projectId,
-                                              Integer templateId);
+    @ApiImplicitParams({@ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "query"), @ApiImplicitParam(name = "templateId", dataType = "int", value = "模板id", paramType = "query"),})
+    ResponseEntity<CheckCommitVO> checkCommit(Integer projectId, Integer templateId);
 }

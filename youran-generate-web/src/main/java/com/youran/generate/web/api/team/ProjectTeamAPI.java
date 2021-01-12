@@ -28,25 +28,21 @@ public interface ProjectTeamAPI {
     /**
      * 新增【项目组】
      */
-    @ApiOperation(value="新增【项目组】")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "projectTeamAddDTO", dataType = "ProjectTeamAddDTO", value = "新增【项目组】参数", paramType = "body"),
-    })
+    @ApiOperation(value = "新增【项目组】")
+    @ApiImplicitParams({@ApiImplicitParam(name = "projectTeamAddDTO", dataType = "ProjectTeamAddDTO", value = "新增【项目组】参数", paramType = "body"),})
     ResponseEntity<ProjectTeamShowVO> save(ProjectTeamAddDTO projectTeamAddDTO) throws Exception;
 
     /**
      * 修改【项目组】
      */
-    @ApiOperation(value="修改【项目组】")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "projectTeamUpdateDTO", dataType = "ProjectTeamUpdateDTO", value = "修改【项目组】参数", paramType = "body"),
-    })
+    @ApiOperation(value = "修改【项目组】")
+    @ApiImplicitParams({@ApiImplicitParam(name = "projectTeamUpdateDTO", dataType = "ProjectTeamUpdateDTO", value = "修改【项目组】参数", paramType = "body"),})
     ResponseEntity<ProjectTeamShowVO> update(ProjectTeamUpdateDTO projectTeamUpdateDTO);
 
     /**
      * 列表查询【项目组】
      */
-    @ApiOperation(value="列表查询【项目组】")
+    @ApiOperation(value = "列表查询【项目组】")
     ResponseEntity<List<ProjectTeamListVO>> list(ProjectTeamQO projectTeamQO);
 
     /**
@@ -58,19 +54,15 @@ public interface ProjectTeamAPI {
     /**
      * 查看【项目组】详情
      */
-    @ApiOperation(value="查看【项目组】详情")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "teamId", dataType = "int", value = "【项目组】id", paramType = "path"),
-    })
+    @ApiOperation(value = "查看【项目组】详情")
+    @ApiImplicitParams({@ApiImplicitParam(name = "teamId", dataType = "int", value = "【项目组】id", paramType = "path"),})
     ResponseEntity<ProjectTeamShowVO> show(Integer teamId);
 
     /**
      * 批量删除【项目组】
      */
     @ApiOperation(value = "批量删除【项目组】")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "id", dataType = "int", value = "id数组", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "id", dataType = "int", value = "id数组", paramType = "body"),})
     ResponseEntity<Integer> deleteBatch(Integer[] id);
 
 }

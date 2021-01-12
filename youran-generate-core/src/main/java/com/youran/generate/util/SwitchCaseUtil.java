@@ -24,9 +24,7 @@ public class SwitchCaseUtil {
      */
     public static String underlineToCamelCase(String name, boolean capFirst) {
         String[] split = StringUtils.split(name, "_");
-        String value = Arrays.stream(split)
-            .map(s -> StringUtils.capitalize(s.toLowerCase()))
-            .collect(Collectors.joining(""));
+        String value = Arrays.stream(split).map(s -> StringUtils.capitalize(s.toLowerCase())).collect(Collectors.joining(""));
         if (!capFirst) {
             return StringUtils.uncapitalize(value);
         }
@@ -70,7 +68,6 @@ public class SwitchCaseUtil {
     }
 
 
-
     /**
      * 首个单词转小写
      *
@@ -79,12 +76,11 @@ public class SwitchCaseUtil {
      */
     public static String lowerFirstWord(String name) {
         String[] split = StringUtils.splitByCharacterTypeCamelCase(name);
-        if(ArrayUtils.isEmpty(split)){
+        if (ArrayUtils.isEmpty(split)) {
             return name;
         }
         split[0] = split[0].toLowerCase();
-        return Arrays.stream(split)
-            .collect(Collectors.joining(""));
+        return Arrays.stream(split).collect(Collectors.joining(""));
     }
 
 

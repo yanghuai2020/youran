@@ -30,11 +30,12 @@ public class UserSettingService {
 
     /**
      * 校验数据唯一性
+     *
      * @param userSetting
-     * @param isUpdate 是否更新校验
+     * @param isUpdate    是否更新校验
      */
-    private void checkUnique(UserSettingPO userSetting, boolean isUpdate){
-        if(userSettingDAO.notUnique(userSetting.getUsername(), isUpdate?userSetting.getId():null)){
+    private void checkUnique(UserSettingPO userSetting, boolean isUpdate) {
+        if (userSettingDAO.notUnique(userSetting.getUsername(), isUpdate ? userSetting.getId() : null)) {
             throw new BusinessException(ErrorCode.DUPLICATE_KEY);
         }
     }
@@ -42,6 +43,7 @@ public class UserSettingService {
 
     /**
      * 新增【用户配置】
+     *
      * @param userSettingDTO
      * @return
      */
@@ -49,13 +51,14 @@ public class UserSettingService {
     public UserSettingPO save(UserSettingAddDTO userSettingDTO) {
         UserSettingPO userSetting = UserSettingMapper.INSTANCE.fromAddDTO(userSettingDTO);
         // 唯一性校验
-        this.checkUnique(userSetting,false);
+        this.checkUnique(userSetting, false);
         userSettingDAO.save(userSetting);
         return userSetting;
     }
 
     /**
      * 修改【用户配置】
+     *
      * @param userSettingUpdateDTO
      * @return
      */
@@ -64,14 +67,16 @@ public class UserSettingService {
     public UserSettingPO update(UserSettingUpdateDTO userSettingUpdateDTO) {
         Integer id = userSettingUpdateDTO.getId();
         UserSettingPO userSetting = this.getUserSetting(id, true);
-        UserSettingMapper.INSTANCE.setUpdateDTO(userSetting,userSettingUpdateDTO);
+        UserSettingMapper.INSTANCE.setUpdateDTO(userSetting, userSettingUpdateDTO);
         // 唯一性校验
-        this.checkUnique(userSetting,true);
+        this.checkUnique(userSetting, true);
         userSettingDAO.update(userSetting);
         return userSetting;
     }
+
     /**
      * 查询分页列表
+     *
      * @param userSettingQO
      * @return
      */
@@ -82,11 +87,12 @@ public class UserSettingService {
 
     /**
      * 根据主键获取【用户配置】
-     * @param id 主键
+     *
+     * @param id    主键
      * @param force 是否强制获取
      * @return
      */
-    public UserSettingPO getUserSetting(Integer id, boolean force){
+    public UserSettingPO getUserSetting(Integer id, boolean force) {
         UserSettingPO userSetting = userSettingDAO.findById(id);
         if (force && userSetting == null) {
             throw new BusinessException(ErrorCode.RECORD_NOT_FIND);
@@ -96,11 +102,12 @@ public class UserSettingService {
 
     /**
      * 根据主键获取【用户配置】
+     *
      * @param username 用户名
-     * @param force 是否强制获取
+     * @param force    是否强制获取
      * @return
      */
-    public UserSettingPO getUserSettingByUsername(String username, boolean force){
+    public UserSettingPO getUserSettingByUsername(String username, boolean force) {
         UserSettingPO userSetting = userSettingDAO.findByUsername(username);
         if (force && userSetting == null) {
             throw new BusinessException(ErrorCode.RECORD_NOT_FIND);
@@ -111,6 +118,7 @@ public class UserSettingService {
 
     /**
      * 查询【用户配置】详情
+     *
      * @param id
      * @return
      */
@@ -122,6 +130,7 @@ public class UserSettingService {
 
     /**
      * 删除【用户配置】
+     *
      * @param ids
      * @return
      */

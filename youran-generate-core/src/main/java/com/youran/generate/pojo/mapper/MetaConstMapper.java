@@ -46,9 +46,6 @@ public interface MetaConstMapper {
      */
     MetaConstShowVO toShowVO(MetaConstPO metaConstPO);
 
-    @Mappings({
-        @Mapping(target = "constId", ignore = true),
-        @Mapping(target = "detailList", ignore = true)
-    })
+    @Mappings({@Mapping(target = "constId", ignore = true), @Mapping(target = "detailList", ignore = true)})
     MetaConstPO copy(MetaConstPO constPO);
 }

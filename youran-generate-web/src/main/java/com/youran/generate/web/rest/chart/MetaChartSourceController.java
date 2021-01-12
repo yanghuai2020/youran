@@ -1,4 +1,3 @@
-
 package com.youran.generate.web.rest.chart;
 
 import com.youran.common.constant.ErrorCode;
@@ -42,8 +41,7 @@ public class MetaChartSourceController extends AbstractController implements Met
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<MetaChartSourceShowVO> save(@Valid @RequestBody MetaChartSourceAddDTO metaChartSourceAddDTO) throws Exception {
         MetaChartSourcePO metaChartSource = metaChartSourceService.save(metaChartSourceAddDTO);
-        return ResponseEntity.created(new URI(apiPath + "/meta_chart_source/" + metaChartSource.getSourceId()))
-            .body(MetaChartSourceMapper.INSTANCE.toShowVO(metaChartSource));
+        return ResponseEntity.created(new URI(apiPath + "/meta_chart_source/" + metaChartSource.getSourceId())).body(MetaChartSourceMapper.INSTANCE.toShowVO(metaChartSource));
     }
 
     @Override
@@ -58,8 +56,7 @@ public class MetaChartSourceController extends AbstractController implements Met
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<MetaChartSourceShowVO> saveWithItems(@Valid @RequestBody MetaChartSourceWithItemsAddDTO addDTO) throws Exception {
         MetaChartSourcePO metaChartSource = metaChartSourceService.saveWithItems(addDTO);
-        return ResponseEntity.created(new URI(apiPath + "/meta_chart_source/" + metaChartSource.getSourceId()))
-            .body(MetaChartSourceMapper.INSTANCE.toShowVO(metaChartSource));
+        return ResponseEntity.created(new URI(apiPath + "/meta_chart_source/" + metaChartSource.getSourceId())).body(MetaChartSourceMapper.INSTANCE.toShowVO(metaChartSource));
     }
 
     @Override
@@ -86,7 +83,7 @@ public class MetaChartSourceController extends AbstractController implements Met
     @Override
     @DeleteMapping
     public ResponseEntity<Integer> deleteBatch(@RequestBody Integer[] id) {
-        if(ArrayUtils.isEmpty(id)){
+        if (ArrayUtils.isEmpty(id)) {
             throw new BusinessException(ErrorCode.PARAM_IS_NULL);
         }
         int count = metaChartSourceService.delete(id);

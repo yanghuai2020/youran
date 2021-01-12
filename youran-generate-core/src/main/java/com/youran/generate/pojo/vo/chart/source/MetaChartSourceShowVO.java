@@ -19,13 +19,13 @@ import static com.youran.generate.pojo.example.chart.MetaChartSourceExample.*;
 @ApiModel(description = "【图表数据源】详情展示对象")
 public class MetaChartSourceShowVO extends AbstractVO {
 
-    @ApiModelProperty(notes = N_SOURCE_ID,example = E_SOURCE_ID)
+    @ApiModelProperty(notes = N_SOURCE_ID, example = E_SOURCE_ID)
     private Integer sourceId;
 
-    @ApiModelProperty(notes = N_PROJECT_ID,example = E_PROJECT_ID)
+    @ApiModelProperty(notes = N_PROJECT_ID, example = E_PROJECT_ID)
     private Integer projectId;
 
-    @ApiModelProperty(notes = N_AGGREGATION,example = E_AGGREGATION)
+    @ApiModelProperty(notes = N_AGGREGATION, example = E_AGGREGATION)
     private Boolean aggregation;
 
     @ApiModelProperty(notes = "主实体id", example = "1", required = true)
@@ -86,7 +86,6 @@ public class MetaChartSourceShowVO extends AbstractVO {
     public void setAggregation(Boolean aggregation) {
         this.aggregation = aggregation;
     }
-
 
 
 }

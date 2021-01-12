@@ -19,28 +19,28 @@ import javax.validation.constraints.NotNull;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ChartItemDTO<T extends MetaChartSourceItemPO> extends AbstractDTO {
 
-    @ApiModelProperty(notes = "数据项ID",example = "1",required = true)
+    @ApiModelProperty(notes = "数据项ID", example = "1", required = true)
     @NotNull
     private Integer sourceItemId;
 
     @ApiModelProperty(notes = "字段别名", example = "alias1")
     private String alias;
 
-    @ApiModelProperty(notes = "标题别名",example = "新的列名")
+    @ApiModelProperty(notes = "标题别名", example = "新的列名")
     private String titleAlias;
 
-    @ApiModelProperty(notes = "内容前缀",example = "前缀_")
+    @ApiModelProperty(notes = "内容前缀", example = "前缀_")
     private String valuePrefix;
-    @ApiModelProperty(notes = "内容后缀",example = "_后缀")
+    @ApiModelProperty(notes = "内容后缀", example = "_后缀")
     private String valueSuffix;
 
-    @ApiModelProperty(notes = "是否百分比",example = "false")
+    @ApiModelProperty(notes = "是否百分比", example = "false")
     private Boolean percent;
 
-    @ApiModelProperty(notes = "格式化规则",example = "yyyy-MM-dd")
+    @ApiModelProperty(notes = "格式化规则", example = "yyyy-MM-dd")
     private String format;
 
-    @ApiModelProperty(notes = "系列类型",example = "line")
+    @ApiModelProperty(notes = "系列类型", example = "line")
     private String seriesType;
 
     /**

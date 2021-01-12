@@ -44,9 +44,6 @@ public class ErDiagramVO extends AbstractVO {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
-            .append("nodeData", nodeData)
-            .append("linkData", linkData)
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("nodeData", nodeData).append("linkData", linkData).toString();
     }
 }

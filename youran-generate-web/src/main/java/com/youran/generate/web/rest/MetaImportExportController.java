@@ -64,8 +64,7 @@ public class MetaImportExportController extends AbstractController implements Me
         }
         file.transferTo(zipFile);
         MetaProjectPO metaProjectPO = metaImportService.metaImport(zipFile);
-        return ResponseEntity.created(new URI(apiPath + "/meta_project/" + metaProjectPO.getProjectId()))
-            .body(MetaProjectMapper.INSTANCE.toShowVO(metaProjectPO));
+        return ResponseEntity.created(new URI(apiPath + "/meta_project/" + metaProjectPO.getProjectId())).body(MetaProjectMapper.INSTANCE.toShowVO(metaProjectPO));
     }
 
 

@@ -30,19 +30,15 @@ public interface ProjectTeamMemberMapper {
      * @return
      */
     default List<ProjectTeamMemberPO> fromAddDTO(ProjectTeamMemberAddDTO addDTO) {
-        if(StringUtils.isBlank(addDTO.getUsername())){
+        if (StringUtils.isBlank(addDTO.getUsername())) {
             return Collections.emptyList();
         }
-        return Arrays.stream(addDTO.getUsername().split(","))
-            .map(String::trim)
-            .filter(StringUtils::isNotBlank)
-            .map(username -> {
-                ProjectTeamMemberPO po = new ProjectTeamMemberPO();
-                po.setTeamId(addDTO.getTeamId());
-                po.setUsername(username);
-                return po;
-            })
-            .collect(Collectors.toList());
+        return Arrays.stream(addDTO.getUsername().split(",")).map(String::trim).filter(StringUtils::isNotBlank).map(username -> {
+            ProjectTeamMemberPO po = new ProjectTeamMemberPO();
+            po.setTeamId(addDTO.getTeamId());
+            po.setUsername(username);
+            return po;
+        }).collect(Collectors.toList());
     }
 
     /**

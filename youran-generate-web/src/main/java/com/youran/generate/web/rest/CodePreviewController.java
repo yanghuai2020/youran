@@ -95,8 +95,7 @@ public class CodePreviewController extends AbstractController implements CodePre
     @Override
     @GetMapping(value = "/code_tree")
     @ResponseBody
-    public ResponseEntity<CodeTreeVO> codeTree(@RequestParam Integer projectId,
-                                               @RequestParam Integer templateId) {
+    public ResponseEntity<CodeTreeVO> codeTree(@RequestParam Integer projectId, @RequestParam Integer templateId) {
         MetaProjectPO project = metaProjectService.getAndCheckProject(projectId);
         CodeTemplatePO templatePO = codeTemplateService.getCodeTemplate(templateId, true);
         String projectDir = dataDirService.getProjectRecentDir(project, templatePO);

@@ -17,14 +17,14 @@ import static com.youran.generate.pojo.example.UserSettingExample.*;
 @ApiModel(description = "修改【用户配置】的参数")
 public class UserSettingUpdateDTO extends AbstractDTO {
 
-    @ApiModelProperty(notes = N_ID,example = E_ID,required = true)
+    @ApiModelProperty(notes = N_ID, example = E_ID, required = true)
     @NotNull
     private Integer id;
 
     @ApiModelProperty(hidden = true)
     private String username;
 
-    @ApiModelProperty(notes = N_TEMPLATE_ENABLED,example = E_TEMPLATE_ENABLED,required = true)
+    @ApiModelProperty(notes = N_TEMPLATE_ENABLED, example = E_TEMPLATE_ENABLED, required = true)
     @NotNull
     private Boolean templateEnabled;
 

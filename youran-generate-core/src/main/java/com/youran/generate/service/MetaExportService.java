@@ -69,9 +69,7 @@ public class MetaExportService {
         if (CollectionUtils.isNotEmpty(consts)) {
             // 导出枚举json文件
             JsonUtil.writeJsonToFile(consts, true, new File(dir, ImportExportConst.CONST_JSON_FILE));
-            List<MetaConstDetailPO> details = consts.stream()
-                .flatMap(constPO -> constPO.getDetailList().stream())
-                .collect(Collectors.toList());
+            List<MetaConstDetailPO> details = consts.stream().flatMap(constPO -> constPO.getDetailList().stream()).collect(Collectors.toList());
             // 导出枚举值json文件
             JsonUtil.writeJsonToFile(details, true, new File(dir, ImportExportConst.CONST_DETAIL_JSON_FILE));
         }
@@ -79,31 +77,25 @@ public class MetaExportService {
         if (CollectionUtils.isNotEmpty(entities)) {
             // 导出实体json文件
             JsonUtil.writeJsonToFile(entities, true, new File(dir, ImportExportConst.ENTITY_JSON_FILE));
-            List<MetaFieldPO> fields = entities.stream()
-                .flatMap(entityPO -> {
-                    Map<Integer, MetaFieldPO> fieldMap = entityPO.getFields();
-                    if (MapUtils.isEmpty(fieldMap)) {
-                        return Stream.empty();
-                    }
-                    return fieldMap.values().stream();
-                }).collect(Collectors.toList());
+            List<MetaFieldPO> fields = entities.stream().flatMap(entityPO -> {
+                Map<Integer, MetaFieldPO> fieldMap = entityPO.getFields();
+                if (MapUtils.isEmpty(fieldMap)) {
+                    return Stream.empty();
+                }
+                return fieldMap.values().stream();
+            }).collect(Collectors.toList());
             // 导出字段json文件
             JsonUtil.writeJsonToFile(fields, true, new File(dir, ImportExportConst.FIELD_JSON_FILE));
-            List<MetaIndexPO> indexes = entities.stream()
-                .flatMap(entityPO -> entityPO.getIndexes().stream())
-                .peek(MetaIndexPO::resetFieldIds)
-                .collect(Collectors.toList());
+            List<MetaIndexPO> indexes = entities.stream().flatMap(entityPO -> entityPO.getIndexes().stream()).peek(MetaIndexPO::resetFieldIds).collect(Collectors.toList());
             // 导出索引json文件
             JsonUtil.writeJsonToFile(indexes, true, new File(dir, ImportExportConst.INDEX_JSON_FILE));
-            List<MetaCascadeExtPO> cascadeExts = fields.stream()
-                .flatMap(fieldPO -> {
-                    List<MetaCascadeExtPO> list = fieldPO.getCascadeExts();
-                    if (CollectionUtils.isEmpty(list)) {
-                        return Stream.empty();
-                    }
-                    return list.stream();
-                })
-                .collect(Collectors.toList());
+            List<MetaCascadeExtPO> cascadeExts = fields.stream().flatMap(fieldPO -> {
+                List<MetaCascadeExtPO> list = fieldPO.getCascadeExts();
+                if (CollectionUtils.isEmpty(list)) {
+                    return Stream.empty();
+                }
+                return list.stream();
+            }).collect(Collectors.toList());
             // 导出外键级联扩展json文件
             JsonUtil.writeJsonToFile(cascadeExts, true, new File(dir, ImportExportConst.CASCADE_EXT_JSON_FILE));
         }
@@ -111,13 +103,11 @@ public class MetaExportService {
         if (CollectionUtils.isNotEmpty(mtms)) {
             // 导出多对多json文件
             JsonUtil.writeJsonToFile(mtms, true, new File(dir, ImportExportConst.MTM_JSON_FILE));
-            List<MetaMtmCascadeExtPO> mtmCascades = mtms.stream()
-                .flatMap(mtm -> {
-                    List<MetaMtmCascadeExtPO> list1 = mtm.getCascadeExtList1();
-                    List<MetaMtmCascadeExtPO> list2 = mtm.getCascadeExtList2();
-                    return Stream.concat(list1.stream(), list2.stream());
-                })
-                .collect(Collectors.toList());
+            List<MetaMtmCascadeExtPO> mtmCascades = mtms.stream().flatMap(mtm -> {
+                List<MetaMtmCascadeExtPO> list1 = mtm.getCascadeExtList1();
+                List<MetaMtmCascadeExtPO> list2 = mtm.getCascadeExtList2();
+                return Stream.concat(list1.stream(), list2.stream());
+            }).collect(Collectors.toList());
             // 导出多对多级联扩展json文件
             JsonUtil.writeJsonToFile(mtmCascades, true, new File(dir, ImportExportConst.MTM_CASCADE_EXT_JSON_FILE));
         }
@@ -128,9 +118,7 @@ public class MetaExportService {
             Set<MetaChartSourcePO> chartSources = charts.stream().map(MetaChartPO::getChartSource).collect(Collectors.toSet());
             // 导出图表数据源json文件
             JsonUtil.writeJsonToFile(chartSources, true, new File(dir, ImportExportConst.CHART_SOURCE_JSON_FILE));
-            List<MetaChartSourceItemPO> chartSourceItems = chartSources.stream()
-                .flatMap(chartSource -> chartSource.fetchSourceItems().stream())
-                .collect(Collectors.toList());
+            List<MetaChartSourceItemPO> chartSourceItems = chartSources.stream().flatMap(chartSource -> chartSource.fetchSourceItems().stream()).collect(Collectors.toList());
             // 导出图表数据项json文件
             JsonUtil.writeJsonToFile(chartSourceItems, true, new File(dir, ImportExportConst.CHART_SOURCE_ITEM_JSON_FILE));
         }

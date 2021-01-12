@@ -65,7 +65,7 @@ public class DetailColumnPO extends MetaChartSourceItemPO {
     public void assembleItem(MetaChartSourcePO chartSource) {
         super.assembleItem(chartSource);
         // 非自定义的情况下，需要装配实体和字段对象
-        if(!custom) {
+        if (!custom) {
             if (this.getJoinIndex() == 0) {
                 this.entity = chartSource.getEntity();
             } else {
@@ -89,8 +89,7 @@ public class DetailColumnPO extends MetaChartSourceItemPO {
      * @param featureDeserialize
      * @return
      */
-    public static DetailColumnPO fromSuperType(MetaChartSourceItemPO superPO,
-                                               boolean featureDeserialize) {
+    public static DetailColumnPO fromSuperType(MetaChartSourceItemPO superPO, boolean featureDeserialize) {
         if (!SourceItemType.DETAIL_COLUMN.getValue().equals(superPO.getType())) {
             throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "类型转换异常");
         }
@@ -181,7 +180,7 @@ public class DetailColumnPO extends MetaChartSourceItemPO {
     }
 
 
-    static class FeatureDTO{
+    static class FeatureDTO {
         private Integer fieldId;
         private Boolean custom;
         private String customContent;

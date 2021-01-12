@@ -16,63 +16,63 @@ public enum FilterOperator {
     /**
      * 等于
      */
-    EQUAL(1,"等于"),
+    EQUAL(1, "等于"),
     /**
      * 小于
      */
-    LT(10,"小于"),
+    LT(10, "小于"),
     /**
      * 大于等于
      */
-    GE(11,"大于等于"),
+    GE(11, "大于等于"),
     /**
      * 小于等于
      */
-    LE(12,"小于等于"),
+    LE(12, "小于等于"),
     /**
      * 介于之间
      */
-    BETWEEN(13,"介于之间"),
+    BETWEEN(13, "介于之间"),
     /**
      * 不等于
      */
-    NOT_EQUAL(2,"不等于"),
+    NOT_EQUAL(2, "不等于"),
     /**
      * 是当前
      */
-    IS_NOW(21,"是当前"),
+    IS_NOW(21, "是当前"),
     /**
      * 前段时间
      */
-    BEFORE_TIME(22,"前段时间"),
+    BEFORE_TIME(22, "前段时间"),
     /**
      * 后段时间
      */
-    AFTER_TIME(23,"后段时间"),
+    AFTER_TIME(23, "后段时间"),
     /**
      * 包含
      */
-    CONTAIN(3,"包含"),
+    CONTAIN(3, "包含"),
     /**
      * 不包含
      */
-    NOT_CONTAIN(4,"不包含"),
+    NOT_CONTAIN(4, "不包含"),
     /**
      * 为空
      */
-    IS_NULL(5,"为空"),
+    IS_NULL(5, "为空"),
     /**
      * 不为空
      */
-    NOT_NULL(6,"不为空"),
+    NOT_NULL(6, "不为空"),
     /**
      * like
      */
-    LIKE(7,"like"),
+    LIKE(7, "like"),
     /**
      * 大于
      */
-    GT(9,"大于");
+    GT(9, "大于");
 
 
     private final Integer value;
@@ -101,9 +101,9 @@ public enum FilterOperator {
         return LOOKUP.get(value);
     }
 
-    public static FilterOperator findByDesc(String desc){
+    public static FilterOperator findByDesc(String desc) {
         for (FilterOperator e : FilterOperator.values()) {
-            if(e.getDesc().equals(desc)){
+            if (e.getDesc().equals(desc)) {
                 return e;
             }
         }
@@ -143,9 +143,9 @@ public enum FilterOperator {
      * 校验有效性
      */
     @Check
-    public static final boolean validate(Integer value){
+    public static final boolean validate(Integer value) {
         FilterOperator theEnum = find(value);
-        return theEnum!=null;
+        return theEnum != null;
     }
 
     public Integer getValue() {

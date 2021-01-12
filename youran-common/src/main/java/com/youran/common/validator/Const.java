@@ -91,8 +91,7 @@ public @interface Const {
 
             if (!success && StringUtils.isNotBlank(defaultMsg)) {
                 context.disableDefaultConstraintViolation();
-                context.buildConstraintViolationWithTemplate(defaultMsg)
-                    .addConstraintViolation();
+                context.buildConstraintViolationWithTemplate(defaultMsg).addConstraintViolation();
             }
             return success;
         }

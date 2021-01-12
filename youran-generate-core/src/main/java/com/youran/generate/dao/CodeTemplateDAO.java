@@ -16,9 +16,7 @@ import org.springframework.stereotype.Repository;
 @Mapper
 public interface CodeTemplateDAO extends DAO<CodeTemplatePO> {
 
-    boolean notUnique(@Param("code") String code,
-                      @Param("templateVersion") String templateVersion,
-                      @Param("templateId") Integer templateId);
+    boolean notUnique(@Param("code") String code, @Param("templateVersion") String templateVersion, @Param("templateId") Integer templateId);
 
     boolean exists();
 

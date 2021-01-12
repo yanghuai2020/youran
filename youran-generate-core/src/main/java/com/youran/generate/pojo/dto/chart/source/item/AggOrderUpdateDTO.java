@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @ApiModel(description = "修改【聚合排序】入参")
 public class AggOrderUpdateDTO extends AggOrderAddDTO {
 
-    @ApiModelProperty(notes = "主键ID",example = "1",required = true)
+    @ApiModelProperty(notes = "主键ID", example = "1", required = true)
     @NotNull
     private Integer sourceItemId;
 

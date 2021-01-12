@@ -28,8 +28,7 @@ public class MetaConstDetailQO extends AbstractQO {
 
     @AssertTrue(message = "缺少入参")
     public boolean validate() {
-        if (constId == null &&
-            (StringUtils.isBlank(constName) || projectId == null)) {
+        if (constId == null && (StringUtils.isBlank(constName) || projectId == null)) {
             return false;
         }
         return true;

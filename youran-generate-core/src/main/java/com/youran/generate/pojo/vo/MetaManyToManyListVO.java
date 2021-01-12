@@ -174,20 +174,6 @@ public class MetaManyToManyListVO extends AbstractVO {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
-            .append("mtmId", mtmId)
-            .append("projectId", projectId)
-            .append("tableName", tableName)
-            .append("schemaName", schemaName)
-            .append("desc", desc)
-            .append("entityId1", entityId1)
-            .append("entityId2", entityId2)
-            .append("holdRefer1", holdRefer1)
-            .append("holdRefer2", holdRefer2)
-            .append("entityIdField1", entityIdField1)
-            .append("entityIdField2", entityIdField2)
-            .append("needId", needId)
-            .append("bigId", bigId)
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("mtmId", mtmId).append("projectId", projectId).append("tableName", tableName).append("schemaName", schemaName).append("desc", desc).append("entityId1", entityId1).append("entityId2", entityId2).append("holdRefer1", holdRefer1).append("holdRefer2", holdRefer2).append("entityIdField1", entityIdField1).append("entityIdField2", entityIdField2).append("needId", needId).append("bigId", bigId).toString();
     }
 }

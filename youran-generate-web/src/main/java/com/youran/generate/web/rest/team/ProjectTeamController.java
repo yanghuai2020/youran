@@ -46,16 +46,14 @@ public class ProjectTeamController extends AbstractController implements Project
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<ProjectTeamShowVO> save(@Valid @RequestBody ProjectTeamAddDTO projectTeamAddDTO) throws Exception {
         ProjectTeamPO projectTeam = projectTeamService.save(projectTeamAddDTO);
-        return ResponseEntity.created(new URI(apiPath + "/project_team/" + projectTeam.getTeamId()))
-            .body(ProjectTeamMapper.INSTANCE.toShowVO(projectTeam));
+        return ResponseEntity.created(new URI(apiPath + "/project_team/" + projectTeam.getTeamId())).body(ProjectTeamMapper.INSTANCE.toShowVO(projectTeam));
     }
 
     @Override
     @PutMapping
     public ResponseEntity<ProjectTeamShowVO> update(@Valid @RequestBody ProjectTeamUpdateDTO projectTeamUpdateDTO) {
         // 校验用户操作权限
-        this.projectTeamService.checkTeamOperatePermissions(
-            projectTeamUpdateDTO.getTeamId(), this.loginContext.getCurrentUser(), true);
+        this.projectTeamService.checkTeamOperatePermissions(projectTeamUpdateDTO.getTeamId(), this.loginContext.getCurrentUser(), true);
         ProjectTeamPO projectTeam = projectTeamService.update(projectTeamUpdateDTO);
         return ResponseEntity.ok(ProjectTeamMapper.INSTANCE.toShowVO(projectTeam));
     }
@@ -101,8 +99,7 @@ public class ProjectTeamController extends AbstractController implements Project
         }
         for (Integer i : id) {
             // 校验用户操作权限
-            this.projectTeamService.checkTeamOperatePermissions(
-                i, this.loginContext.getCurrentUser(), false);
+            this.projectTeamService.checkTeamOperatePermissions(i, this.loginContext.getCurrentUser(), false);
         }
         int count = projectTeamService.delete(id);
         return ResponseEntity.ok(count);

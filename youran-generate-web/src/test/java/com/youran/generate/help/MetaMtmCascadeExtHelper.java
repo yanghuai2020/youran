@@ -16,10 +16,7 @@ public class MetaMtmCascadeExtHelper {
      *
      * @return
      */
-    public static MetaMtmCascadeExtAddDTO getAddDTO(Integer mtmId,
-                                                    Integer entityId,
-                                                    Integer cascadeEntityId,
-                                                    Integer cascadeFieldId) {
+    public static MetaMtmCascadeExtAddDTO getAddDTO(Integer mtmId, Integer entityId, Integer cascadeEntityId, Integer cascadeFieldId) {
         MetaMtmCascadeExtAddDTO dto = new MetaMtmCascadeExtAddDTO();
         dto.setMtmId(mtmId);
         dto.setEntityId(entityId);

@@ -57,8 +57,7 @@ public class AggTablePO extends MetaChartPO {
      * @param featureDeserialize
      * @return
      */
-    public static AggTablePO fromSuperType(MetaChartPO superPO,
-                                           boolean featureDeserialize) {
+    public static AggTablePO fromSuperType(MetaChartPO superPO, boolean featureDeserialize) {
         if (!ChartType.AGG_TABLE.getValue().equals(superPO.getChartType())) {
             throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "类型转换异常");
         }
@@ -80,8 +79,7 @@ public class AggTablePO extends MetaChartPO {
             if (dimension != null) {
                 chartItem.setSourceItem(dimension);
             } else {
-                throw new BusinessException(ErrorCode.INNER_DATA_ERROR,
-                    "图表【" + this.getTitle() + "】维度列不存在，sourceItemId=" + sourceItemId);
+                throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "图表【" + this.getTitle() + "】维度列不存在，sourceItemId=" + sourceItemId);
             }
         }
         for (ChartItemDTO chartItem : metricsList) {
@@ -90,8 +88,7 @@ public class AggTablePO extends MetaChartPO {
             if (metrics != null) {
                 chartItem.setSourceItem(metrics);
             } else {
-                throw new BusinessException(ErrorCode.INNER_DATA_ERROR,
-                    "图表【" + this.getTitle() + "】指标列不存在，sourceItemId=" + sourceItemId);
+                throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "图表【" + this.getTitle() + "】指标列不存在，sourceItemId=" + sourceItemId);
             }
         }
     }
@@ -162,7 +159,7 @@ public class AggTablePO extends MetaChartPO {
         this.excelExport = excelExport;
     }
 
-    static class FeatureDTO{
+    static class FeatureDTO {
         private List<ChartItemDTO<DimensionPO>> dimensionList;
         private List<ChartItemDTO<MetricsPO>> metricsList;
         private Integer defaultPageSize;

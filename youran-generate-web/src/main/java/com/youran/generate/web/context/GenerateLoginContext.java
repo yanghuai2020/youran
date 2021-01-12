@@ -26,7 +26,7 @@ public class GenerateLoginContext implements LoginContext {
     @Override
     public String getCurrentUser() {
         GenerateAuthentication authentication = (GenerateAuthentication) getCurrentUserPrincipal();
-        if(authentication==null){
+        if (authentication == null) {
             return null;
         }
         return authentication.getName();

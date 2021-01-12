@@ -19,13 +19,7 @@ import java.util.List;
 public interface MetaLabelAPI {
 
     @ApiOperation(value = "获取标签元数据")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "query"),
-        @ApiImplicitParam(name = "templateId", allowMultiple = true, dataType = "int", value = "项目id", paramType = "query"),
-        @ApiImplicitParam(name = "labelType", dataType = "String", value = "标签类型", paramType = "query"),
-    })
-    ResponseEntity<List<MetaLabelDTO>> getMetaLabel(Integer projectId,
-                                                    List<Integer> templateId,
-                                                    String labelType);
+    @ApiImplicitParams({@ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "query"), @ApiImplicitParam(name = "templateId", allowMultiple = true, dataType = "int", value = "项目id", paramType = "query"), @ApiImplicitParam(name = "labelType", dataType = "String", value = "标签类型", paramType = "query"),})
+    ResponseEntity<List<MetaLabelDTO>> getMetaLabel(Integer projectId, List<Integer> templateId, String labelType);
 
 }

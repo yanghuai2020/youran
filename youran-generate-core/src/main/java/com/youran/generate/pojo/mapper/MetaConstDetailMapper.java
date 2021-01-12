@@ -46,9 +46,7 @@ public interface MetaConstDetailMapper {
      */
     MetaConstDetailShowVO toShowVO(MetaConstDetailPO metaConstDetailPO);
 
-    @Mappings({
-        @Mapping(target = "constDetailId", ignore = true)
-    })
+    @Mappings({@Mapping(target = "constDetailId", ignore = true)})
     MetaConstDetailPO copy(MetaConstDetailPO constDetailFromJson);
 
 

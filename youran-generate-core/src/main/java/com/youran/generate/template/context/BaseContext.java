@@ -295,7 +295,7 @@ public class BaseContext {
         // 打印java内建依赖
         StringBuilder sb2 = new StringBuilder();
         StringBuilder sb3 = new StringBuilder();
-        for (String imp : this.mergeImports(imports,4)) {
+        for (String imp : this.mergeImports(imports, 4)) {
             int i = imp.lastIndexOf(".");
             if (i > 0) {
                 String pkg = imp.substring(0, i);
@@ -358,8 +358,7 @@ public class BaseContext {
         }
 
         if (StringUtils.isNotBlank(packageName)) {
-            return "package " + packageName + ";\n\n" +
-                sb.toString();
+            return "package " + packageName + ";\n\n" + sb.toString();
         } else {
             return sb.toString();
         }
@@ -378,12 +377,7 @@ public class BaseContext {
      * @return 合并后的所有内容
      */
     private List<String> mergeImports(Collection<String> imports, int maxSinglePack) {
-        Map<String, List<String>> groups = imports.stream()
-            .filter(s -> s != null && s.indexOf(".") > 0)
-            .collect(Collectors.groupingBy(
-                e -> e.substring(0, e.lastIndexOf(".")),
-                TreeMap::new,
-                Collectors.toList()));
+        Map<String, List<String>> groups = imports.stream().filter(s -> s != null && s.indexOf(".") > 0).collect(Collectors.groupingBy(e -> e.substring(0, e.lastIndexOf(".")), TreeMap::new, Collectors.toList()));
         List<String> result = new ArrayList<>();
         groups.forEach((staticClass, list) -> {
             if (list.size() > maxSinglePack) {
@@ -405,9 +399,7 @@ public class BaseContext {
     public String printAutowired() {
         StringBuilder sb = new StringBuilder();
         for (String aw : autowired) {
-            sb.append("    @Autowired\n")
-                .append("    private ").append(aw).append(" ")
-                .append(SwitchCaseUtil.lowerFirstWord(aw)).append(";\n");
+            sb.append("    @Autowired\n").append("    private ").append(aw).append(" ").append(SwitchCaseUtil.lowerFirstWord(aw)).append(";\n");
         }
         return sb.toString();
     }
@@ -429,15 +421,11 @@ public class BaseContext {
      */
     public String printClassCom(String title, String desc) {
         StringBuilder sb = new StringBuilder();
-        sb.append("/**\n")
-            .append(" * ").append(title).append("\n");
+        sb.append("/**\n").append(" * ").append(title).append("\n");
         if (StringUtils.isNotBlank(desc)) {
             sb.append(" * <p>").append(desc).append("\n");
         }
-        sb.append(" *\n")
-            .append(" * @author ").append(this.author).append("\n")
-            .append(" * @date ").append(DateUtil.getDateStr(this.createdTime, "yyyy/MM/dd")).append("\n")
-            .append(" */").append("\n");
+        sb.append(" *\n").append(" * @author ").append(this.author).append("\n").append(" * @date ").append(DateUtil.getDateStr(this.createdTime, "yyyy/MM/dd")).append("\n").append(" */").append("\n");
         return sb.toString();
     }
 

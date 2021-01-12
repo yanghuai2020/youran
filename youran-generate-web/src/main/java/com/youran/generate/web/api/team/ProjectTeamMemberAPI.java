@@ -24,25 +24,21 @@ public interface ProjectTeamMemberAPI {
     /**
      * 新增【项目组成员】
      */
-    @ApiOperation(value="新增【项目组成员】")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "projectTeamMemberAddDTO", dataType = "ProjectTeamMemberAddDTO", value = "新增【项目组成员】参数", paramType = "body"),
-    })
+    @ApiOperation(value = "新增【项目组成员】")
+    @ApiImplicitParams({@ApiImplicitParam(name = "projectTeamMemberAddDTO", dataType = "ProjectTeamMemberAddDTO", value = "新增【项目组成员】参数", paramType = "body"),})
     ResponseEntity<Integer> save(ProjectTeamMemberAddDTO projectTeamMemberAddDTO) throws Exception;
 
     /**
      * 列表查询【项目组成员】
      */
-    @ApiOperation(value="列表查询【项目组成员】")
+    @ApiOperation(value = "列表查询【项目组成员】")
     ResponseEntity<List<ProjectTeamMemberListVO>> list(ProjectTeamMemberQO projectTeamMemberQO);
 
     /**
      * 批量删除【项目组成员】
      */
     @ApiOperation(value = "批量删除【项目组成员】")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "id", dataType = "int", value = "id数组", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "id", dataType = "int", value = "id数组", paramType = "body"),})
     ResponseEntity<Integer> deleteBatch(Integer[] id);
 
 }

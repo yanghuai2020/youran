@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @ApiModel(description = "修改【having条件】入参")
 public class HavingUpdateDTO extends HavingAddDTO {
 
-    @ApiModelProperty(notes = "主键ID",example = "1",required = true)
+    @ApiModelProperty(notes = "主键ID", example = "1", required = true)
     @NotNull
     private Integer sourceItemId;
 

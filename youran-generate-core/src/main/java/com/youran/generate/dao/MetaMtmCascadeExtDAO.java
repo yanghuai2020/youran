@@ -37,10 +37,7 @@ public interface MetaMtmCascadeExtDAO extends DAO<MetaMtmCascadeExtPO> {
      * @param mtmCascadeExtId 需要排除的主键
      * @return
      */
-    boolean cascadeFieldIdExists(@Param("mtmId") Integer mtmId,
-                                 @Param("entityId") Integer entityId,
-                                 @Param("cascadeFieldId") Integer cascadeFieldId,
-                                 @Param("mtmCascadeExtId") Integer mtmCascadeExtId);
+    boolean cascadeFieldIdExists(@Param("mtmId") Integer mtmId, @Param("entityId") Integer entityId, @Param("cascadeFieldId") Integer cascadeFieldId, @Param("mtmCascadeExtId") Integer mtmCascadeExtId);
 
     /**
      * 根据多对多id和当前实体id查询【多对多级联扩展】
@@ -49,8 +46,7 @@ public interface MetaMtmCascadeExtDAO extends DAO<MetaMtmCascadeExtPO> {
      * @param entityId
      * @return
      */
-    List<MetaMtmCascadeExtPO> findByMtmIdAndEntityId(@Param("mtmId") Integer mtmId,
-                                                     @Param("entityId") Integer entityId);
+    List<MetaMtmCascadeExtPO> findByMtmIdAndEntityId(@Param("mtmId") Integer mtmId, @Param("entityId") Integer entityId);
 
 
     /**

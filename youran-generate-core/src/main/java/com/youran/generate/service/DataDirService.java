@@ -66,8 +66,7 @@ public class DataDirService implements InitializingBean {
             return dataDir;
         }
         // 如果没有配置，则默认使用 /[tmp目录]/[spring.application.name]_[youran.version]
-        return TempDirUtil.getTmpDir(appName, false, false)
-            + "_" + generateProperties.getVersion();
+        return TempDirUtil.getTmpDir(appName, false, false) + "_" + generateProperties.getVersion();
     }
 
 
@@ -80,12 +79,7 @@ public class DataDirService implements InitializingBean {
      * @see #getDataDir()
      */
     public String getProjectRecentDir(MetaProjectPO project, CodeTemplatePO templatePO) {
-        return this.getDataDir()
-            + File.separator + "code"
-            + File.separator + project.getProjectId()
-            + "_" + project.getProjectVersion()
-            + "_" + templatePO.getTemplateId()
-            + "_" + templatePO.getInnerVersion();
+        return this.getDataDir() + File.separator + "code" + File.separator + project.getProjectId() + "_" + project.getProjectVersion() + "_" + templatePO.getTemplateId() + "_" + templatePO.getInnerVersion();
     }
 
     /**
@@ -97,11 +91,7 @@ public class DataDirService implements InitializingBean {
      * @see #getDataDir()
      */
     public String getProjectRepoDir(Integer projectId, Integer templateId, Integer lastVersion) {
-        return this.getDataDir()
-            + File.separator + "repo"
-            + File.separator + projectId
-            + "_" + templateId
-            + "_" + lastVersion;
+        return this.getDataDir() + File.separator + "repo" + File.separator + projectId + "_" + templateId + "_" + lastVersion;
     }
 
     /**
@@ -112,10 +102,7 @@ public class DataDirService implements InitializingBean {
      * @see #getDataDir()
      */
     public String getProjectExportDir(MetaProjectPO project) {
-        return this.getDataDir()
-            + File.separator + "meta_export"
-            + File.separator + project.getProjectId()
-            + "_" + project.getProjectVersion();
+        return this.getDataDir() + File.separator + "meta_export" + File.separator + project.getProjectId() + "_" + project.getProjectVersion();
     }
 
     /**
@@ -125,9 +112,7 @@ public class DataDirService implements InitializingBean {
      * @see #getDataDir()
      */
     public String getProjectImportFilePath() {
-        return this.getDataDir()
-            + File.separator + "meta_import"
-            + File.separator + System.currentTimeMillis() + ".zip";
+        return this.getDataDir() + File.separator + "meta_import" + File.separator + System.currentTimeMillis() + ".zip";
     }
 
 
@@ -139,10 +124,7 @@ public class DataDirService implements InitializingBean {
      * @see #getDataDir()
      */
     public String getTemplateRecentDir(CodeTemplatePO templatePO) {
-        return this.getDataDir()
-            + File.separator + "tpl"
-            + File.separator + templatePO.getTemplateId()
-            + "_" + templatePO.getInnerVersion();
+        return this.getDataDir() + File.separator + "tpl" + File.separator + templatePO.getTemplateId() + "_" + templatePO.getInnerVersion();
     }
 
 
@@ -154,10 +136,7 @@ public class DataDirService implements InitializingBean {
      * @see #getDataDir()
      */
     public String getTemplateExportDir(CodeTemplatePO templatePO) {
-        return this.getDataDir()
-            + File.separator + "template_export"
-            + File.separator + templatePO.getTemplateId()
-            + "_" + templatePO.getInnerVersion();
+        return this.getDataDir() + File.separator + "template_export" + File.separator + templatePO.getTemplateId() + "_" + templatePO.getInnerVersion();
     }
 
     /**
@@ -167,9 +146,7 @@ public class DataDirService implements InitializingBean {
      * @see #getDataDir()
      */
     public String getTemplateImportFilePath() {
-        return this.getDataDir()
-            + File.separator + "template_import"
-            + File.separator + System.currentTimeMillis() + ".zip";
+        return this.getDataDir() + File.separator + "template_import" + File.separator + System.currentTimeMillis() + ".zip";
     }
 
     /**
@@ -199,11 +176,7 @@ public class DataDirService implements InitializingBean {
             LOGGER.error("该路径不是文件夹：{}", parentDir);
             throw new BusinessException();
         }
-        return Arrays.stream(parent.listFiles())
-            .filter(File::isDirectory)
-            .map(File::getPath)
-            .findFirst()
-            .orElse(null);
+        return Arrays.stream(parent.listFiles()).filter(File::isDirectory).map(File::getPath).findFirst().orElse(null);
     }
 
 

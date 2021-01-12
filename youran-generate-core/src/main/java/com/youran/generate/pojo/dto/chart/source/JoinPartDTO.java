@@ -66,8 +66,7 @@ public class JoinPartDTO {
      * @param entityMap
      * @param mtmMap
      */
-    public void assemble(Map<Integer, MetaEntityPO> entityMap,
-                         Map<Integer, MetaManyToManyPO> mtmMap) {
+    public void assemble(Map<Integer, MetaEntityPO> entityMap, Map<Integer, MetaManyToManyPO> mtmMap) {
         if (JoinPartType.ENTITY.equals(joinPartType)) {
             this.entity = AssembleUtil.forceGetEntityFromMap(entityMap, this.entityId);
             this.field = this.entity.getFields().get(this.fieldId);
@@ -76,8 +75,7 @@ public class JoinPartDTO {
             }
         } else if (JoinPartType.MTM.equals(joinPartType)) {
             this.mtm = AssembleUtil.forceGetMtmFromMap(mtmMap, this.mtmId);
-            if (Objects.equals(this.mtmField, mtm.getEntityIdField1())
-                && Objects.equals(this.mtmField, mtm.getEntityIdField2())) {
+            if (Objects.equals(this.mtmField, mtm.getEntityIdField1()) && Objects.equals(this.mtmField, mtm.getEntityIdField2())) {
                 throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "图表数据源异常，leftMtmField=" + mtmField + "不存在");
             }
         } else {

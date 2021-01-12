@@ -42,8 +42,7 @@ public class MetaManyToManyController extends AbstractController implements Meta
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<MetaManyToManyShowVO> save(@Valid @RequestBody MetaManyToManyAddDTO metaManyToManyAddDTO) throws Exception {
         MetaManyToManyPO metaManyToManyPO = metaManyToManyService.save(metaManyToManyAddDTO);
-        return ResponseEntity.created(new URI(apiPath + "/meta_mtm/" + metaManyToManyPO.getMtmId()))
-            .body(MetaManyToManyMapper.INSTANCE.toShowVO(metaManyToManyPO));
+        return ResponseEntity.created(new URI(apiPath + "/meta_mtm/" + metaManyToManyPO.getMtmId())).body(MetaManyToManyMapper.INSTANCE.toShowVO(metaManyToManyPO));
     }
 
     @Override

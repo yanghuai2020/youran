@@ -51,16 +51,7 @@ public interface MetaProjectMapper {
      * @return
      */
     @BeanMapping(ignoreByDefault = true)
-    @Mappings({
-        @Mapping(target = "packageName"),
-        @Mapping(target = "projectName"),
-        @Mapping(target = "projectDesc"),
-        @Mapping(target = "groupId"),
-        @Mapping(target = "author"),
-        @Mapping(target = "remote", constant = "false"),
-        @Mapping(target = "feature"),
-        @Mapping(target = "labels"),
-    })
+    @Mappings({@Mapping(target = "packageName"), @Mapping(target = "projectName"), @Mapping(target = "projectDesc"), @Mapping(target = "groupId"), @Mapping(target = "author"), @Mapping(target = "remote", constant = "false"), @Mapping(target = "feature"), @Mapping(target = "labels"),})
     MetaProjectPO copyWithoutRemote(MetaProjectPO project);
 
 

@@ -16,9 +16,10 @@ public class ProjectTeamHelper {
 
     /**
      * 生成add测试数据
+     *
      * @return
      */
-    public ProjectTeamAddDTO getProjectTeamAddDTO(){
+    public ProjectTeamAddDTO getProjectTeamAddDTO() {
         ProjectTeamAddDTO dto = new ProjectTeamAddDTO();
         dto.setName(E_NAME);
         return dto;
@@ -27,9 +28,10 @@ public class ProjectTeamHelper {
 
     /**
      * 生成update测试数据
+     *
      * @return
      */
-    public ProjectTeamUpdateDTO getProjectTeamUpdateDTO(ProjectTeamPO projectTeam){
+    public ProjectTeamUpdateDTO getProjectTeamUpdateDTO(ProjectTeamPO projectTeam) {
         ProjectTeamUpdateDTO dto = new ProjectTeamUpdateDTO();
         dto.setTeamId(projectTeam.getTeamId());
         dto.setName(projectTeam.getName());
@@ -38,13 +40,13 @@ public class ProjectTeamHelper {
 
     /**
      * 保存示例
+     *
      * @return
      */
-    public ProjectTeamPO saveProjectTeamExample(){
+    public ProjectTeamPO saveProjectTeamExample() {
         ProjectTeamAddDTO addDTO = this.getProjectTeamAddDTO();
         return projectTeamService.save(addDTO);
     }
-
 
 
 }

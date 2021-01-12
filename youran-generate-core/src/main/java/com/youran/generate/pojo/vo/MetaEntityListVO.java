@@ -130,16 +130,6 @@ public class MetaEntityListVO extends AbstractVO {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
-            .append("entityId", entityId)
-            .append("projectId", projectId)
-            .append("schemaName", schemaName)
-            .append("className", className)
-            .append("tableName", tableName)
-            .append("title", title)
-            .append("labels", labels)
-            .append("desc", desc)
-            .append("pageSign", pageSign)
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("entityId", entityId).append("projectId", projectId).append("schemaName", schemaName).append("className", className).append("tableName", tableName).append("title", title).append("labels", labels).append("desc", desc).append("pageSign", pageSign).toString();
     }
 }

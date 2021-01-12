@@ -46,8 +46,7 @@ public class MetaProjectController extends AbstractController implements MetaPro
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<MetaProjectShowVO> save(@Valid @RequestBody MetaProjectAddDTO metaProjectAddDTO) throws Exception {
         MetaProjectPO metaProjectPO = metaProjectService.save(metaProjectAddDTO);
-        return ResponseEntity.created(new URI(apiPath + "/meta_project/" + metaProjectPO.getProjectId()))
-            .body(MetaProjectMapper.INSTANCE.toShowVO(metaProjectPO));
+        return ResponseEntity.created(new URI(apiPath + "/meta_project/" + metaProjectPO.getProjectId())).body(MetaProjectMapper.INSTANCE.toShowVO(metaProjectPO));
     }
 
     @Override

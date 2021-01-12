@@ -354,8 +354,7 @@ public class MetaChartSourceService {
      * @param force    是否强制获取
      * @return
      */
-    public MetaChartSourcePO getMetaChartSource(Integer sourceId,
-                                                boolean force) {
+    public MetaChartSourcePO getMetaChartSource(Integer sourceId, boolean force) {
         MetaChartSourcePO metaChartSource = metaChartSourceDAO.findById(sourceId);
         if (force && metaChartSource == null) {
             throw new BusinessException(ErrorCode.RECORD_NOT_FIND);
@@ -388,49 +387,34 @@ public class MetaChartSourceService {
         MetaChartSourceWithItemsShowVO showVO = MetaChartSourceMapper.INSTANCE.toWithItemsShowVO(metaChartSource);
         List<MetaChartSourceItemPO> items = metaChartSourceItemService.findBySourceId(sourceId, true);
         // 对图表数据项按类型分组
-        Map<Integer, ? extends List<? extends MetaChartSourceItemPO>> map = items.stream()
-            .collect(Collectors.groupingBy(e -> e.getType()));
+        Map<Integer, ? extends List<? extends MetaChartSourceItemPO>> map = items.stream().collect(Collectors.groupingBy(e -> e.getType()));
         List<DetailColumnPO> detailColumnList = (List<DetailColumnPO>) map.get(SourceItemType.DETAIL_COLUMN.getValue());
         if (CollectionUtils.isNotEmpty(detailColumnList)) {
-            showVO.setDetailColumnList(detailColumnList.stream()
-                .<DetailColumnVO>map(MetaChartSourceItemMapper.INSTANCE::poToVO)
-                .collect(Collectors.toList()));
+            showVO.setDetailColumnList(detailColumnList.stream().<DetailColumnVO>map(MetaChartSourceItemMapper.INSTANCE::poToVO).collect(Collectors.toList()));
         }
         List<WherePO> whereList = (List<WherePO>) map.get(SourceItemType.WHERE.getValue());
         if (CollectionUtils.isNotEmpty(whereList)) {
-            showVO.setWhereList(whereList.stream()
-                .<WhereVO>map(MetaChartSourceItemMapper.INSTANCE::poToVO)
-                .collect(Collectors.toList()));
+            showVO.setWhereList(whereList.stream().<WhereVO>map(MetaChartSourceItemMapper.INSTANCE::poToVO).collect(Collectors.toList()));
         }
         List<DetailOrderPO> detailOrderList = (List<DetailOrderPO>) map.get(SourceItemType.DETAIL_ORDER.getValue());
         if (CollectionUtils.isNotEmpty(detailOrderList)) {
-            showVO.setDetailOrderList(detailOrderList.stream()
-                .<DetailOrderVO>map(MetaChartSourceItemMapper.INSTANCE::poToVO)
-                .collect(Collectors.toList()));
+            showVO.setDetailOrderList(detailOrderList.stream().<DetailOrderVO>map(MetaChartSourceItemMapper.INSTANCE::poToVO).collect(Collectors.toList()));
         }
         List<DimensionPO> dimensionList = (List<DimensionPO>) map.get(SourceItemType.DIMENSION.getValue());
         if (CollectionUtils.isNotEmpty(dimensionList)) {
-            showVO.setDimensionList(dimensionList.stream()
-                .<DimensionVO>map(MetaChartSourceItemMapper.INSTANCE::poToVO)
-                .collect(Collectors.toList()));
+            showVO.setDimensionList(dimensionList.stream().<DimensionVO>map(MetaChartSourceItemMapper.INSTANCE::poToVO).collect(Collectors.toList()));
         }
         List<MetricsPO> metricsList = (List<MetricsPO>) map.get(SourceItemType.METRICS.getValue());
         if (CollectionUtils.isNotEmpty(metricsList)) {
-            showVO.setMetricsList(metricsList.stream()
-                .<MetricsVO>map(MetaChartSourceItemMapper.INSTANCE::poToVO)
-                .collect(Collectors.toList()));
+            showVO.setMetricsList(metricsList.stream().<MetricsVO>map(MetaChartSourceItemMapper.INSTANCE::poToVO).collect(Collectors.toList()));
         }
         List<HavingPO> havingList = (List<HavingPO>) map.get(SourceItemType.HAVING.getValue());
         if (CollectionUtils.isNotEmpty(havingList)) {
-            showVO.setHavingList(havingList.stream()
-                .<HavingVO>map(MetaChartSourceItemMapper.INSTANCE::poToVO)
-                .collect(Collectors.toList()));
+            showVO.setHavingList(havingList.stream().<HavingVO>map(MetaChartSourceItemMapper.INSTANCE::poToVO).collect(Collectors.toList()));
         }
         List<AggOrderPO> aggOrderList = (List<AggOrderPO>) map.get(SourceItemType.AGG_ORDER.getValue());
         if (CollectionUtils.isNotEmpty(aggOrderList)) {
-            showVO.setAggOrderList(aggOrderList.stream()
-                .<AggOrderVO>map(MetaChartSourceItemMapper.INSTANCE::poToVO)
-                .collect(Collectors.toList()));
+            showVO.setAggOrderList(aggOrderList.stream().<AggOrderVO>map(MetaChartSourceItemMapper.INSTANCE::poToVO).collect(Collectors.toList()));
         }
         return showVO;
     }

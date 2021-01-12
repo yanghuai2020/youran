@@ -60,20 +60,11 @@ public class AggTableControllerTest extends AbstractWebTest {
     public void init() {
         this.metaProject = generateHelper.saveProjectExample();
         this.metaEntity = generateHelper.saveEntityExample(metaProject.getProjectId(), 0);
-        this.metaField1 = generateHelper.saveFieldExample(metaEntity.getEntityId(),"field1");
-        this.metaField2 = generateHelper.saveFieldExample(metaEntity.getEntityId(),"field2");
-        this.metaChartSource = metaChartSourceHelper.saveMetaChartSourceExample(
-            this.metaProject.getProjectId(), this.metaEntity.getEntityId());
-        this.dimensionPO = metaChartSourceItemHelper.saveDimensionExample(
-            this.metaProject.getProjectId(),
-            this.metaChartSource.getSourceId(),
-            this.metaField1.getFieldId()
-        );
-        this.metricsPO = metaChartSourceItemHelper.saveMetricsExample(
-            this.metaProject.getProjectId(),
-            this.metaChartSource.getSourceId(),
-            this.metaField2.getFieldId()
-        );
+        this.metaField1 = generateHelper.saveFieldExample(metaEntity.getEntityId(), "field1");
+        this.metaField2 = generateHelper.saveFieldExample(metaEntity.getEntityId(), "field2");
+        this.metaChartSource = metaChartSourceHelper.saveMetaChartSourceExample(this.metaProject.getProjectId(), this.metaEntity.getEntityId());
+        this.dimensionPO = metaChartSourceItemHelper.saveDimensionExample(this.metaProject.getProjectId(), this.metaChartSource.getSourceId(), this.metaField1.getFieldId());
+        this.metricsPO = metaChartSourceItemHelper.saveMetricsExample(this.metaProject.getProjectId(), this.metaChartSource.getSourceId(), this.metaField2.getFieldId());
     }
 
     /**
@@ -81,14 +72,8 @@ public class AggTableControllerTest extends AbstractWebTest {
      */
     @Test
     public void save() throws Exception {
-        AggTableAddDTO addDTO = aggTableHelper.getAddDTO(
-            metaProject.getProjectId(),metaChartSource.getSourceId(),
-            Arrays.asList(metaChartHelper.getChartItemDTOExample(dimensionPO.getSourceItemId())),
-            Arrays.asList(metaChartHelper.getChartItemDTOExample(metricsPO.getSourceItemId())));
-        restMockMvc.perform(post(getApiPath() + "/meta_chart/agg_table")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(addDTO)))
-            .andExpect(status().isCreated());
+        AggTableAddDTO addDTO = aggTableHelper.getAddDTO(metaProject.getProjectId(), metaChartSource.getSourceId(), Arrays.asList(metaChartHelper.getChartItemDTOExample(dimensionPO.getSourceItemId())), Arrays.asList(metaChartHelper.getChartItemDTOExample(metricsPO.getSourceItemId())));
+        restMockMvc.perform(post(getApiPath() + "/meta_chart/agg_table").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(addDTO))).andExpect(status().isCreated());
     }
 
     /**
@@ -96,15 +81,9 @@ public class AggTableControllerTest extends AbstractWebTest {
      */
     @Test
     public void update() throws Exception {
-        AggTablePO metaChart = aggTableHelper.saveExample(
-            metaProject.getProjectId(),metaChartSource.getSourceId(),
-            Arrays.asList(metaChartHelper.getChartItemDTOExample(dimensionPO.getSourceItemId())),
-            Arrays.asList(metaChartHelper.getChartItemDTOExample(metricsPO.getSourceItemId())));
+        AggTablePO metaChart = aggTableHelper.saveExample(metaProject.getProjectId(), metaChartSource.getSourceId(), Arrays.asList(metaChartHelper.getChartItemDTOExample(dimensionPO.getSourceItemId())), Arrays.asList(metaChartHelper.getChartItemDTOExample(metricsPO.getSourceItemId())));
         AggTableUpdateDTO updateDTO = aggTableHelper.getUpdateDTO(metaChart);
-        restMockMvc.perform(put(getApiPath() + "/meta_chart/agg_table")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(updateDTO)))
-            .andExpect(status().isOk());
+        restMockMvc.perform(put(getApiPath() + "/meta_chart/agg_table").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(updateDTO))).andExpect(status().isOk());
     }
 
     /**
@@ -112,13 +91,8 @@ public class AggTableControllerTest extends AbstractWebTest {
      */
     @Test
     public void list() throws Exception {
-        AggTablePO metaChart = aggTableHelper.saveExample(
-            metaProject.getProjectId(),metaChartSource.getSourceId(),
-            Arrays.asList(metaChartHelper.getChartItemDTOExample(dimensionPO.getSourceItemId())),
-            Arrays.asList(metaChartHelper.getChartItemDTOExample(metricsPO.getSourceItemId())));
-        restMockMvc.perform(get(getApiPath() + "/meta_chart"))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.length()").value(is(1)));
+        AggTablePO metaChart = aggTableHelper.saveExample(metaProject.getProjectId(), metaChartSource.getSourceId(), Arrays.asList(metaChartHelper.getChartItemDTOExample(dimensionPO.getSourceItemId())), Arrays.asList(metaChartHelper.getChartItemDTOExample(metricsPO.getSourceItemId())));
+        restMockMvc.perform(get(getApiPath() + "/meta_chart")).andExpect(status().isOk()).andExpect(jsonPath("$.length()").value(is(1)));
     }
 
     /**
@@ -126,12 +100,8 @@ public class AggTableControllerTest extends AbstractWebTest {
      */
     @Test
     public void show() throws Exception {
-        AggTablePO metaChart = aggTableHelper.saveExample(
-            metaProject.getProjectId(),metaChartSource.getSourceId(),
-            Arrays.asList(metaChartHelper.getChartItemDTOExample(dimensionPO.getSourceItemId())),
-            Arrays.asList(metaChartHelper.getChartItemDTOExample(metricsPO.getSourceItemId())));
-        restMockMvc.perform(get(getApiPath() + "/meta_chart/agg_table/{chartId}", metaChart.getChartId()))
-            .andExpect(status().isOk());
+        AggTablePO metaChart = aggTableHelper.saveExample(metaProject.getProjectId(), metaChartSource.getSourceId(), Arrays.asList(metaChartHelper.getChartItemDTOExample(dimensionPO.getSourceItemId())), Arrays.asList(metaChartHelper.getChartItemDTOExample(metricsPO.getSourceItemId())));
+        restMockMvc.perform(get(getApiPath() + "/meta_chart/agg_table/{chartId}", metaChart.getChartId())).andExpect(status().isOk());
     }
 
     /**
@@ -139,17 +109,9 @@ public class AggTableControllerTest extends AbstractWebTest {
      */
     @Test
     public void deleteBatch() throws Exception {
-        AggTablePO metaChart = aggTableHelper.saveExample(
-            metaProject.getProjectId(),metaChartSource.getSourceId(),
-            Arrays.asList(metaChartHelper.getChartItemDTOExample(dimensionPO.getSourceItemId())),
-            Arrays.asList(metaChartHelper.getChartItemDTOExample(metricsPO.getSourceItemId())));
-        restMockMvc.perform(delete(getApiPath() + "/meta_chart")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(Lists.newArrayList(metaChart.getChartId()))))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$").value(is(1)));
+        AggTablePO metaChart = aggTableHelper.saveExample(metaProject.getProjectId(), metaChartSource.getSourceId(), Arrays.asList(metaChartHelper.getChartItemDTOExample(dimensionPO.getSourceItemId())), Arrays.asList(metaChartHelper.getChartItemDTOExample(metricsPO.getSourceItemId())));
+        restMockMvc.perform(delete(getApiPath() + "/meta_chart").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(Lists.newArrayList(metaChart.getChartId())))).andExpect(status().isOk()).andExpect(jsonPath("$").value(is(1)));
     }
-
 
 
 }

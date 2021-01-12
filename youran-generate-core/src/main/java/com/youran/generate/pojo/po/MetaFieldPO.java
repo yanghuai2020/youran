@@ -70,12 +70,14 @@ public class MetaFieldPO extends BasePO {
     private Boolean primaryKey;
     /**
      * 是否自动递增
+     *
      * @deprecated 使用pkStrategy字段替代
      */
     @Deprecated
     private Boolean autoIncrement;
     /**
      * 主键策略
+     *
      * @see PrimaryKeyStrategy
      */
     private Integer pkStrategy;
@@ -186,8 +188,7 @@ public class MetaFieldPO extends BasePO {
      * @return
      */
     public String fetchComment() {
-        return StringUtils.isBlank(this.fieldComment) ?
-            this.fieldDesc : this.fieldComment;
+        return StringUtils.isBlank(this.fieldComment) ? this.fieldDesc : this.fieldComment;
     }
 
     /**
@@ -213,6 +214,7 @@ public class MetaFieldPO extends BasePO {
         }
         return label.getValue();
     }
+
     public Integer getProjectId() {
         return projectId;
     }

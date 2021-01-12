@@ -12,7 +12,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel(description = "修改【明细列】入参")
 public class DetailColumnUpdateDTO extends DetailColumnAddDTO {
 
-    @ApiModelProperty(notes = "主键ID",example = "1",required = true)
+    @ApiModelProperty(notes = "主键ID", example = "1", required = true)
     private Integer sourceItemId;
 
     public Integer getSourceItemId() {

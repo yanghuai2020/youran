@@ -47,17 +47,14 @@ public class FileNodeUtil {
         if (ArrayUtils.isEmpty(files)) {
             return Collections.emptyList();
         }
-        return Arrays.stream(files)
-            .sorted(new CompositeFileComparator(DirectoryFileComparator.DIRECTORY_COMPARATOR, NameFileComparator.NAME_COMPARATOR))
-            .map(file -> {
-                FileNodeVO nodeVO = fileToNodeVO(file, basePath);
-                if (file.isDirectory()) {
-                    List<FileNodeVO> children = recurFileNodeTree(file, basePath);
-                    nodeVO.setChildren(children);
-                }
-                return nodeVO;
-            })
-            .collect(Collectors.toList());
+        return Arrays.stream(files).sorted(new CompositeFileComparator(DirectoryFileComparator.DIRECTORY_COMPARATOR, NameFileComparator.NAME_COMPARATOR)).map(file -> {
+            FileNodeVO nodeVO = fileToNodeVO(file, basePath);
+            if (file.isDirectory()) {
+                List<FileNodeVO> children = recurFileNodeTree(file, basePath);
+                nodeVO.setChildren(children);
+            }
+            return nodeVO;
+        }).collect(Collectors.toList());
     }
 
 
@@ -69,8 +66,7 @@ public class FileNodeUtil {
      * @return
      */
     public static FileNodeVO fileToNodeVO(File file, File basePath) {
-        String path = file.getPath().substring(basePath.getPath().length())
-            .replaceAll("\\\\", "/");
+        String path = file.getPath().substring(basePath.getPath().length()).replaceAll("\\\\", "/");
         return new FileNodeVO(file.isDirectory(), path, null);
     }
 
@@ -112,9 +108,7 @@ public class FileNodeUtil {
         String fileName = vo.getFileName();
         StringBuilder sb = new StringBuilder();
         List<FileNodeVO> currentChildren = tree;
-        List<String> list = Arrays.stream(fileDir.split("/"))
-            .filter(StringUtils::isNotBlank)
-            .collect(Collectors.toList());
+        List<String> list = Arrays.stream(fileDir.split("/")).filter(StringUtils::isNotBlank).collect(Collectors.toList());
         for (String dir : list) {
             sb.append("/").append(dir);
             String path = sb.toString();
@@ -137,9 +131,7 @@ public class FileNodeUtil {
 
 
     private static FileNodeVO findByPath(List<FileNodeVO> list, String path) {
-        return list.stream().filter(vo -> Objects.equals(vo.getPath(), path))
-            .findFirst()
-            .orElse(null);
+        return list.stream().filter(vo -> Objects.equals(vo.getPath(), path)).findFirst().orElse(null);
     }
 
 

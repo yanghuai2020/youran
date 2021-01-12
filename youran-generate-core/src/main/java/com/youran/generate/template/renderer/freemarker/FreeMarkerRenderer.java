@@ -2,6 +2,7 @@ package com.youran.generate.template.renderer.freemarker;
 
 import com.youran.common.constant.ErrorCode;
 import com.youran.common.exception.BusinessException;
+import com.youran.common.util.JsonUtil;
 import com.youran.generate.exception.SkipCurrentException;
 import com.youran.generate.pojo.po.TemplateFilePO;
 import com.youran.generate.template.context.BaseContext;
@@ -42,8 +43,7 @@ public class FreeMarkerRenderer implements TemplateRenderer {
     @Override
     public String renderPath(TemplateFilePO filePO, BaseContext context) {
         if (!filePO.isContentFile()) {
-            throw new BusinessException(ErrorCode.INTERNAL_SERVER_ERROR,
-                "非模板内容文件，不需要渲染:" + filePO.fetchFilePath());
+            throw new BusinessException(ErrorCode.INTERNAL_SERVER_ERROR, "非模板内容文件，不需要渲染:" + filePO.fetchFilePath());
         }
         // 渲染父路径
         String parentPath = this.renderParentPath(filePO, context);
@@ -51,8 +51,7 @@ public class FreeMarkerRenderer implements TemplateRenderer {
         String filename = this.renderFilename(filePO, context);
 
         String filePath = parentPath + "/" + filename;
-        filePath = filePath.replaceAll("\\/+", "/")
-            .replaceAll("\r|\n", "");
+        filePath = filePath.replaceAll("\\/+", "/").replaceAll("\r|\n", "");
 
         return FilenameUtils.normalize(StringUtils.trim(filePath), true);
     }
@@ -114,6 +113,7 @@ public class FreeMarkerRenderer implements TemplateRenderer {
 
     @Override
     public Object renderContent(TemplateFilePO filePO, BaseContext context) {
+        System.out.println(JsonUtil.toJSONString(context));
         if (filePO.isBinaryFile()) {
             // 渲染二进制文件
             return this.renderBinaryFile(filePO);
@@ -121,8 +121,7 @@ public class FreeMarkerRenderer implements TemplateRenderer {
             // 渲染freemarker模板内容
             return this.renderFreemarkerFile(filePO, context);
         }
-        throw new BusinessException(ErrorCode.INTERNAL_SERVER_ERROR,
-            "非模板内容文件，不需要渲染:" + filePO.fetchFilePath());
+        throw new BusinessException(ErrorCode.INTERNAL_SERVER_ERROR, "非模板内容文件，不需要渲染:" + filePO.fetchFilePath());
     }
 
     /**
@@ -133,12 +132,10 @@ public class FreeMarkerRenderer implements TemplateRenderer {
      */
     private byte[] renderBinaryFile(TemplateFilePO templateFilePO) {
         try {
-            return FileUtils.readFileToByteArray(new File(templateDir +
-                templateFilePO.fetchFilePath()));
+            return FileUtils.readFileToByteArray(new File(templateDir + templateFilePO.fetchFilePath()));
         } catch (IOException e) {
             LOGGER.error("读取二进制模板文件异常", e);
-            throw new BusinessException("读取二进制模板文件异常,templateName=" +
-                templateFilePO.fetchFilePath(), e);
+            throw new BusinessException("读取二进制模板文件异常,templateName=" + templateFilePO.fetchFilePath(), e);
         }
     }
 
@@ -170,8 +167,7 @@ public class FreeMarkerRenderer implements TemplateRenderer {
                 }
             }
             LOGGER.error(e.getMessage(), e);
-            throw new BusinessException("freemarker解析异常,dataModel="
-                + context + ",templateName=" + relativePath + extraErrorMsg, e);
+            throw new BusinessException("freemarker解析异常,dataModel=" + context + ",templateName=" + relativePath + extraErrorMsg, e);
         }
     }
 

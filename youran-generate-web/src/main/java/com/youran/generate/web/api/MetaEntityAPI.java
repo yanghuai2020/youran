@@ -28,83 +28,63 @@ public interface MetaEntityAPI {
      * 新增实体
      */
     @ApiOperation(value = "新增实体")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "metaEntityAddDTO", dataType = "MetaEntityAddDTO", value = "新增实体参数", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "metaEntityAddDTO", dataType = "MetaEntityAddDTO", value = "新增实体参数", paramType = "body"),})
     ResponseEntity<MetaEntityShowVO> save(MetaEntityAddDTO metaEntityAddDTO) throws Exception;
 
     /**
      * 修改实体
      */
     @ApiOperation(value = "修改实体")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "metaEntityUpdateDTO", dataType = "MetaEntityUpdateDTO", value = "修改实体参数", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "metaEntityUpdateDTO", dataType = "MetaEntityUpdateDTO", value = "修改实体参数", paramType = "body"),})
     ResponseEntity<MetaEntityShowVO> update(MetaEntityUpdateDTO metaEntityUpdateDTO);
 
     /**
      * 修改实体特性
      */
     @ApiOperation(value = "修改实体特性")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "entityId", dataType = "int", value = "实体id", paramType = "path"),
-        @ApiImplicitParam(name = "attributes", dataType = "MetaEntityFeatureDTO", value = "特性参数", paramType = "body"),
-    })
-    ResponseEntity<MetaEntityShowVO> updateFeature(Integer entityId,
-                                                   Map<String, Object> attributes);
+    @ApiImplicitParams({@ApiImplicitParam(name = "entityId", dataType = "int", value = "实体id", paramType = "path"), @ApiImplicitParam(name = "attributes", dataType = "MetaEntityFeatureDTO", value = "特性参数", paramType = "body"),})
+    ResponseEntity<MetaEntityShowVO> updateFeature(Integer entityId, Map<String, Object> attributes);
 
     /**
      * 查询实体列表
      */
     @ApiOperation(value = "查询实体列表")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "metaEntityQO", dataType = "MetaEntityQO", value = "查询参数", paramType = "query"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "metaEntityQO", dataType = "MetaEntityQO", value = "查询参数", paramType = "query"),})
     ResponseEntity<List<MetaEntityListVO>> list(MetaEntityQO metaEntityQO);
 
     /**
      * 查看实体详情
      */
     @ApiOperation(value = "查看实体详情")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "entityId", dataType = "int", value = "实体id", paramType = "path"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "entityId", dataType = "int", value = "实体id", paramType = "path"),})
     ResponseEntity<MetaEntityShowVO> show(Integer entityId);
 
     /**
      * 删除实体
      */
     @ApiOperation(value = "删除实体")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "entityId", dataType = "int", value = "实体id", paramType = "path"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "entityId", dataType = "int", value = "实体id", paramType = "path"),})
     ResponseEntity<Integer> delete(Integer entityId);
 
     /**
      * 批量删除实体
      */
     @ApiOperation(value = "批量删除实体")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "entityId", dataType = "int", value = "实体id数组", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "entityId", dataType = "int", value = "实体id数组", paramType = "body"),})
     ResponseEntity<Integer> deleteBatch(Integer[] entityId);
 
     /**
      * 查询某实体下的多对多关联实体
      */
     @ApiOperation(value = "查询某实体下的多对多关联实体")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "entityId", dataType = "int", value = "实体id", paramType = "path"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "entityId", dataType = "int", value = "实体id", paramType = "path"),})
     ResponseEntity<MetaEntityListPairVO> mtmEntityListPair(Integer entityId);
 
     /**
      * 获取某实体作为外键关联时的默认外键名(mysql字段名)
      */
     @ApiOperation(value = "获取某实体作为外键关联时的默认外键名(mysql字段名)")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "entityId", dataType = "int", value = "实体id", paramType = "path"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "entityId", dataType = "int", value = "实体id", paramType = "path"),})
     ResponseEntity<String> getDefaultFkFieldNameForSql(Integer entityId);
 
 }

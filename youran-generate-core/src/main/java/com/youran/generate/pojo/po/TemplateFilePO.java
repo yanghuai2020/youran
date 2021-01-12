@@ -73,28 +73,31 @@ public class TemplateFilePO extends BasePO {
 
     /**
      * 判断是否为内容模板文件
+     *
      * @return
      */
     @JsonIgnore
-    public boolean isContentFile(){
+    public boolean isContentFile() {
         return this.isBinaryFile() || this.isGeneralFile();
     }
 
     /**
      * 判断是否为普通模板文件
+     *
      * @return
      */
     @JsonIgnore
-    public boolean isGeneralFile(){
+    public boolean isGeneralFile() {
         return TemplateFileType.GENERAL.getValue().equals(this.fileType);
     }
 
     /**
      * 判断是否为二进制内容文件
+     *
      * @return
      */
     @JsonIgnore
-    public boolean isBinaryFile(){
+    public boolean isBinaryFile() {
         return TemplateFileType.BINARY.getValue().equals(this.fileType);
     }
 
@@ -116,14 +119,12 @@ public class TemplateFilePO extends BasePO {
     public String fetchContentPathForFilenameFile() {
         if (TemplateFileType.FILENAME.getValue().equals(this.fileType)) {
             if (!this.fileName.startsWith("__")) {
-                throw new BusinessException(ErrorCode.INNER_DATA_ERROR,
-                    "文件名渲染文件必须是双下划线开头：" + this.fetchFilePath());
+                throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "文件名渲染文件必须是双下划线开头：" + this.fetchFilePath());
             }
             String filename = this.fileDir + "/" + this.fileName.substring(2);
             return FilenameUtils.normalize(filename.replaceAll("\\/+", "/"), true);
         }
-        throw new BusinessException(ErrorCode.INTERNAL_SERVER_ERROR,
-            "该模板文件不是文件名渲染文件：" + this.fetchFilePath());
+        throw new BusinessException(ErrorCode.INTERNAL_SERVER_ERROR, "该模板文件不是文件名渲染文件：" + this.fetchFilePath());
     }
 
 

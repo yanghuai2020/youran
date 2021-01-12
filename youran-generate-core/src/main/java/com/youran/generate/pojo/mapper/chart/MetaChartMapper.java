@@ -18,42 +18,38 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface MetaChartMapper {
 
-    MetaChartMapper INSTANCE = Mappers.getMapper( MetaChartMapper.class );
+    MetaChartMapper INSTANCE = Mappers.getMapper(MetaChartMapper.class);
 
-    void copyProperties(@MappingTarget MetaChartPO target,
-                        MetaChartPO source);
+    void copyProperties(@MappingTarget MetaChartPO target, MetaChartPO source);
 
     AggTablePO fromAggTableAddDTO(AggTableAddDTO addDTO);
+
     BarLinePO fromBarLineAddDTO(BarLineAddDTO addDTO);
+
     DetailListPO fromDetailListAddDTO(DetailListAddDTO addDTO);
+
     PiePO fromPieAddDTO(PieAddDTO addDTO);
 
 
+    void setAggTableUpdateDTO(@MappingTarget AggTablePO po, AggTableUpdateDTO updateDTO);
 
-    void setAggTableUpdateDTO(@MappingTarget AggTablePO po,
-                              AggTableUpdateDTO updateDTO);
-    void setBarLineUpdateDTO(@MappingTarget BarLinePO po,
-                              BarLineUpdateDTO updateDTO);
-    void setDetailListUpdateDTO(@MappingTarget DetailListPO po,
-                              DetailListUpdateDTO updateDTO);
-    void setPieUpdateDTO(@MappingTarget PiePO po,
-                              PieUpdateDTO updateDTO);
+    void setBarLineUpdateDTO(@MappingTarget BarLinePO po, BarLineUpdateDTO updateDTO);
 
+    void setDetailListUpdateDTO(@MappingTarget DetailListPO po, DetailListUpdateDTO updateDTO);
+
+    void setPieUpdateDTO(@MappingTarget PiePO po, PieUpdateDTO updateDTO);
 
 
     AggTableVO toAggTableVO(AggTablePO po);
+
     BarLineVO toBarLineVO(BarLinePO po);
+
     DetailListVO toDetailListVO(DetailListPO po);
+
     PieVO toPieVO(PiePO po);
 
     @BeanMapping(ignoreByDefault = true)
-    @Mappings({
-        @Mapping(target = "chartType"),
-        @Mapping(target = "chartName"),
-        @Mapping(target = "module"),
-        @Mapping(target = "title"),
-        @Mapping(target = "feature"),
-    })
+    @Mappings({@Mapping(target = "chartType"), @Mapping(target = "chartName"), @Mapping(target = "module"), @Mapping(target = "title"), @Mapping(target = "feature"),})
     MetaChartPO copy(MetaChartPO metaChartSourceFromJson);
 
 

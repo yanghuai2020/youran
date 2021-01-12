@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @ApiModel(description = "修改【图表数据源】的参数")
 public class MetaChartSourceUpdateDTO extends MetaChartSourceAddDTO {
 
-    @ApiModelProperty(notes = "主键",example = "1",required = true)
+    @ApiModelProperty(notes = "主键", example = "1", required = true)
     @NotNull
     private Integer sourceId;
 

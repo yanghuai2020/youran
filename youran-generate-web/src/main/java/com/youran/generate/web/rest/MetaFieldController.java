@@ -47,8 +47,7 @@ public class MetaFieldController extends AbstractController implements MetaField
             metaFieldAddDTO.setDefaultValue(GenerateConst.METAFIELD_NULL_VALUE);
         }
         MetaFieldPO metaFieldPO = metaFieldService.save(metaFieldAddDTO);
-        return ResponseEntity.created(new URI(apiPath + "/meta_field/" + metaFieldPO.getFieldId()))
-            .body(MetaFieldMapper.INSTANCE.toShowVO(metaFieldPO));
+        return ResponseEntity.created(new URI(apiPath + "/meta_field/" + metaFieldPO.getFieldId())).body(MetaFieldMapper.INSTANCE.toShowVO(metaFieldPO));
     }
 
     @Override

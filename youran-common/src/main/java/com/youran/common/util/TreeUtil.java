@@ -112,8 +112,7 @@ public class TreeUtil {
      * @param <T>
      * @return
      */
-    public static <T extends Serializable> List<T> findChildrenLoop(List<T> parents, int limit,
-                                                                    Function<List<T>, List<T>> findChildren) {
+    public static <T extends Serializable> List<T> findChildrenLoop(List<T> parents, int limit, Function<List<T>, List<T>> findChildren) {
         //没有提供父节点，直接返回空列表
         if (CollectionUtils.isEmpty(parents)) {
             return new ArrayList<>();

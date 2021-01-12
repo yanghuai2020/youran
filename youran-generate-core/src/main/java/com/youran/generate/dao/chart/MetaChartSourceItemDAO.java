@@ -21,6 +21,7 @@ public interface MetaChartSourceItemDAO extends DAO<MetaChartSourceItemPO> {
 
     /**
      * 根据条件查询【图表数据源项】列表
+     *
      * @param metaChartSourceItemQO
      * @return
      */
@@ -32,8 +33,7 @@ public interface MetaChartSourceItemDAO extends DAO<MetaChartSourceItemPO> {
 
     List<MetaChartSourceItemPO> findBySourceId(Integer sourceId);
 
-    List<Integer> findOtherItemIds(@Param("sourceId") Integer sourceId,
-                                   @Param("oldItemIds") List<Integer> oldItemIds);
+    List<Integer> findOtherItemIds(@Param("sourceId") Integer sourceId, @Param("oldItemIds") List<Integer> oldItemIds);
 
 
 }

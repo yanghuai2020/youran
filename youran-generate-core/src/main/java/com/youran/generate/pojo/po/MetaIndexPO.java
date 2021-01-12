@@ -55,9 +55,7 @@ public class MetaIndexPO extends BasePO {
         if (CollectionUtils.isEmpty(fields)) {
             this.fieldIds = Collections.emptyList();
         } else {
-            this.fieldIds = fields.stream()
-                .map(MetaFieldPO::getFieldId)
-                .collect(Collectors.toList());
+            this.fieldIds = fields.stream().map(MetaFieldPO::getFieldId).collect(Collectors.toList());
         }
     }
 

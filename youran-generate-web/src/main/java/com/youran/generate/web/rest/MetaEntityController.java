@@ -45,8 +45,7 @@ public class MetaEntityController extends AbstractController implements MetaEnti
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<MetaEntityShowVO> save(@Valid @RequestBody MetaEntityAddDTO metaEntityAddDTO) throws Exception {
         MetaEntityPO metaEntityPO = metaEntityService.save(metaEntityAddDTO);
-        return ResponseEntity.created(new URI(apiPath + "/meta_entity/" + metaEntityPO.getEntityId()))
-            .body(MetaEntityMapper.INSTANCE.toShowVO(metaEntityPO));
+        return ResponseEntity.created(new URI(apiPath + "/meta_entity/" + metaEntityPO.getEntityId())).body(MetaEntityMapper.INSTANCE.toShowVO(metaEntityPO));
     }
 
     @Override
@@ -58,8 +57,7 @@ public class MetaEntityController extends AbstractController implements MetaEnti
 
     @Override
     @PutMapping(value = "/{entityId}/feature")
-    public ResponseEntity<MetaEntityShowVO> updateFeature(@PathVariable Integer entityId,
-                                              @Valid @RequestBody Map<String,Object> attributes) {
+    public ResponseEntity<MetaEntityShowVO> updateFeature(@PathVariable Integer entityId, @Valid @RequestBody Map<String, Object> attributes) {
         MetaEntityPO metaEntityPO = metaEntityService.updateFeatureAttr(entityId, attributes);
         return ResponseEntity.ok(MetaEntityMapper.INSTANCE.toShowVO(metaEntityPO));
     }

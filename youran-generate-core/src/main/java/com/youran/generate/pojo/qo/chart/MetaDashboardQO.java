@@ -13,7 +13,7 @@ import static com.youran.generate.pojo.example.chart.MetaDashboardExample.*;
  */
 public class MetaDashboardQO extends AbstractQO {
 
-    @ApiParam(value = N_PROJECT_ID,example = E_PROJECT_ID)
+    @ApiParam(value = N_PROJECT_ID, example = E_PROJECT_ID)
     private Integer projectId;
 
     @ApiParam(value = "模块排序标识【1升序,-1降序,0不排序】", example = "1")

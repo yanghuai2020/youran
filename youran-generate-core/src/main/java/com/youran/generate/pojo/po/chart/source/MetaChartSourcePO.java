@@ -143,9 +143,7 @@ public class MetaChartSourcePO extends BasePO {
      * @param entityMap
      * @param mtmMap
      */
-    public void assemble(List<? extends MetaChartSourceItemPO> items,
-                         Map<Integer, MetaEntityPO> entityMap,
-                         Map<Integer, MetaManyToManyPO> mtmMap) {
+    public void assemble(List<? extends MetaChartSourceItemPO> items, Map<Integer, MetaEntityPO> entityMap, Map<Integer, MetaManyToManyPO> mtmMap) {
         // 装配joins
         this.assembleJoins(entityMap, mtmMap);
 
@@ -153,8 +151,7 @@ public class MetaChartSourcePO extends BasePO {
             return;
         }
         // 对图表数据项按类型分组
-        Map<Integer, ? extends List<? extends MetaChartSourceItemPO>> map = items.stream()
-            .collect(Collectors.groupingBy(e -> e.getType()));
+        Map<Integer, ? extends List<? extends MetaChartSourceItemPO>> map = items.stream().collect(Collectors.groupingBy(e -> e.getType()));
         // 装配明细列
         this.assembleDetailColumnList(map);
         // 装配维度
@@ -179,9 +176,7 @@ public class MetaChartSourcePO extends BasePO {
     private void assembleDetailColumnList(Map<Integer, ? extends List<? extends MetaChartSourceItemPO>> map) {
         List<DetailColumnPO> detailColumnList = (List<DetailColumnPO>) map.get(SourceItemType.DETAIL_COLUMN.getValue());
         if (detailColumnList != null) {
-            this.detailColumnMap = detailColumnList.stream()
-                .peek(item -> item.assembleItem(this))
-                .collect(Collectors.toMap(MetaChartSourceItemPO::getSourceItemId, Function.identity()));
+            this.detailColumnMap = detailColumnList.stream().peek(item -> item.assembleItem(this)).collect(Collectors.toMap(MetaChartSourceItemPO::getSourceItemId, Function.identity()));
         } else {
             this.detailColumnMap = new HashMap<>();
         }
@@ -195,9 +190,7 @@ public class MetaChartSourcePO extends BasePO {
     private void assembleDimensionList(Map<Integer, ? extends List<? extends MetaChartSourceItemPO>> map) {
         List<DimensionPO> dimensionList = (List<DimensionPO>) map.get(SourceItemType.DIMENSION.getValue());
         if (dimensionList != null) {
-            this.dimensionMap = dimensionList.stream()
-                .peek(item -> item.assembleItem(this))
-                .collect(Collectors.toMap(MetaChartSourceItemPO::getSourceItemId, Function.identity()));
+            this.dimensionMap = dimensionList.stream().peek(item -> item.assembleItem(this)).collect(Collectors.toMap(MetaChartSourceItemPO::getSourceItemId, Function.identity()));
         } else {
             this.dimensionMap = new HashMap<>();
         }
@@ -211,9 +204,7 @@ public class MetaChartSourcePO extends BasePO {
     private void assembleMetricsList(Map<Integer, ? extends List<? extends MetaChartSourceItemPO>> map) {
         List<MetricsPO> metricsList = (List<MetricsPO>) map.get(SourceItemType.METRICS.getValue());
         if (metricsList != null) {
-            this.metricsMap = metricsList.stream()
-                .peek(item -> item.assembleItem(this))
-                .collect(Collectors.toMap(MetaChartSourceItemPO::getSourceItemId, Function.identity()));
+            this.metricsMap = metricsList.stream().peek(item -> item.assembleItem(this)).collect(Collectors.toMap(MetaChartSourceItemPO::getSourceItemId, Function.identity()));
         } else {
             this.metricsMap = new HashMap<>();
         }
@@ -227,9 +218,7 @@ public class MetaChartSourcePO extends BasePO {
     private void assembleWhereList(Map<Integer, ? extends List<? extends MetaChartSourceItemPO>> map) {
         List<WherePO> whereList = (List<WherePO>) map.get(SourceItemType.WHERE.getValue());
         if (whereList != null) {
-            this.whereMap = whereList.stream()
-                .peek(item -> item.assembleItem(this))
-                .collect(Collectors.toMap(MetaChartSourceItemPO::getSourceItemId, Function.identity()));
+            this.whereMap = whereList.stream().peek(item -> item.assembleItem(this)).collect(Collectors.toMap(MetaChartSourceItemPO::getSourceItemId, Function.identity()));
         } else {
             this.whereMap = new HashMap<>();
         }
@@ -243,9 +232,7 @@ public class MetaChartSourcePO extends BasePO {
     private void assembleHavingList(Map<Integer, ? extends List<? extends MetaChartSourceItemPO>> map) {
         List<HavingPO> havingList = (List<HavingPO>) map.get(SourceItemType.HAVING.getValue());
         if (havingList != null) {
-            this.havingMap = havingList.stream()
-                .peek(item -> item.assembleItem(this))
-                .collect(Collectors.toMap(MetaChartSourceItemPO::getSourceItemId, Function.identity()));
+            this.havingMap = havingList.stream().peek(item -> item.assembleItem(this)).collect(Collectors.toMap(MetaChartSourceItemPO::getSourceItemId, Function.identity()));
         } else {
             this.havingMap = new HashMap<>();
         }
@@ -259,9 +246,7 @@ public class MetaChartSourcePO extends BasePO {
     private void assembleDetailOrderList(Map<Integer, ? extends List<? extends MetaChartSourceItemPO>> map) {
         List<DetailOrderPO> detailOrderList = (List<DetailOrderPO>) map.get(SourceItemType.DETAIL_ORDER.getValue());
         if (detailOrderList != null) {
-            this.detailOrderMap = detailOrderList.stream()
-                .peek(item -> item.assembleItem(this))
-                .collect(Collectors.toMap(MetaChartSourceItemPO::getSourceItemId, Function.identity()));
+            this.detailOrderMap = detailOrderList.stream().peek(item -> item.assembleItem(this)).collect(Collectors.toMap(MetaChartSourceItemPO::getSourceItemId, Function.identity()));
         } else {
             this.detailOrderMap = new HashMap<>();
         }
@@ -275,9 +260,7 @@ public class MetaChartSourcePO extends BasePO {
     private void assembleAggOrderList(Map<Integer, ? extends List<? extends MetaChartSourceItemPO>> map) {
         List<AggOrderPO> aggOrderList = (List<AggOrderPO>) map.get(SourceItemType.AGG_ORDER.getValue());
         if (aggOrderList != null) {
-            this.aggOrderMap = aggOrderList.stream()
-                .peek(item -> item.assembleItem(this))
-                .collect(Collectors.toMap(MetaChartSourceItemPO::getSourceItemId, Function.identity()));
+            this.aggOrderMap = aggOrderList.stream().peek(item -> item.assembleItem(this)).collect(Collectors.toMap(MetaChartSourceItemPO::getSourceItemId, Function.identity()));
         } else {
             this.aggOrderMap = new HashMap<>();
         }
@@ -289,8 +272,7 @@ public class MetaChartSourcePO extends BasePO {
      * @param entityMap
      * @param mtmMap
      */
-    private void assembleJoins(Map<Integer, MetaEntityPO> entityMap,
-                               Map<Integer, MetaManyToManyPO> mtmMap) {
+    private void assembleJoins(Map<Integer, MetaEntityPO> entityMap, Map<Integer, MetaManyToManyPO> mtmMap) {
         this.entity = AssembleUtil.forceGetEntityFromMap(entityMap, this.entityId);
         if (CollectionUtils.isEmpty(this.joins)) {
             return;

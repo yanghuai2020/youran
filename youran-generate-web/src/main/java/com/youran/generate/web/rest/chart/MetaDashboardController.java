@@ -41,8 +41,7 @@ public class MetaDashboardController extends AbstractController implements MetaD
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<MetaDashboardShowVO> save(@Valid @RequestBody MetaDashboardAddDTO metaDashboardAddDTO) throws Exception {
         MetaDashboardPO metaDashboard = metaDashboardService.save(metaDashboardAddDTO);
-        return ResponseEntity.created(new URI(apiPath + "/meta_dashboard/" + metaDashboard.getDashboardId()))
-            .body(MetaDashboardMapper.INSTANCE.toShowVO(metaDashboard));
+        return ResponseEntity.created(new URI(apiPath + "/meta_dashboard/" + metaDashboard.getDashboardId())).body(MetaDashboardMapper.INSTANCE.toShowVO(metaDashboard));
     }
 
     @Override
@@ -76,7 +75,7 @@ public class MetaDashboardController extends AbstractController implements MetaD
     @Override
     @DeleteMapping
     public ResponseEntity<Integer> deleteBatch(@RequestBody Integer[] id) {
-        if(ArrayUtils.isEmpty(id)){
+        if (ArrayUtils.isEmpty(id)) {
             throw new BusinessException(ErrorCode.PARAM_IS_NULL);
         }
         int count = metaDashboardService.delete(id);

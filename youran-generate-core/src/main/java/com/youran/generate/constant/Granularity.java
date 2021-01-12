@@ -16,51 +16,51 @@ public enum Granularity {
     /**
      * 单个值
      */
-    SINGLE_VALUE(1,"单个值"),
+    SINGLE_VALUE(1, "单个值"),
     /**
      * 10个刻度间隔
      */
-    INTERVAL_10(10,"10个刻度间隔"),
+    INTERVAL_10(10, "10个刻度间隔"),
     /**
      * 100个刻度间隔
      */
-    INTERVAL_100(11,"100个刻度间隔"),
+    INTERVAL_100(11, "100个刻度间隔"),
     /**
      * 1000个刻度间隔
      */
-    INTERVAL_1000(12,"1000个刻度间隔"),
+    INTERVAL_1000(12, "1000个刻度间隔"),
     /**
      * 10000个刻度间隔
      */
-    INTERVAL_10000(13,"10000个刻度间隔"),
+    INTERVAL_10000(13, "10000个刻度间隔"),
     /**
      * 分钟
      */
-    MINUTE(20,"分钟"),
+    MINUTE(20, "分钟"),
     /**
      * 小时
      */
-    HOUR(21,"小时"),
+    HOUR(21, "小时"),
     /**
      * 天
      */
-    DAY(22,"天"),
+    DAY(22, "天"),
     /**
      * 周
      */
-    WEEK(23,"周"),
+    WEEK(23, "周"),
     /**
      * 月
      */
-    MONTH(24,"月"),
+    MONTH(24, "月"),
     /**
      * 季度
      */
-    QUARTER(25,"季度"),
+    QUARTER(25, "季度"),
     /**
      * 年
      */
-    YEAR(26,"年");
+    YEAR(26, "年");
 
 
     private final Integer value;
@@ -89,9 +89,9 @@ public enum Granularity {
         return LOOKUP.get(value);
     }
 
-    public static Granularity findByDesc(String desc){
+    public static Granularity findByDesc(String desc) {
         for (Granularity e : Granularity.values()) {
-            if(e.getDesc().equals(desc)){
+            if (e.getDesc().equals(desc)) {
                 return e;
             }
         }
@@ -131,9 +131,9 @@ public enum Granularity {
      * 校验有效性
      */
     @Check
-    public static final boolean validate(Integer value){
+    public static final boolean validate(Integer value) {
         Granularity theEnum = find(value);
-        return theEnum!=null;
+        return theEnum != null;
     }
 
     public Integer getValue() {

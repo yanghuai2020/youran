@@ -56,8 +56,7 @@ public class GitService {
      * @param lastCommit    上次commit
      * @return
      */
-    public Repository getClonedRemoteRepository(String repoDir, String remoteUrl, GitCredentialDTO credential,
-                                                String oldBranchName, String newBranchName, String lastCommit) {
+    public Repository getClonedRemoteRepository(String repoDir, String remoteUrl, GitCredentialDTO credential, String oldBranchName, String newBranchName, String lastCommit) {
         File repoDirFile = new File(repoDir);
 
         File repoGitFile = new File(repoDirFile, ".git");
@@ -69,8 +68,7 @@ public class GitService {
         if (!parentFile.exists()) {
             parentFile.mkdirs();
         }
-        return this.cloneRemoteRepository(repoDirFile, remoteUrl, credential,
-            oldBranchName, newBranchName, lastCommit);
+        return this.cloneRemoteRepository(repoDirFile, remoteUrl, credential, oldBranchName, newBranchName, lastCommit);
     }
 
     /**
@@ -84,42 +82,26 @@ public class GitService {
      * @param lastCommit    上次commit
      * @return
      */
-    public Repository cloneRemoteRepository(File repoDirFile, String remoteUrl, GitCredentialDTO credential,
-                                            String oldBranchName, String newBranchName, String lastCommit) {
+    public Repository cloneRemoteRepository(File repoDirFile, String remoteUrl, GitCredentialDTO credential, String oldBranchName, String newBranchName, String lastCommit) {
         try {
-            LOGGER.info("从远程仓库clone,远程仓库地址=" + remoteUrl +
-                " , 目录=" + repoDirFile.getPath() +
-                " , 老分支=" + oldBranchName + " , 新分支=" + newBranchName);
-            CloneCommand cloneCommand = Git.cloneRepository()
-                .setURI(remoteUrl)
-                .setCloneAllBranches(true)
-                .setDirectory(repoDirFile);
+            LOGGER.info("从远程仓库clone,远程仓库地址=" + remoteUrl + " , 目录=" + repoDirFile.getPath() + " , 老分支=" + oldBranchName + " , 新分支=" + newBranchName);
+            CloneCommand cloneCommand = Git.cloneRepository().setURI(remoteUrl).setCloneAllBranches(true).setDirectory(repoDirFile);
             // 认证
             CredentialsProvider credentialsProvider = null;
             if (credential != null) {
                 credentialsProvider = new UsernamePasswordCredentialsProvider(credential.getUsername(), credential.getPassword());
             }
-            try (Git git = cloneCommand
-                .setCredentialsProvider(credentialsProvider)
-                .call()) {
+            try (Git git = cloneCommand.setCredentialsProvider(credentialsProvider).call()) {
                 // 列出远程所有分支
-                Collection<Ref> refs = git.lsRemote()
-                    .setCredentialsProvider(credentialsProvider)
-                    .call();
+                Collection<Ref> refs = git.lsRemote().setCredentialsProvider(credentialsProvider).call();
                 // 如果没有任何分支,或不存在旧分支则进行一次提交
                 if (CollectionUtils.isEmpty(refs) || StringUtils.isBlank(oldBranchName)) {
-                    git.commit()
-                        .setAll(true)
-                        .setMessage("首次提交")
-                        .call();
+                    git.commit().setAll(true).setMessage("首次提交").call();
                     // 以后都在auto分支上提交代码
                     this.checkoutNewBranch(git, newBranchName);
                 } else {
                     // 创建本地老分支
-                    git.branchCreate()
-                        .setForce(true)
-                        .setName(oldBranchName)
-                        .setStartPoint("origin/" + oldBranchName).call();
+                    git.branchCreate().setForce(true).setName(oldBranchName).setStartPoint("origin/" + oldBranchName).call();
                     // check到老分支
                     git.checkout().setName(oldBranchName).call();
                     // 校验上一次commit是否匹配
@@ -146,9 +128,7 @@ public class GitService {
      */
     private void checkoutNewBranch(Git git, String newBranchName) throws GitAPIException {
         // 创建分支
-        git.branchCreate()
-            .setName(newBranchName)
-            .call();
+        git.branchCreate().setName(newBranchName).call();
         // checkout分支
         git.checkout().setName(newBranchName).call();
     }
@@ -169,8 +149,7 @@ public class GitService {
         if (iterator.hasNext()) {
             RevCommit next = iterator.next();
             if (!Objects.equals(next.getName(), lastCommit)) {
-                throw new BusinessException(ErrorCode.INNER_DATA_ERROR,
-                    "auto分支被污染了，估计是您在该分支上手动提交了代码，请手动执行reset。友情提示：请不要对auto分支做任何修改");
+                throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "auto分支被污染了，估计是您在该分支上手动提交了代码，请手动执行reset。友情提示：请不要对auto分支做任何修改");
             }
         }
     }
@@ -188,10 +167,7 @@ public class GitService {
             // add所有文件
             git.add().addFilepattern(".").call();
             // 全部提交
-            RevCommit commit = git.commit()
-                .setAll(true)
-                .setMessage(message)
-                .call();
+            RevCommit commit = git.commit().setAll(true).setMessage(message).call();
             return commit.getName();
         } catch (GitAPIException e) {
             LOGGER.error("提交仓库异常", e);
@@ -236,13 +212,11 @@ public class GitService {
             credentialsProvider = new UsernamePasswordCredentialsProvider(credential.getUsername(), credential.getPassword());
         }
         try (Git git = new Git(repository)) {
-            Iterable<PushResult> pushResults = git.push()
-                .setCredentialsProvider(credentialsProvider)
-                .call();
+            Iterable<PushResult> pushResults = git.push().setCredentialsProvider(credentialsProvider).call();
             pushResults.forEach(pushResult -> {
-                if (StringUtils.isNotBlank(pushResult.getMessages())){
+                if (StringUtils.isNotBlank(pushResult.getMessages())) {
                     // 不一定是错误信息，但是大概率是；error级别醒目些。
-                    LOGGER.error("远程仓库信息反馈:"+pushResult.getMessages());
+                    LOGGER.error("远程仓库信息反馈:" + pushResult.getMessages());
                 }
             });
         } catch (GitAPIException e) {
@@ -263,8 +237,7 @@ public class GitService {
         FileRepositoryBuilder builder = new FileRepositoryBuilder();
         Repository repository;
         try {
-            repository = builder.setGitDir(gitDir)
-                .readEnvironment() // scan environment GIT_* variables
+            repository = builder.setGitDir(gitDir).readEnvironment() // scan environment GIT_* variables
                 .findGitDir() // scan up the file system tree
                 .build();
         } catch (IOException e) {
@@ -289,10 +262,7 @@ public class GitService {
             oldTreeIter.reset(reader, oldTreeId);
             CanonicalTreeParser newTreeIter = new CanonicalTreeParser();
             newTreeIter.reset(reader, newTreeId);
-            List<DiffEntry> diffs = git.diff()
-                .setNewTree(newTreeIter)
-                .setOldTree(oldTreeIter)
-                .call();
+            List<DiffEntry> diffs = git.diff().setNewTree(newTreeIter).setOldTree(oldTreeIter).call();
             ByteArrayOutputStream out = new ByteArrayOutputStream();
             DiffFormatter df = new DiffFormatter(out);
             df.setRepository(repository);

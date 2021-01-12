@@ -24,6 +24,7 @@ public class DimensionService {
     private MetaChartSourceItemService metaChartSourceItemService;
     @Autowired
     private MetaProjectService metaProjectService;
+
     /**
      * 【维度】数据预处理
      *
@@ -50,8 +51,7 @@ public class DimensionService {
     }
 
     public DimensionPO doSave(DimensionAddDTO addDTO) {
-        DimensionPO po = MetaChartSourceItemMapper.INSTANCE
-            .fromDimensionAddDTO(addDTO);
+        DimensionPO po = MetaChartSourceItemMapper.INSTANCE.fromDimensionAddDTO(addDTO);
         this.preparePO(po);
         metaChartSourceItemService.doSave(po);
         return po;

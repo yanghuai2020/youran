@@ -30,9 +30,7 @@ public interface MetaProjectAPI {
      * @return
      */
     @ApiOperation(value = "新增项目")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "metaProjectAddDTO", dataType = "MetaProjectAddDTO", value = "新增项目参数", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "metaProjectAddDTO", dataType = "MetaProjectAddDTO", value = "新增项目参数", paramType = "body"),})
     ResponseEntity<MetaProjectShowVO> save(MetaProjectAddDTO metaProjectAddDTO) throws Exception;
 
     /**
@@ -41,9 +39,7 @@ public interface MetaProjectAPI {
      * @param metaProjectUpdateDTO
      */
     @ApiOperation(value = "修改项目")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "metaProjectUpdateDTO", dataType = "MetaProjectUpdateDTO", value = "修改项目参数", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "metaProjectUpdateDTO", dataType = "MetaProjectUpdateDTO", value = "修改项目参数", paramType = "body"),})
     ResponseEntity<MetaProjectShowVO> update(MetaProjectUpdateDTO metaProjectUpdateDTO);
 
     /**
@@ -52,9 +48,7 @@ public interface MetaProjectAPI {
      * @param dto
      */
     @ApiOperation(value = "共享项目")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "dto", dataType = "MetaProjectShareDTO", value = "共享项目入参", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "dto", dataType = "MetaProjectShareDTO", value = "共享项目入参", paramType = "body"),})
     ResponseEntity<Integer> share(MetaProjectShareDTO dto);
 
     /**
@@ -63,9 +57,7 @@ public interface MetaProjectAPI {
      * @param metaProjectQO
      */
     @ApiOperation(value = "查询项目列表")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "metaProjectQO", dataType = "MetaProjectQO", value = "分页查询参数", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "metaProjectQO", dataType = "MetaProjectQO", value = "分页查询参数", paramType = "body"),})
     ResponseEntity<List<MetaProjectListVO>> list(MetaProjectQO metaProjectQO);
 
     /**
@@ -74,9 +66,7 @@ public interface MetaProjectAPI {
      * @param projectId
      */
     @ApiOperation(value = "查看项目详情")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "path"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "path"),})
     ResponseEntity<MetaProjectShowVO> show(Integer projectId);
 
 
@@ -86,9 +76,7 @@ public interface MetaProjectAPI {
      * @param projectId
      */
     @ApiOperation(value = "删除项目")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "path"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "path"),})
     ResponseEntity<Integer> delete(Integer projectId);
 
     /**
@@ -97,16 +85,12 @@ public interface MetaProjectAPI {
      * @param projectId
      */
     @ApiOperation(value = "批量删除项目")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id数组", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id数组", paramType = "body"),})
     ResponseEntity<Integer> deleteBatch(Integer[] projectId);
 
 
     @ApiOperation(value = "查询模块列表")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "path"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "path"),})
     ResponseEntity<List<String>> findModules(Integer projectId);
 
 }

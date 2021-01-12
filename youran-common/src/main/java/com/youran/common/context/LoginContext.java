@@ -12,6 +12,7 @@ public interface LoginContext {
 
     /**
      * 获取当前用户主体信息
+     *
      * @return
      */
     Principal getCurrentUserPrincipal();

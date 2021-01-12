@@ -23,9 +23,7 @@ public class DetailListHelper {
     /**
      * 生成add测试数据
      */
-    public DetailListAddDTO getAddDTO(Integer projectId,
-                                      Integer sourceId,
-                                      List<ChartItemDTO> columnList) {
+    public DetailListAddDTO getAddDTO(Integer projectId, Integer sourceId, List<ChartItemDTO> columnList) {
         DetailListAddDTO dto = new DetailListAddDTO();
         dto.setProjectId(projectId);
         dto.setSourceId(sourceId);
@@ -50,9 +48,7 @@ public class DetailListHelper {
         dto.setChartName(po.getChartName());
         dto.setModule(po.getModule());
         dto.setTitle(po.getTitle());
-        dto.setColumnList(po.getColumnList()
-            .stream()
-            .collect(Collectors.toList()));
+        dto.setColumnList(po.getColumnList().stream().collect(Collectors.toList()));
         dto.setHiddenColumnList(Collections.emptyList());
         dto.setDefaultPageSize(po.getDefaultPageSize());
         dto.setExcelExport(po.getExcelExport());
@@ -64,11 +60,8 @@ public class DetailListHelper {
      *
      * @return
      */
-    public DetailListPO saveExample(Integer projectId,
-                                              Integer sourceId,
-                                              List<ChartItemDTO> columnList) {
-        DetailListAddDTO addDTO = this.getAddDTO(projectId, sourceId,
-            columnList);
+    public DetailListPO saveExample(Integer projectId, Integer sourceId, List<ChartItemDTO> columnList) {
+        DetailListAddDTO addDTO = this.getAddDTO(projectId, sourceId, columnList);
         return aggTableService.save(addDTO);
     }
 

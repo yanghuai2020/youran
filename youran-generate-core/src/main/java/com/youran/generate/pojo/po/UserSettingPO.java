@@ -25,7 +25,6 @@ public class UserSettingPO extends BasePO {
     private Boolean templateEnabled;
 
 
-
     public Integer getId() {
         return this.id;
     }

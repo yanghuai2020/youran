@@ -187,19 +187,6 @@ public class MetaCascadeExtListVO extends AbstractVO {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
-            .append("cascadeExtId", cascadeExtId)
-            .append("fieldId", fieldId)
-            .append("entityId", entityId)
-            .append("alias", alias)
-            .append("list", list)
-            .append("show", show)
-            .append("query", query)
-            .append("cascadeEntityId", cascadeEntityId)
-            .append("cascadeFieldId", cascadeFieldId)
-            .append("cascadeJfieldName", cascadeJfieldName)
-            .append("cascadeFieldDesc", cascadeFieldDesc)
-            .append("createdTime", createdTime)
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("cascadeExtId", cascadeExtId).append("fieldId", fieldId).append("entityId", entityId).append("alias", alias).append("list", list).append("show", show).append("query", query).append("cascadeEntityId", cascadeEntityId).append("cascadeFieldId", cascadeFieldId).append("cascadeJfieldName", cascadeJfieldName).append("cascadeFieldDesc", cascadeFieldDesc).append("createdTime", createdTime).toString();
     }
 }

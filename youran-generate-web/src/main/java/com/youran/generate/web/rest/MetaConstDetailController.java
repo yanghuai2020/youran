@@ -43,8 +43,7 @@ public class MetaConstDetailController extends AbstractController implements Met
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<MetaConstDetailShowVO> save(@Valid @RequestBody MetaConstDetailAddDTO metaConstDetailAddDTO) throws Exception {
         MetaConstDetailPO metaConstDetailPO = metaConstDetailService.save(metaConstDetailAddDTO);
-        return ResponseEntity.created(new URI(apiPath + "/meta_const_detail/" + metaConstDetailPO.getConstDetailId()))
-            .body(MetaConstDetailMapper.INSTANCE.toShowVO(metaConstDetailPO));
+        return ResponseEntity.created(new URI(apiPath + "/meta_const_detail/" + metaConstDetailPO.getConstDetailId())).body(MetaConstDetailMapper.INSTANCE.toShowVO(metaConstDetailPO));
     }
 
     @Override
@@ -63,8 +62,8 @@ public class MetaConstDetailController extends AbstractController implements Met
 
     @Override
     @GetMapping(value = "/lists")
-    public ResponseEntity<Map<String,List<MetaConstDetailListVO>>> lists(@Valid MetaConstDetailQO metaConstDetailQO) {
-        Map<String,List<MetaConstDetailListVO>> map = metaConstDetailService.lists(metaConstDetailQO);
+    public ResponseEntity<Map<String, List<MetaConstDetailListVO>>> lists(@Valid MetaConstDetailQO metaConstDetailQO) {
+        Map<String, List<MetaConstDetailListVO>> map = metaConstDetailService.lists(metaConstDetailQO);
         return ResponseEntity.ok(map);
     }
 

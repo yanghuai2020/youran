@@ -15,10 +15,10 @@ import static com.youran.generate.pojo.example.team.ProjectTeamExample.*;
 @ApiModel(description = "【项目组】详情展示对象")
 public class ProjectTeamShowVO extends AbstractVO {
 
-    @ApiModelProperty(notes = N_TEAM_ID,example = E_TEAM_ID)
+    @ApiModelProperty(notes = N_TEAM_ID, example = E_TEAM_ID)
     private Integer teamId;
 
-    @ApiModelProperty(notes = N_NAME,example = E_NAME)
+    @ApiModelProperty(notes = N_NAME, example = E_NAME)
     private String name;
 
 
@@ -37,7 +37,6 @@ public class ProjectTeamShowVO extends AbstractVO {
     public void setName(String name) {
         this.name = name;
     }
-
 
 
 }

@@ -22,9 +22,7 @@ public interface ReverseEngineeringAPI {
      * @return
      */
     @ApiOperation(value = "校验语法")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "dto", dataType = "ReverseEngineeringDTO", value = "反向工程参数", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "dto", dataType = "ReverseEngineeringDTO", value = "反向工程参数", paramType = "body"),})
     void check(ReverseEngineeringDTO dto);
 
     /**
@@ -34,9 +32,7 @@ public interface ReverseEngineeringAPI {
      * @return
      */
     @ApiOperation(value = "执行DDL反向工程")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "dto", dataType = "ReverseEngineeringDTO", value = "反向工程参数", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "dto", dataType = "ReverseEngineeringDTO", value = "反向工程参数", paramType = "body"),})
     void execute(ReverseEngineeringDTO dto);
 
 

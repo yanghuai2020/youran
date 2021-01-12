@@ -46,18 +46,14 @@ public class ErDiagramController extends AbstractController implements ErDiagram
 
     @Override
     @GetMapping(value = "/show")
-    public ResponseEntity<ErDiagramVO> show(@RequestParam Integer projectId,
-                                            @RequestParam(required = false) List<Integer> entityIds) {
+    public ResponseEntity<ErDiagramVO> show(@RequestParam Integer projectId, @RequestParam(required = false) List<Integer> entityIds) {
 
         // 如果没有传入实体id列表，则获取项目下所有实体id
         if (CollectionUtils.isEmpty(entityIds)) {
             entityIds = metaEntityService.findIdsByProject(projectId);
         }
         // 获取组装完的实体列表
-        List<MetaEntityPO> metaEntities = entityIds
-            .stream()
-            .map(entityId -> metaQueryAssembleService.getAssembledEntity(entityId, false))
-            .collect(Collectors.toList());
+        List<MetaEntityPO> metaEntities = entityIds.stream().map(entityId -> metaQueryAssembleService.getAssembledEntity(entityId, false)).collect(Collectors.toList());
         // 组装外键实体和外键字段
         metaQueryAssembleService.assembleForeign(metaEntities, false);
         // 查询多对多列表

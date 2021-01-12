@@ -42,52 +42,34 @@ public class MetaManyToManyControllerTest extends AbstractWebTest {
 
     @Test
     public void save() throws Exception {
-        MetaManyToManyAddDTO addDTO = MetaManyToManyHelper.getAddDTO(metaProject.getProjectId(),
-            metaEntity1.getEntityId(), metaEntity2.getEntityId());
-        restMockMvc.perform(post(getApiPath() + "/meta_mtm/save")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(addDTO)))
-            .andExpect(MockMvcResultMatchers.status().isCreated());
+        MetaManyToManyAddDTO addDTO = MetaManyToManyHelper.getAddDTO(metaProject.getProjectId(), metaEntity1.getEntityId(), metaEntity2.getEntityId());
+        restMockMvc.perform(post(getApiPath() + "/meta_mtm/save").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(addDTO))).andExpect(MockMvcResultMatchers.status().isCreated());
 
     }
 
     @Test
     public void update() throws Exception {
-        MetaManyToManyPO metaManyToMany = generateHelper.saveManyToManyExample(metaProject.getProjectId(),
-            metaEntity1.getEntityId(), metaEntity2.getEntityId());
+        MetaManyToManyPO metaManyToMany = generateHelper.saveManyToManyExample(metaProject.getProjectId(), metaEntity1.getEntityId(), metaEntity2.getEntityId());
         MetaManyToManyUpdateDTO updateDTO = MetaManyToManyHelper.getUpdateDTO(metaManyToMany);
-        restMockMvc.perform(put(getApiPath() + "/meta_mtm/update")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(updateDTO)))
-            .andExpect(MockMvcResultMatchers.status().isOk());
+        restMockMvc.perform(put(getApiPath() + "/meta_mtm/update").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(updateDTO))).andExpect(MockMvcResultMatchers.status().isOk());
     }
 
 
     @Test
     public void list() throws Exception {
-        generateHelper.saveManyToManyExample(metaProject.getProjectId(),
-            metaEntity1.getEntityId(), metaEntity2.getEntityId());
-        restMockMvc.perform(get(getApiPath() + "/meta_mtm/list")
-            .param("projectId", metaProject.getProjectId() + ""))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(jsonPath("$.length()").value(is(1)));
+        generateHelper.saveManyToManyExample(metaProject.getProjectId(), metaEntity1.getEntityId(), metaEntity2.getEntityId());
+        restMockMvc.perform(get(getApiPath() + "/meta_mtm/list").param("projectId", metaProject.getProjectId() + "")).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(jsonPath("$.length()").value(is(1)));
     }
 
     @Test
     public void show() throws Exception {
-        MetaManyToManyPO metaManyToMany = generateHelper.saveManyToManyExample(metaProject.getProjectId(),
-            metaEntity1.getEntityId(), metaEntity2.getEntityId());
-        restMockMvc.perform(get(getApiPath() + "/meta_mtm/{fieldId}", metaManyToMany.getMtmId()))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(jsonPath("$.mtmId").value(is(metaManyToMany.getMtmId())));
+        MetaManyToManyPO metaManyToMany = generateHelper.saveManyToManyExample(metaProject.getProjectId(), metaEntity1.getEntityId(), metaEntity2.getEntityId());
+        restMockMvc.perform(get(getApiPath() + "/meta_mtm/{fieldId}", metaManyToMany.getMtmId())).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(jsonPath("$.mtmId").value(is(metaManyToMany.getMtmId())));
     }
 
     @Test
     public void del() throws Exception {
-        MetaManyToManyPO metaManyToMany = generateHelper.saveManyToManyExample(metaProject.getProjectId(),
-            metaEntity1.getEntityId(), metaEntity2.getEntityId());
-        restMockMvc.perform(delete(getApiPath() + "/meta_mtm/{fieldId}", metaManyToMany.getMtmId()))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(jsonPath("$").value(is(1)));
+        MetaManyToManyPO metaManyToMany = generateHelper.saveManyToManyExample(metaProject.getProjectId(), metaEntity1.getEntityId(), metaEntity2.getEntityId());
+        restMockMvc.perform(delete(getApiPath() + "/meta_mtm/{fieldId}", metaManyToMany.getMtmId())).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(jsonPath("$").value(is(1)));
     }
 }

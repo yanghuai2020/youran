@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MetaChartHelper {
 
-    public ChartItemDTO getChartItemDTOExample(Integer sourceItemId){
+    public ChartItemDTO getChartItemDTOExample(Integer sourceItemId) {
         ChartItemDTO dto = new ChartItemDTO();
         dto.setSourceItemId(sourceItemId);
         dto.setTitleAlias("alias");

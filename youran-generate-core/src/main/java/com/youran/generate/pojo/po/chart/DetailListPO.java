@@ -58,8 +58,7 @@ public class DetailListPO extends MetaChartPO {
      * @param featureDeserialize
      * @return
      */
-    public static DetailListPO fromSuperType(MetaChartPO superPO,
-                                             boolean featureDeserialize) {
+    public static DetailListPO fromSuperType(MetaChartPO superPO, boolean featureDeserialize) {
         if (!ChartType.DETAIL_LIST.getValue().equals(superPO.getChartType())) {
             throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "类型转换异常");
         }
@@ -83,21 +82,18 @@ public class DetailListPO extends MetaChartPO {
             }
         }
         // 过滤掉无效的列
-        this.columnList = this.columnList.stream().filter(item -> item.getSourceItem() != null)
-            .collect(Collectors.toList());
+        this.columnList = this.columnList.stream().filter(item -> item.getSourceItem() != null).collect(Collectors.toList());
     }
 
     @Override
     public void check(Map<Integer, MetaEntityPO> entityMap, Map<Integer, MetaManyToManyPO> mtmMap) {
         super.check(entityMap, mtmMap);
         if (CollectionUtils.isEmpty(columnList)) {
-            throw new BusinessException(ErrorCode.INNER_DATA_ERROR,
-                "图表【" + this.getTitle() + "】未配置明细列");
+            throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "图表【" + this.getTitle() + "】未配置明细列");
         }
         for (ChartItemDTO chartItem : columnList) {
             if (chartItem.getSourceItem() == null) {
-                throw new BusinessException(ErrorCode.INNER_DATA_ERROR,
-                    "图表【" + this.getTitle() + "】明细列不存在：" + chartItem.getTitleAlias());
+                throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "图表【" + this.getTitle() + "】明细列不存在：" + chartItem.getTitleAlias());
             }
         }
     }

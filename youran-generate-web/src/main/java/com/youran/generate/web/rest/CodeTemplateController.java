@@ -53,8 +53,7 @@ public class CodeTemplateController extends AbstractController implements CodeTe
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<CodeTemplateShowVO> save(@Valid @RequestBody CodeTemplateAddDTO codeTemplateAddDTO) throws Exception {
         CodeTemplatePO codeTemplate = codeTemplateService.save(codeTemplateAddDTO);
-        return ResponseEntity.created(new URI(apiPath + "/code_template/" + codeTemplate.getTemplateId()))
-            .body(CodeTemplateMapper.INSTANCE.toShowVO(codeTemplate));
+        return ResponseEntity.created(new URI(apiPath + "/code_template/" + codeTemplate.getTemplateId())).body(CodeTemplateMapper.INSTANCE.toShowVO(codeTemplate));
     }
 
     @Override
@@ -118,8 +117,7 @@ public class CodeTemplateController extends AbstractController implements CodeTe
             this.replyNotFound(response);
         } else {
             CodeTemplatePO codeTemplate = codeTemplateService.getCodeTemplate(templateId, true);
-            String downloadFileName = codeTemplate.getName() + "-"
-                + codeTemplate.getTemplateVersion() + ".zip";
+            String downloadFileName = codeTemplate.getName() + "-" + codeTemplate.getTemplateVersion() + ".zip";
             this.replyDownloadFile(response, zipFile, downloadFileName);
         }
     }
@@ -129,8 +127,7 @@ public class CodeTemplateController extends AbstractController implements CodeTe
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<CodeTemplateShowVO> copy(@PathVariable Integer templateId) throws Exception {
         CodeTemplatePO codeTemplate = codeTemplateAssembleAndCopyService.copyCodeTemplate(templateId);
-        return ResponseEntity.created(new URI(apiPath + "/code_template/" + codeTemplate.getTemplateId()))
-            .body(CodeTemplateMapper.INSTANCE.toShowVO(codeTemplate));
+        return ResponseEntity.created(new URI(apiPath + "/code_template/" + codeTemplate.getTemplateId())).body(CodeTemplateMapper.INSTANCE.toShowVO(codeTemplate));
     }
 
     @Override
@@ -145,8 +142,7 @@ public class CodeTemplateController extends AbstractController implements CodeTe
         }
         file.transferTo(zipFile);
         CodeTemplatePO codeTemplate = templateImportExportService.importTemplate(zipFile);
-        return ResponseEntity.created(new URI(apiPath + "/code_template/" + codeTemplate.getTemplateId()))
-            .body(CodeTemplateMapper.INSTANCE.toShowVO(codeTemplate));
+        return ResponseEntity.created(new URI(apiPath + "/code_template/" + codeTemplate.getTemplateId())).body(CodeTemplateMapper.INSTANCE.toShowVO(codeTemplate));
     }
 
 }

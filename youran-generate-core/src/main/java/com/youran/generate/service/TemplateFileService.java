@@ -50,7 +50,7 @@ public class TemplateFileService {
      */
     public void checkDirPathExists(Integer templateId, String fileDir) {
         if (templateFileDAO.dirPathExists(templateId, TemplateFileType.PARENT_PATH.getValue(), fileDir)) {
-            throw new BusinessException(ErrorCode.DUPLICATE_KEY,"当前目录下已经存在目录渲染文件");
+            throw new BusinessException(ErrorCode.DUPLICATE_KEY, "当前目录下已经存在目录渲染文件");
         }
     }
 
@@ -82,7 +82,7 @@ public class TemplateFileService {
         templateFile.setContent("");
         templateFile.setFileDir(this.normalizeTemplateFileDir(templateFile.getFileDir()));
         // 非普通文件，则上下文类型一律都是GLOBAL全局
-        if(!templateFile.isGeneralFile()){
+        if (!templateFile.isGeneralFile()) {
             templateFile.setContextType(ContextType.GLOBAL.getValue());
         }
         // 唯一性校验

@@ -46,37 +46,7 @@ public interface MetaFieldMapper {
 
 
     @BeanMapping(ignoreByDefault = true)
-    @Mappings({
-        @Mapping(target = "jfieldName"),
-        @Mapping(target = "fieldName"),
-        @Mapping(target = "jfieldType"),
-        @Mapping(target = "fieldType"),
-        @Mapping(target = "fieldDesc"),
-        @Mapping(target = "fieldExample"),
-        @Mapping(target = "fieldComment"),
-        @Mapping(target = "fieldLength"),
-        @Mapping(target = "fieldScale"),
-        @Mapping(target = "primaryKey"),
-        @Mapping(target = "autoIncrement"),
-        @Mapping(target = "pkStrategy"),
-        @Mapping(target = "notNull"),
-        @Mapping(target = "defaultValue"),
-        @Mapping(target = "foreignKey"),
-        @Mapping(target = "foreignFieldId"),
-        @Mapping(target = "editType"),
-        @Mapping(target = "dicType"),
-        @Mapping(target = "insert"),
-        @Mapping(target = "update"),
-        @Mapping(target = "list"),
-        @Mapping(target = "columnWidth"),
-        @Mapping(target = "listSort"),
-        @Mapping(target = "show"),
-        @Mapping(target = "query"),
-        @Mapping(target = "queryType"),
-        @Mapping(target = "orderNo"),
-        @Mapping(target = "specialField"),
-        @Mapping(target = "labels"),
-    })
+    @Mappings({@Mapping(target = "jfieldName"), @Mapping(target = "fieldName"), @Mapping(target = "jfieldType"), @Mapping(target = "fieldType"), @Mapping(target = "fieldDesc"), @Mapping(target = "fieldExample"), @Mapping(target = "fieldComment"), @Mapping(target = "fieldLength"), @Mapping(target = "fieldScale"), @Mapping(target = "primaryKey"), @Mapping(target = "autoIncrement"), @Mapping(target = "pkStrategy"), @Mapping(target = "notNull"), @Mapping(target = "defaultValue"), @Mapping(target = "foreignKey"), @Mapping(target = "foreignFieldId"), @Mapping(target = "editType"), @Mapping(target = "dicType"), @Mapping(target = "insert"), @Mapping(target = "update"), @Mapping(target = "list"), @Mapping(target = "columnWidth"), @Mapping(target = "listSort"), @Mapping(target = "show"), @Mapping(target = "query"), @Mapping(target = "queryType"), @Mapping(target = "orderNo"), @Mapping(target = "specialField"), @Mapping(target = "labels"),})
     MetaFieldPO copy(MetaFieldPO field);
 
 

@@ -90,10 +90,7 @@ public class QueryType {
 
     @Check
     public static final boolean check(int value) {
-        return EQ == value || LIKE == value
-            || GT == value || GE == value
-            || LT == value || LE == value
-            || BETWEEN == value || IN == value;
+        return EQ == value || LIKE == value || GT == value || GE == value || LT == value || LE == value || BETWEEN == value || IN == value;
     }
 
     /**

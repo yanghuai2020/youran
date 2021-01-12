@@ -612,22 +612,16 @@ public class MetaEntityPO extends BasePO implements Comparable<MetaEntityPO> {
             return false;
         }
         MetaEntityPO that = (MetaEntityPO) o;
-        return new EqualsBuilder()
-            .append(entityId, that.entityId)
-            .isEquals();
+        return new EqualsBuilder().append(entityId, that.entityId).isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37)
-            .append(entityId)
-            .toHashCode();
+        return new HashCodeBuilder(17, 37).append(entityId).toHashCode();
     }
 
     @Override
     public int compareTo(MetaEntityPO o) {
-        return new CompareToBuilder()
-            .append(this.entityId, o.entityId)
-            .toComparison();
+        return new CompareToBuilder().append(this.entityId, o.entityId).toComparison();
     }
 }

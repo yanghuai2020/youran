@@ -131,7 +131,7 @@ public class ProgressVO<T> extends AbstractVO {
      * @param msg
      * @return
      */
-    public static <T> ProgressVO<T> success(String msg,T data) {
+    public static <T> ProgressVO<T> success(String msg, T data) {
         ProgressVO<T> done = done(msg, SUCCESS, 100);
         done.setData(data);
         return done;
@@ -209,11 +209,6 @@ public class ProgressVO<T> extends AbstractVO {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
-            .append("sessionId", sessionId)
-            .append("status", status)
-            .append("percentage", percentage)
-            .append("msg", msg)
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("sessionId", sessionId).append("status", status).append("percentage", percentage).append("msg", msg).toString();
     }
 }

@@ -48,11 +48,7 @@ public interface MetaIndexMapper {
     MetaIndexShowVO toShowVO(MetaIndexPO metaIndexPO);
 
     @BeanMapping(ignoreByDefault = true)
-    @Mappings({
-        @Mapping(target = "indexName"),
-        @Mapping(target = "unique"),
-        @Mapping(target = "uniqueCheck"),
-    })
+    @Mappings({@Mapping(target = "indexName"), @Mapping(target = "unique"), @Mapping(target = "uniqueCheck"),})
     MetaIndexPO copy(MetaIndexPO index);
 
 }

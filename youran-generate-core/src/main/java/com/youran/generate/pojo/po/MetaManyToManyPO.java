@@ -138,8 +138,7 @@ public class MetaManyToManyPO extends BasePO {
         } else if (Objects.equals(entityId, entityId2)) {
             return f2;
         }
-        throw new BusinessException(ErrorCode.INNER_DATA_ERROR,
-            "获取多对多实体特性异常，mtm_id=" + mtmId + ",entityId=" + entityId);
+        throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "获取多对多实体特性异常，mtm_id=" + mtmId + ",entityId=" + entityId);
     }
 
     /**
@@ -154,8 +153,7 @@ public class MetaManyToManyPO extends BasePO {
         } else if (Objects.equals(entityId, entityId2)) {
             return holdRefer2;
         }
-        throw new BusinessException(ErrorCode.INNER_DATA_ERROR,
-            "获取多对多实体是否持有引用异常，mtm_id=" + mtmId + ",entityId=" + entityId);
+        throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "获取多对多实体是否持有引用异常，mtm_id=" + mtmId + ",entityId=" + entityId);
     }
 
     /**
@@ -179,8 +177,7 @@ public class MetaManyToManyPO extends BasePO {
                 return fkAliasForJava2;
             }
         }
-        throw new BusinessException(ErrorCode.INNER_DATA_ERROR,
-            "获取多对多外键字段别名异常，mtm_id=" + mtmId + ",entityId=" + entityId);
+        throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "获取多对多外键字段别名异常，mtm_id=" + mtmId + ",entityId=" + entityId);
     }
 
 
@@ -196,8 +193,7 @@ public class MetaManyToManyPO extends BasePO {
         } else if (Objects.equals(entityId2, entityId)) {
             return cascadeExtList2;
         } else {
-            throw new BusinessException(ErrorCode.INNER_DATA_ERROR,
-                "获取多对多级联扩展数据异常，mtm_id=" + mtmId + ",entityId=" + entityId);
+            throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "获取多对多级联扩展数据异常，mtm_id=" + mtmId + ",entityId=" + entityId);
         }
     }
 

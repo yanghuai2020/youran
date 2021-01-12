@@ -40,10 +40,7 @@ public class MetaConstDetailControllerTest extends AbstractWebTest {
     @Test
     public void save() throws Exception {
         MetaConstDetailAddDTO addDTO = MetaConstDetailHelper.getAddDTO(metaConst.getConstId());
-        restMockMvc.perform(post(getApiPath() + "/meta_const_detail/save")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(addDTO)))
-            .andExpect(MockMvcResultMatchers.status().isCreated());
+        restMockMvc.perform(post(getApiPath() + "/meta_const_detail/save").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(addDTO))).andExpect(MockMvcResultMatchers.status().isCreated());
 
     }
 
@@ -51,36 +48,26 @@ public class MetaConstDetailControllerTest extends AbstractWebTest {
     public void update() throws Exception {
         MetaConstDetailPO metaConstDetail = generateHelper.saveConstDetailExample(metaConst.getConstId());
         MetaConstDetailUpdateDTO updateDTO = MetaConstDetailHelper.getUpdateDTO(metaConstDetail);
-        restMockMvc.perform(put(getApiPath() + "/meta_const_detail/update")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(updateDTO)))
-            .andExpect(MockMvcResultMatchers.status().isOk());
+        restMockMvc.perform(put(getApiPath() + "/meta_const_detail/update").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(updateDTO))).andExpect(MockMvcResultMatchers.status().isOk());
     }
 
 
     @Test
     public void list() throws Exception {
         generateHelper.saveConstDetailExample(metaConst.getConstId());
-        restMockMvc.perform(get(getApiPath() + "/meta_const_detail/list")
-            .param("constId", metaConst.getConstId() + ""))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(jsonPath("$.length()").value(is(1)));
+        restMockMvc.perform(get(getApiPath() + "/meta_const_detail/list").param("constId", metaConst.getConstId() + "")).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(jsonPath("$.length()").value(is(1)));
     }
 
     @Test
     public void show() throws Exception {
         MetaConstDetailPO metaConstDetail = generateHelper.saveConstDetailExample(metaConst.getConstId());
-        restMockMvc.perform(get(getApiPath() + "/meta_const_detail/{constId}", metaConstDetail.getConstId()))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(jsonPath("$.constId").value(is(metaConstDetail.getConstId())));
+        restMockMvc.perform(get(getApiPath() + "/meta_const_detail/{constId}", metaConstDetail.getConstId())).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(jsonPath("$.constId").value(is(metaConstDetail.getConstId())));
     }
 
     @Test
     public void del() throws Exception {
         MetaConstDetailPO metaConstDetail = generateHelper.saveConstDetailExample(metaConst.getConstId());
-        restMockMvc.perform(delete(getApiPath() + "/meta_const_detail/{constId}", metaConstDetail.getConstId()))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(jsonPath("$").value(is(1)));
+        restMockMvc.perform(delete(getApiPath() + "/meta_const_detail/{constId}", metaConstDetail.getConstId())).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(jsonPath("$").value(is(1)));
     }
 
 

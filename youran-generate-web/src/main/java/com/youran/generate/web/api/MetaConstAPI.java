@@ -26,53 +26,41 @@ public interface MetaConstAPI {
      * 新增常量
      */
     @ApiOperation(value = "新增常量")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "metaConstAddDTO", dataType = "MetaConstAddDTO", value = "新增常量参数", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "metaConstAddDTO", dataType = "MetaConstAddDTO", value = "新增常量参数", paramType = "body"),})
     ResponseEntity<MetaConstShowVO> save(MetaConstAddDTO metaConstAddDTO) throws Exception;
 
     /**
      * 修改常量
      */
     @ApiOperation(value = "修改常量")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "metaConstUpdateDTO", dataType = "MetaConstUpdateDTO", value = "修改常量参数", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "metaConstUpdateDTO", dataType = "MetaConstUpdateDTO", value = "修改常量参数", paramType = "body"),})
     ResponseEntity<MetaConstShowVO> update(MetaConstUpdateDTO metaConstUpdateDTO);
 
     /**
      * 查询常量列表
      */
     @ApiOperation(value = "查询常量列表")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "metaConstQO", dataType = "MetaConstQO", value = "分页查询参数", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "metaConstQO", dataType = "MetaConstQO", value = "分页查询参数", paramType = "body"),})
     ResponseEntity<List<MetaConstListVO>> list(MetaConstQO metaConstQO);
 
     /**
      * 查看常量详情
      */
     @ApiOperation(value = "查看常量详情")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "constId", dataType = "int", value = "常量id", paramType = "path"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "constId", dataType = "int", value = "常量id", paramType = "path"),})
     ResponseEntity<MetaConstShowVO> show(Integer constId);
 
     /**
      * 删除常量
      */
     @ApiOperation(value = "删除常量")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "constId", dataType = "int", value = "常量id", paramType = "path"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "constId", dataType = "int", value = "常量id", paramType = "path"),})
     ResponseEntity<Integer> delete(Integer constId);
 
     /**
      * 批量删除常量
      */
     @ApiOperation(value = "批量删除常量")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "constId", dataType = "int", value = "常量id数组", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "constId", dataType = "int", value = "常量id数组", paramType = "body"),})
     ResponseEntity<Integer> deleteBatch(Integer[] constId);
 }

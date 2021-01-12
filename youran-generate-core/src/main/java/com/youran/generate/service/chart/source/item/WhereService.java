@@ -24,6 +24,7 @@ public class WhereService {
     private MetaChartSourceItemService metaChartSourceItemService;
     @Autowired
     private MetaProjectService metaProjectService;
+
     /**
      * 【where条件】数据预处理
      *
@@ -50,8 +51,7 @@ public class WhereService {
     }
 
     public WherePO doSave(WhereAddDTO addDTO) {
-        WherePO po = MetaChartSourceItemMapper.INSTANCE
-            .fromWhereAddDTO(addDTO);
+        WherePO po = MetaChartSourceItemMapper.INSTANCE.fromWhereAddDTO(addDTO);
         this.preparePO(po);
         metaChartSourceItemService.doSave(po);
         return po;

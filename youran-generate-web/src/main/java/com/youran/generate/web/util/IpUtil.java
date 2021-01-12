@@ -66,10 +66,7 @@ public class IpUtil {
      */
     public static boolean isIpv4(String ipAddress) {
 
-        String ip = "^(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|[1-9])\\."
-            + "(00?\\d|1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)\\."
-            + "(00?\\d|1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)\\."
-            + "(00?\\d|1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)$";
+        String ip = "^(1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|[1-9])\\." + "(00?\\d|1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)\\." + "(00?\\d|1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)\\." + "(00?\\d|1\\d{2}|2[0-4]\\d|25[0-5]|[1-9]\\d|\\d)$";
 
         Pattern pattern = Pattern.compile(ip);
         Matcher matcher = pattern.matcher(ipAddress);
@@ -95,15 +92,12 @@ public class IpUtil {
                 while (address.hasMoreElements()) {
                     ip = (InetAddress) address.nextElement();
 
-                    if ((!ip.isSiteLocalAddress()) && (!ip.isLoopbackAddress()) &&
-                        (ip.getHostAddress().indexOf(":") == -1)) {
+                    if ((!ip.isSiteLocalAddress()) && (!ip.isLoopbackAddress()) && (ip.getHostAddress().indexOf(":") == -1)) {
                         netip = ip.getHostAddress();
                         finded = true;
                         break;
                     }
-                    if ((ip.isSiteLocalAddress()) &&
-                        (!ip.isLoopbackAddress()) &&
-                        (ip.getHostAddress().indexOf(":") == -1)) {
+                    if ((ip.isSiteLocalAddress()) && (!ip.isLoopbackAddress()) && (ip.getHostAddress().indexOf(":") == -1)) {
                         localip = ip.getHostAddress();
                     }
                 }

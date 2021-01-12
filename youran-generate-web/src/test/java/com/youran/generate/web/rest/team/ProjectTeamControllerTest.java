@@ -34,10 +34,7 @@ public class ProjectTeamControllerTest extends AbstractWebTest {
     @Test
     public void save() throws Exception {
         ProjectTeamAddDTO addDTO = projectTeamHelper.getProjectTeamAddDTO();
-        restMockMvc.perform(post(getApiPath() + "/project_team")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(addDTO)))
-            .andExpect(status().isCreated());
+        restMockMvc.perform(post(getApiPath() + "/project_team").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(addDTO))).andExpect(status().isCreated());
     }
 
     /**
@@ -47,10 +44,7 @@ public class ProjectTeamControllerTest extends AbstractWebTest {
     public void update() throws Exception {
         ProjectTeamPO projectTeam = projectTeamHelper.saveProjectTeamExample();
         ProjectTeamUpdateDTO updateDTO = projectTeamHelper.getProjectTeamUpdateDTO(projectTeam);
-        restMockMvc.perform(put(getApiPath() + "/project_team")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(updateDTO)))
-            .andExpect(status().isOk());
+        restMockMvc.perform(put(getApiPath() + "/project_team").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(updateDTO))).andExpect(status().isOk());
     }
 
     /**
@@ -59,9 +53,7 @@ public class ProjectTeamControllerTest extends AbstractWebTest {
     @Test
     public void list() throws Exception {
         ProjectTeamPO projectTeam = projectTeamHelper.saveProjectTeamExample();
-        restMockMvc.perform(get(getApiPath() + "/project_team"))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.length()").value(is(1)));
+        restMockMvc.perform(get(getApiPath() + "/project_team")).andExpect(status().isOk()).andExpect(jsonPath("$.length()").value(is(1)));
     }
 
     /**
@@ -70,9 +62,7 @@ public class ProjectTeamControllerTest extends AbstractWebTest {
     @Test
     public void findOptions() throws Exception {
         ProjectTeamPO projectTeam = projectTeamHelper.saveProjectTeamExample();
-        restMockMvc.perform(get(getApiPath() + "/project_team/options"))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.length()").value(is(1)));
+        restMockMvc.perform(get(getApiPath() + "/project_team/options")).andExpect(status().isOk()).andExpect(jsonPath("$.length()").value(is(1)));
     }
 
     /**
@@ -81,8 +71,7 @@ public class ProjectTeamControllerTest extends AbstractWebTest {
     @Test
     public void show() throws Exception {
         ProjectTeamPO projectTeam = projectTeamHelper.saveProjectTeamExample();
-        restMockMvc.perform(get(getApiPath() + "/project_team/{teamId}", projectTeam.getTeamId()))
-            .andExpect(status().isOk());
+        restMockMvc.perform(get(getApiPath() + "/project_team/{teamId}", projectTeam.getTeamId())).andExpect(status().isOk());
     }
 
     /**
@@ -91,13 +80,8 @@ public class ProjectTeamControllerTest extends AbstractWebTest {
     @Test
     public void deleteBatch() throws Exception {
         ProjectTeamPO projectTeam = projectTeamHelper.saveProjectTeamExample();
-        restMockMvc.perform(delete(getApiPath() + "/project_team")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(Lists.newArrayList(projectTeam.getTeamId()))))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$").value(is(1)));
+        restMockMvc.perform(delete(getApiPath() + "/project_team").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(Lists.newArrayList(projectTeam.getTeamId())))).andExpect(status().isOk()).andExpect(jsonPath("$").value(is(1)));
     }
-
 
 
 }

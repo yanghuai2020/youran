@@ -17,8 +17,7 @@ public class LabelType {
 
     @Check
     public static final boolean check(String value) {
-        return PROJECT.equals(value) || ENTITY.equals(value)
-            || FIELD.equals(value);
+        return PROJECT.equals(value) || ENTITY.equals(value) || FIELD.equals(value);
     }
 
 }

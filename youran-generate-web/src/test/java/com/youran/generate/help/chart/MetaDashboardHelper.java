@@ -17,9 +17,10 @@ public class MetaDashboardHelper {
 
     /**
      * 生成add测试数据
+     *
      * @return
      */
-    public MetaDashboardAddDTO getMetaDashboardAddDTO(){
+    public MetaDashboardAddDTO getMetaDashboardAddDTO() {
         MetaDashboardAddDTO dto = new MetaDashboardAddDTO();
         dto.setName(E_NAME);
         dto.setTitle(E_TITLE);
@@ -31,9 +32,10 @@ public class MetaDashboardHelper {
 
     /**
      * 生成update测试数据
+     *
      * @return
      */
-    public MetaDashboardUpdateDTO getMetaDashboardUpdateDTO(MetaDashboardPO metaDashboard){
+    public MetaDashboardUpdateDTO getMetaDashboardUpdateDTO(MetaDashboardPO metaDashboard) {
         MetaDashboardUpdateDTO dto = new MetaDashboardUpdateDTO();
         dto.setDashboardId(metaDashboard.getDashboardId());
         dto.setName(metaDashboard.getName());
@@ -45,13 +47,13 @@ public class MetaDashboardHelper {
 
     /**
      * 保存示例
+     *
      * @return
      */
-    public MetaDashboardPO saveMetaDashboardExample(){
+    public MetaDashboardPO saveMetaDashboardExample() {
         MetaDashboardAddDTO addDTO = this.getMetaDashboardAddDTO();
         return metaDashboardService.save(addDTO);
     }
-
 
 
 }

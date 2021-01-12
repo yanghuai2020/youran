@@ -129,15 +129,6 @@ public class GenHistoryListVO extends AbstractVO {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
-            .append("historyId", historyId)
-            .append("projectId", projectId)
-            .append("remoteUrl", remoteUrl)
-            .append("commit", commit)
-            .append("branch", branch)
-            .append("sysVersion", sysVersion)
-            .append("projectVersion", projectVersion)
-            .append("createdTime", createdTime)
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("historyId", historyId).append("projectId", projectId).append("remoteUrl", remoteUrl).append("commit", commit).append("branch", branch).append("sysVersion", sysVersion).append("projectVersion", projectVersion).append("createdTime", createdTime).toString();
     }
 }

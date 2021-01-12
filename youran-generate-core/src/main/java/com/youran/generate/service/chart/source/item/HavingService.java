@@ -24,6 +24,7 @@ public class HavingService {
     private MetaChartSourceItemService metaChartSourceItemService;
     @Autowired
     private MetaProjectService metaProjectService;
+
     /**
      * 【having条件】数据预处理
      *
@@ -50,8 +51,7 @@ public class HavingService {
     }
 
     public HavingPO doSave(HavingAddDTO addDTO) {
-        HavingPO po = MetaChartSourceItemMapper.INSTANCE
-            .fromHavingAddDTO(addDTO);
+        HavingPO po = MetaChartSourceItemMapper.INSTANCE.fromHavingAddDTO(addDTO);
         this.preparePO(po);
         metaChartSourceItemService.doSave(po);
         return po;

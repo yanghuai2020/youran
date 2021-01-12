@@ -33,10 +33,7 @@ public class AggOrderPO extends MetaChartSourceItemPO {
     public void assembleItem(MetaChartSourcePO chartSource) {
         super.assembleItem(chartSource);
         Map<Integer, MetricsPO> metricsMap = chartSource.getMetricsMap();
-        metricsMap.entrySet().stream()
-            .filter(entry -> entry.getKey().equals(this.getParentId()))
-            .findFirst()
-            .ifPresent(entry -> this.setParent(entry.getValue()));
+        metricsMap.entrySet().stream().filter(entry -> entry.getKey().equals(this.getParentId())).findFirst().ifPresent(entry -> this.setParent(entry.getValue()));
     }
 
     /**
@@ -46,8 +43,7 @@ public class AggOrderPO extends MetaChartSourceItemPO {
      * @param featureDeserialize
      * @return
      */
-    public static AggOrderPO fromSuperType(MetaChartSourceItemPO superPO,
-                                           boolean featureDeserialize) {
+    public static AggOrderPO fromSuperType(MetaChartSourceItemPO superPO, boolean featureDeserialize) {
         if (!SourceItemType.AGG_ORDER.getValue().equals(superPO.getType())) {
             throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "类型转换异常");
         }
@@ -80,7 +76,7 @@ public class AggOrderPO extends MetaChartSourceItemPO {
         this.sortType = sortType;
     }
 
-    static class FeatureDTO{
+    static class FeatureDTO {
         private Integer sortType;
 
         public Integer getSortType() {

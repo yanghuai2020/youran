@@ -94,8 +94,7 @@ public class MetaCodeGenService {
             String devProjectDir = generateProperties.getDevProjectDir();
             if (generateProperties.getDevMode() == DevMode.ALL_REPLACE) {
                 if (StringUtils.isBlank(devProjectDir)) {
-                    throw new BusinessException(ErrorCode.INTERNAL_SERVER_ERROR,
-                        "请配置本地开发工程路径youran.generate.devProjectDir");
+                    throw new BusinessException(ErrorCode.INTERNAL_SERVER_ERROR, "请配置本地开发工程路径youran.generate.devProjectDir");
                 }
                 LOGGER.debug("------全部替换开发工程：" + devProjectDir);
                 this.progressing(progressConsumer, 95, 99, 1, "全部替换开发工程" + devProjectDir);
@@ -103,8 +102,7 @@ public class MetaCodeGenService {
                 FileUtils.copyDirectory(new File(tmpDir), new File(devProjectDir));
             } else if (generateProperties.getDevMode() == DevMode.INCREMENT_REPLACE) {
                 if (StringUtils.isBlank(devProjectDir)) {
-                    throw new BusinessException(ErrorCode.INTERNAL_SERVER_ERROR,
-                        "请配置本地开发工程路径youran.generate.devProjectDir");
+                    throw new BusinessException(ErrorCode.INTERNAL_SERVER_ERROR, "请配置本地开发工程路径youran.generate.devProjectDir");
                 }
                 LOGGER.debug("------部分替换开发工程：" + devProjectDir);
                 this.progressing(progressConsumer, 95, 99, 1, "部分替换开发工程" + devProjectDir);
@@ -127,8 +125,7 @@ public class MetaCodeGenService {
      * @param progressConsumer 进度条
      * @return 代码目录
      */
-    public String genProjectCodeIfNotExists(Integer projectId, Integer templateId,
-                                            Consumer<ProgressVO> progressConsumer) {
+    public String genProjectCodeIfNotExists(Integer projectId, Integer templateId, Consumer<ProgressVO> progressConsumer) {
         if (lock.tryLock()) {
             try {
                 MetaProjectPO project = metaProjectService.getAndCheckProject(projectId);
@@ -163,8 +160,7 @@ public class MetaCodeGenService {
                 lock.unlock();
             }
         } else {
-            throw new BusinessException(ErrorCode.TOO_MANY_REQUESTS,
-                "正在生成代码，请稍后再试！");
+            throw new BusinessException(ErrorCode.TOO_MANY_REQUESTS, "正在生成代码，请稍后再试！");
         }
     }
 
@@ -176,8 +172,7 @@ public class MetaCodeGenService {
      * @param templateId
      * @param progressConsumer 代码生成进度条
      */
-    private void doGenCode(String projectDir, Integer projectId,
-                           Integer templateId, Consumer<ProgressVO> progressConsumer) {
+    private void doGenCode(String projectDir, Integer projectId, Integer templateId, Consumer<ProgressVO> progressConsumer) {
         // 获取组装后的模板
         this.progressing(progressConsumer, 10, 80, 2, "获取并组装代码模板");
         CodeTemplatePO templatePO = codeTemplateAssembleAndCopyService.getAssembledCodeTemplate(templateId, true);
@@ -310,8 +305,7 @@ public class MetaCodeGenService {
      * @param templateFile     模板文件
      * @param projectDir       代码输出目录
      */
-    private void renderTemplate(TemplateRenderer templateRenderer, BaseContext context,
-                                TemplateFilePO templateFile, String projectDir) {
+    private void renderTemplate(TemplateRenderer templateRenderer, BaseContext context, TemplateFilePO templateFile, String projectDir) {
         String filePath = templateFile.fetchFilePath();
         LOGGER.debug("------开始渲染模板文件: {}", filePath);
         try {
@@ -388,15 +382,12 @@ public class MetaCodeGenService {
         String repoDir = dataDirService.getProjectRepoDir(projectId, templateId, lastVersion);
         GitCredentialDTO credential = this.getCredentialDTO(project);
         this.progressing(progressConsumer, 5, 10, 1, "克隆远程仓库");
-        Repository repository = gitService.getClonedRemoteRepository(repoDir, remoteUrl,
-            credential, oldBranchName, newBranchName, lastCommit);
+        Repository repository = gitService.getClonedRemoteRepository(repoDir, remoteUrl, credential, oldBranchName, newBranchName, lastCommit);
         // 将代码生成到本地repo目录
         this.genProjectCodeIntoRepository(projectId, templateId, progressConsumer, repository);
         // 提交到本地仓库
         this.progressing(progressConsumer, 90, 99, 1, "提交到本地仓库");
-        String commit = gitService.commitAll(repository,
-            DateUtil.getDateStr(now, "yyyy-MM-dd HH:mm:ss") +
-                (StringUtils.isBlank(oldBranchName) ? "首次生成代码" : "增量生成代码"));
+        String commit = gitService.commitAll(repository, DateUtil.getDateStr(now, "yyyy-MM-dd HH:mm:ss") + (StringUtils.isBlank(oldBranchName) ? "首次生成代码" : "增量生成代码"));
         // 推送远程仓库
         this.progressing(progressConsumer, 90, 99, 1, "推送远程仓库");
         gitService.push(repository, credential);
@@ -405,8 +396,7 @@ public class MetaCodeGenService {
         } catch (Exception e) {
         }
         // 创建提交历史
-        GenHistoryPO history = genHistoryService.save(project, codeTemplate,
-            remoteUrl, commit, newBranchName);
+        GenHistoryPO history = genHistoryService.save(project, codeTemplate, remoteUrl, commit, newBranchName);
         return history;
     }
 
@@ -443,8 +433,7 @@ public class MetaCodeGenService {
         String repoDir = dataDirService.getProjectRepoDir(projectId, templateId, lastVersion);
         GitCredentialDTO credential = this.getCredentialDTO(project);
         this.progressing(progressConsumer, 5, 10, 1, "克隆远程仓库");
-        try (Repository repository = gitService.getClonedRemoteRepository(repoDir, remoteUrl,
-            credential, oldBranchName, generateProperties.getAutoBranchName(), lastCommit)) {
+        try (Repository repository = gitService.getClonedRemoteRepository(repoDir, remoteUrl, credential, oldBranchName, generateProperties.getAutoBranchName(), lastCommit)) {
             // 将代码生成到本地repo目录
             this.genProjectCodeIntoRepository(projectId, templateId, progressConsumer, repository);
             this.progressing(progressConsumer, 90, 99, 1, "提交到暂存区");
@@ -469,8 +458,7 @@ public class MetaCodeGenService {
      * @param progressConsumer 进度条
      * @param repository       本地仓库
      */
-    private void genProjectCodeIntoRepository(Integer projectId, Integer templateId,
-                                              Consumer<ProgressVO> progressConsumer, Repository repository) {
+    private void genProjectCodeIntoRepository(Integer projectId, Integer templateId, Consumer<ProgressVO> progressConsumer, Repository repository) {
         File repoDir = repository.getDirectory().getParentFile();
         File[] oldFiles = repoDir.listFiles((dir, name) -> !".git".equals(name));
         try {
@@ -519,9 +507,7 @@ public class MetaCodeGenService {
      * @param addPercent
      * @param msg
      */
-    private void progressing(Consumer<ProgressVO> progressConsumer,
-                             int minPercent, int maxPercent,
-                             int addPercent, String msg) {
+    private void progressing(Consumer<ProgressVO> progressConsumer, int minPercent, int maxPercent, int addPercent, String msg) {
         if (progressConsumer != null) {
             progressConsumer.accept(ProgressVO.progressing(minPercent, maxPercent, addPercent, msg));
         }

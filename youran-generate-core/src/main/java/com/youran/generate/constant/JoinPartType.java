@@ -22,7 +22,7 @@ public class JoinPartType {
      * 校验有效性
      */
     @Check
-    public static final boolean validate(String value){
+    public static final boolean validate(String value) {
         return ENTITY.equals(value) || MTM.equals(value);
     }
 

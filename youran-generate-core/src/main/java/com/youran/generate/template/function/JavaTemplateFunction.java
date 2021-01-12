@@ -39,13 +39,11 @@ public class JavaTemplateFunction {
     public static String printGetterSetterForPO(MetaFieldPO metaFieldPO) {
         boolean override = false;
         // 特殊字段标记+字段名都符合，才加override注解
-        if (MetaSpecialField.check(metaFieldPO.getSpecialField())
-            && MetaSpecialField.check(metaFieldPO.getJfieldName())) {
+        if (MetaSpecialField.check(metaFieldPO.getSpecialField()) && MetaSpecialField.check(metaFieldPO.getJfieldName())) {
             override = true;
         }
         return printGetterSetter(metaFieldPO.getJfieldName(), metaFieldPO.getJfieldType(), override, 1);
     }
-
 
 
     /**
@@ -100,16 +98,11 @@ public class JavaTemplateFunction {
         if (override) {
             sb.append(indentPrefix).append("@Override\n");
         }
-        sb.append(indentPrefix).append("public ").append(jfieldType).append(" get").append(cap).append("() {\n")
-            .append(indentPrefix).append("    return this.").append(uncap).append(";\n")
-            .append(indentPrefix).append("}\n")
-            .append("\n");
+        sb.append(indentPrefix).append("public ").append(jfieldType).append(" get").append(cap).append("() {\n").append(indentPrefix).append("    return this.").append(uncap).append(";\n").append(indentPrefix).append("}\n").append("\n");
         if (override) {
             sb.append(indentPrefix).append("@Override\n");
         }
-        sb.append(indentPrefix).append("public void set").append(cap).append("(").append(jfieldType).append(" ").append(uncap).append(") {\n")
-            .append(indentPrefix).append("    this.").append(uncap).append(" = ").append(uncap).append(";\n")
-            .append(indentPrefix).append("}\n\n");
+        sb.append(indentPrefix).append("public void set").append(cap).append("(").append(jfieldType).append(" ").append(uncap).append(") {\n").append(indentPrefix).append("    this.").append(uncap).append(" = ").append(uncap).append(";\n").append(indentPrefix).append("}\n\n");
         return sb.toString();
     }
 
@@ -137,16 +130,9 @@ public class JavaTemplateFunction {
         String uncap = StringUtils.uncapitalize(jfieldName);
         StringBuilder sb = new StringBuilder();
         String suffix = listSuffix ? "List" : "";
-        sb.append("    public List<").append(jfieldType).append("> get").append(cap).append(suffix).append("() {\n")
-            .append("        return this.").append(uncap).append(suffix).append(";\n")
-            .append("    }\n")
-            .append("\n")
-            .append("    public void set").append(cap).append(suffix).append("(List<").append(jfieldType).append("> ").append(uncap).append(suffix).append(") {\n")
-            .append("        this.").append(uncap).append(suffix).append(" = ").append(uncap).append(suffix).append(";\n")
-            .append("    }\n\n");
+        sb.append("    public List<").append(jfieldType).append("> get").append(cap).append(suffix).append("() {\n").append("        return this.").append(uncap).append(suffix).append(";\n").append("    }\n").append("\n").append("    public void set").append(cap).append(suffix).append("(List<").append(jfieldType).append("> ").append(uncap).append(suffix).append(") {\n").append("        this.").append(uncap).append(suffix).append(" = ").append(uncap).append(suffix).append(";\n").append("    }\n\n");
         return sb.toString();
     }
-
 
 
     /**

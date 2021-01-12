@@ -32,9 +32,7 @@ public class MetaChartSourceItemHelper {
     /**
      * 生成add测试数据
      */
-    public AggOrderAddDTO getAggOrderAddDTO(Integer projectId,
-                                            Integer sourceId,
-                                            Integer parentId) {
+    public AggOrderAddDTO getAggOrderAddDTO(Integer projectId, Integer sourceId, Integer parentId) {
         AggOrderAddDTO dto = new AggOrderAddDTO();
         dto.setProjectId(projectId);
         dto.setSourceId(sourceId);
@@ -44,9 +42,7 @@ public class MetaChartSourceItemHelper {
         return dto;
     }
 
-    public DetailColumnAddDTO getDetailColumnAddDTO(Integer projectId,
-                                                    Integer sourceId,
-                                                    Integer fieldId) {
+    public DetailColumnAddDTO getDetailColumnAddDTO(Integer projectId, Integer sourceId, Integer fieldId) {
         DetailColumnAddDTO dto = new DetailColumnAddDTO();
         dto.setProjectId(projectId);
         dto.setSourceId(sourceId);
@@ -58,9 +54,7 @@ public class MetaChartSourceItemHelper {
         return dto;
     }
 
-    public DetailOrderAddDTO getDetailOrderAddDTO(Integer projectId,
-                                                  Integer sourceId,
-                                                  Integer parentId) {
+    public DetailOrderAddDTO getDetailOrderAddDTO(Integer projectId, Integer sourceId, Integer parentId) {
         DetailOrderAddDTO dto = new DetailOrderAddDTO();
         dto.setProjectId(projectId);
         dto.setSourceId(sourceId);
@@ -70,9 +64,7 @@ public class MetaChartSourceItemHelper {
         return dto;
     }
 
-    public DimensionAddDTO getDimensionAddDTO(Integer projectId,
-                                              Integer sourceId,
-                                              Integer fieldId) {
+    public DimensionAddDTO getDimensionAddDTO(Integer projectId, Integer sourceId, Integer fieldId) {
         DimensionAddDTO dto = new DimensionAddDTO();
         dto.setProjectId(projectId);
         dto.setSourceId(sourceId);
@@ -82,9 +74,7 @@ public class MetaChartSourceItemHelper {
         return dto;
     }
 
-    public HavingAddDTO getHavingAddDTO(Integer projectId,
-                                        Integer sourceId,
-                                        Integer parentId) {
+    public HavingAddDTO getHavingAddDTO(Integer projectId, Integer sourceId, Integer parentId) {
         HavingAddDTO dto = new HavingAddDTO();
         dto.setProjectId(projectId);
         dto.setSourceId(sourceId);
@@ -95,9 +85,7 @@ public class MetaChartSourceItemHelper {
         return dto;
     }
 
-    public MetricsAddDTO getMetricsAddDTO(Integer projectId,
-                                          Integer sourceId,
-                                          Integer fieldId) {
+    public MetricsAddDTO getMetricsAddDTO(Integer projectId, Integer sourceId, Integer fieldId) {
         MetricsAddDTO dto = new MetricsAddDTO();
         dto.setProjectId(projectId);
         dto.setSourceId(sourceId);
@@ -110,9 +98,7 @@ public class MetaChartSourceItemHelper {
         return dto;
     }
 
-    public WhereAddDTO getWhereAddDTO(Integer projectId,
-                                      Integer sourceId,
-                                      Integer fieldId) {
+    public WhereAddDTO getWhereAddDTO(Integer projectId, Integer sourceId, Integer fieldId) {
         WhereAddDTO dto = new WhereAddDTO();
         dto.setProjectId(projectId);
         dto.setSourceId(sourceId);
@@ -225,51 +211,37 @@ public class MetaChartSourceItemHelper {
      *
      * @return
      */
-    public AggOrderPO saveAggOrderExample(Integer projectId,
-                                          Integer sourceId,
-                                          Integer parentId) {
+    public AggOrderPO saveAggOrderExample(Integer projectId, Integer sourceId, Integer parentId) {
         AggOrderAddDTO addDTO = this.getAggOrderAddDTO(projectId, sourceId, parentId);
         return aggOrderService.save(addDTO);
     }
 
-    public DetailColumnPO saveDetailColumnExample(Integer projectId,
-                                                  Integer sourceId,
-                                                  Integer fieldId) {
+    public DetailColumnPO saveDetailColumnExample(Integer projectId, Integer sourceId, Integer fieldId) {
         DetailColumnAddDTO addDTO = this.getDetailColumnAddDTO(projectId, sourceId, fieldId);
         return detailColumnService.save(addDTO);
     }
 
-    public DetailOrderPO saveDetailOrderExample(Integer projectId,
-                                                Integer sourceId,
-                                                Integer parentId) {
+    public DetailOrderPO saveDetailOrderExample(Integer projectId, Integer sourceId, Integer parentId) {
         DetailOrderAddDTO addDTO = this.getDetailOrderAddDTO(projectId, sourceId, parentId);
         return detailOrderService.save(addDTO);
     }
 
-    public DimensionPO saveDimensionExample(Integer projectId,
-                                            Integer sourceId,
-                                            Integer fieldId) {
+    public DimensionPO saveDimensionExample(Integer projectId, Integer sourceId, Integer fieldId) {
         DimensionAddDTO addDTO = this.getDimensionAddDTO(projectId, sourceId, fieldId);
         return dimensionService.save(addDTO);
     }
 
-    public HavingPO saveHavingExample(Integer projectId,
-                                      Integer sourceId,
-                                      Integer parentId) {
+    public HavingPO saveHavingExample(Integer projectId, Integer sourceId, Integer parentId) {
         HavingAddDTO addDTO = this.getHavingAddDTO(projectId, sourceId, parentId);
         return havingService.save(addDTO);
     }
 
-    public MetricsPO saveMetricsExample(Integer projectId,
-                                        Integer sourceId,
-                                        Integer fieldId) {
+    public MetricsPO saveMetricsExample(Integer projectId, Integer sourceId, Integer fieldId) {
         MetricsAddDTO addDTO = this.getMetricsAddDTO(projectId, sourceId, fieldId);
         return metricsService.save(addDTO);
     }
 
-    public WherePO saveWhereExample(Integer projectId,
-                                    Integer sourceId,
-                                    Integer fieldId) {
+    public WherePO saveWhereExample(Integer projectId, Integer sourceId, Integer fieldId) {
         WhereAddDTO addDTO = this.getWhereAddDTO(projectId, sourceId, fieldId);
         return whereService.save(addDTO);
     }

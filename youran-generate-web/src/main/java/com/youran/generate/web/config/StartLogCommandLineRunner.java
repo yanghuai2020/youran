@@ -43,12 +43,7 @@ public class StartLogCommandLineRunner implements CommandLineRunner, Ordered {
             profiles = Arrays.stream(env.getActiveProfiles()).collect(Collectors.joining(","));
         }
         StringBuilder sb = new StringBuilder();
-        sb.append("\n----------------------------------------------------------\n")
-            .append("\t应用【").append(applicationName).append("】已经启动！\n")
-            .append("\t激活profile:\t").append(profiles).append("\n")
-            .append("\t访问路径:\n")
-            .append("\t本地: \thttp://localhost:").append(port).append(contextPath).append("\n")
-            .append("\t外部: \thttp://").append(IpUtil.getLocalIp()).append(":").append(port).append(contextPath).append("\n");
+        sb.append("\n----------------------------------------------------------\n").append("\t应用【").append(applicationName).append("】已经启动！\n").append("\t激活profile:\t").append(profiles).append("\n").append("\t访问路径:\n").append("\t本地: \thttp://localhost:").append(port).append(contextPath).append("\n").append("\t外部: \thttp://").append(IpUtil.getLocalIp()).append(":").append(port).append(contextPath).append("\n");
         if (swaggerEnabled) {
             sb.append("\t文档:\thttp://").append(IpUtil.getLocalIp()).append(":").append(port).append(contextPath).append("swagger-ui/index.html");
         }

@@ -45,17 +45,14 @@ public class MetaCodeGenController extends AbstractController implements MetaCod
 
     @Override
     @GetMapping(value = "/gen_code")
-    public ResponseEntity<Void> genCode(@RequestParam Integer projectId,
-                                        @RequestParam Integer templateId) {
+    public ResponseEntity<Void> genCode(@RequestParam Integer projectId, @RequestParam Integer templateId) {
         metaCodeGenService.genProjectCodeIfNotExists(projectId, templateId, null);
         return ResponseEntity.ok(null);
     }
 
     @Override
     @GetMapping(value = "/gen_code_and_download")
-    public void genCodeAndDownload(@RequestParam Integer projectId,
-                                   @RequestParam Integer templateId,
-                                   HttpServletResponse response) {
+    public void genCodeAndDownload(@RequestParam Integer projectId, @RequestParam Integer templateId, HttpServletResponse response) {
         File zipFile = metaCodeGenService.genCodeZip(projectId, templateId, null);
         if (zipFile == null || !zipFile.exists()) {
             this.replyNotFound(response);
@@ -69,8 +66,7 @@ public class MetaCodeGenController extends AbstractController implements MetaCod
     @Override
     @PostMapping(value = "/git_commit")
     @ResponseBody
-    public ResponseEntity<String> gitCommit(@RequestParam Integer projectId,
-                                            @RequestParam Integer templateId) {
+    public ResponseEntity<String> gitCommit(@RequestParam Integer projectId, @RequestParam Integer templateId) {
         GenHistoryPO genHistory = metaCodeGenService.gitCommit(projectId, templateId, null);
         return ResponseEntity.ok("已在【" + genHistory.getBranch() + "】分支提交最新代码，并push到远程");
     }
@@ -78,8 +74,7 @@ public class MetaCodeGenController extends AbstractController implements MetaCod
     @Override
     @GetMapping(value = "/git_diff")
     @ResponseBody
-    public ResponseEntity<String> gitDiff(@RequestParam Integer projectId,
-                                          @RequestParam Integer templateId) {
+    public ResponseEntity<String> gitDiff(@RequestParam Integer projectId, @RequestParam Integer templateId) {
         String diffText = metaCodeGenService.showGitDiff(projectId, templateId, null);
         return ResponseEntity.ok(diffText);
     }
@@ -87,8 +82,7 @@ public class MetaCodeGenController extends AbstractController implements MetaCod
     @Override
     @GetMapping(value = "/check_commit")
     @ResponseBody
-    public ResponseEntity<CheckCommitVO> checkCommit(@RequestParam Integer projectId,
-                                                     @RequestParam Integer templateId) {
+    public ResponseEntity<CheckCommitVO> checkCommit(@RequestParam Integer projectId, @RequestParam Integer templateId) {
         MetaProjectPO project = metaProjectService.getAndCheckProject(projectId);
         CheckCommitVO vo = new CheckCommitVO();
         String remoteUrl = project.getRemoteUrlByTemplateId(templateId);

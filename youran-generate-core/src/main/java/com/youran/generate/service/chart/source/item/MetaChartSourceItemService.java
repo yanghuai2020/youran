@@ -68,10 +68,7 @@ public class MetaChartSourceItemService {
             throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "type参数不能为空");
         }
         List<MetaChartSourceItemPO> list = metaChartSourceItemDAO.findListByQuery(metaChartSourceItemQO);
-        return list.stream()
-            .map(po -> po.castSubType(true))
-            .map(po -> (T) MetaChartSourceItemMapper.INSTANCE.poToVO((MetaChartSourceItemPO) po))
-            .collect(Collectors.toList());
+        return list.stream().map(po -> po.castSubType(true)).map(po -> (T) MetaChartSourceItemMapper.INSTANCE.poToVO((MetaChartSourceItemPO) po)).collect(Collectors.toList());
     }
 
     /**
@@ -126,9 +123,7 @@ public class MetaChartSourceItemService {
         if (!cast) {
             return list;
         }
-        return list.stream()
-            .<MetaChartSourceItemPO>map(po -> po.castSubType(true))
-            .collect(Collectors.toList());
+        return list.stream().<MetaChartSourceItemPO>map(po -> po.castSubType(true)).collect(Collectors.toList());
     }
 
 
@@ -144,13 +139,12 @@ public class MetaChartSourceItemService {
         if (!cast) {
             return list;
         }
-        return list.stream()
-            .<MetaChartSourceItemPO>map(po -> po.castSubType(true))
-            .collect(Collectors.toList());
+        return list.stream().<MetaChartSourceItemPO>map(po -> po.castSubType(true)).collect(Collectors.toList());
     }
 
     /**
      * 删除某个数据源中的其他数据项
+     *
      * @param sourceId
      * @param oldItemIds
      * @return

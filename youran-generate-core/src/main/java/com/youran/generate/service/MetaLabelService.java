@@ -35,11 +35,7 @@ public class MetaLabelService {
      */
     public List<MetaLabelDTO> getMetaLabelByProjectId(Integer projectId, String labelType) {
         MetaProjectPO project = metaProjectService.getProject(projectId, true, true);
-        return this.getMetaLabelByTemplateId(Arrays.asList(
-            project.getTemplateId(),
-            project.getTemplateId2(),
-            project.getTemplateId3()
-        ), labelType);
+        return this.getMetaLabelByTemplateId(Arrays.asList(project.getTemplateId(), project.getTemplateId2(), project.getTemplateId3()), labelType);
     }
 
     /**
@@ -73,11 +69,7 @@ public class MetaLabelService {
      * @return
      */
     private List<MetaLabelPackDTO> findMetaLabelPacks(List<Integer> templateIds) {
-        return templateIds.stream()
-            .filter(Objects::nonNull)
-            .map(this::getMetaLabelPackByTemplate)
-            .filter(Objects::nonNull)
-            .collect(Collectors.toList());
+        return templateIds.stream().filter(Objects::nonNull).map(this::getMetaLabelPackByTemplate).filter(Objects::nonNull).collect(Collectors.toList());
     }
 
     /**

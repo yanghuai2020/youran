@@ -28,14 +28,14 @@ public class ProjectTeamQO extends AbstractQO {
     @ApiParam(hidden = true)
     private List<Integer> _teamId;
 
-    @ApiParam(value = N_NAME,example = E_NAME)
-    @Length(max = 32,message = "name最大长度不能超过{max}")
+    @ApiParam(value = N_NAME, example = E_NAME)
+    @Length(max = 32, message = "name最大长度不能超过{max}")
     private String name;
 
-    @ApiParam(value = "创建时间排序标识【1升序,-1降序,0不排序】",example = "1")
+    @ApiParam(value = "创建时间排序标识【1升序,-1降序,0不排序】", example = "1")
     private Integer createdTimeSortSign;
 
-    @ApiParam(value = "修改时间排序标识【1升序,-1降序,0不排序】",example = "1")
+    @ApiParam(value = "修改时间排序标识【1升序,-1降序,0不排序】", example = "1")
     private Integer operatedTimeSortSign;
 
 

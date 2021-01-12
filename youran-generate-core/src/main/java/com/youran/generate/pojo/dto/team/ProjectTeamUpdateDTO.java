@@ -18,11 +18,11 @@ import static com.youran.generate.pojo.example.team.ProjectTeamExample.*;
 @ApiModel(description = "修改【项目组】的参数")
 public class ProjectTeamUpdateDTO extends AbstractDTO {
 
-    @ApiModelProperty(notes = N_TEAM_ID,example = E_TEAM_ID,required = true)
+    @ApiModelProperty(notes = N_TEAM_ID, example = E_TEAM_ID, required = true)
     @NotNull
     private Integer teamId;
 
-    @ApiModelProperty(notes = N_NAME,example = E_NAME,required = true)
+    @ApiModelProperty(notes = N_NAME, example = E_NAME, required = true)
     @NotNull
     @Length(max = 32)
     private String name;

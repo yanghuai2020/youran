@@ -161,10 +161,7 @@ public class ReverseEngineeringService {
                 String defaultValue = sqlColumnDefinition.getDefaultExpr() == null ? "NULL" : sqlColumnDefinition.getDefaultExpr().toString();
                 String desc = sqlColumnDefinition.getComment() == null ? "" : cleanQuote(sqlColumnDefinition.getComment().toString());
 
-                MetaFieldPO field = this.createField(entity, fieldName, fieldType,
-                    fieldLength, fieldScale, pk,
-                    autoIncrement, notNull, orderNo,
-                    defaultValue, desc);
+                MetaFieldPO field = this.createField(entity, fieldName, fieldType, fieldLength, fieldScale, pk, autoIncrement, notNull, orderNo, defaultValue, desc);
                 fieldMap.put(fieldName, field);
                 continue;
             }
@@ -206,8 +203,7 @@ public class ReverseEngineeringService {
         SQLPrimaryKey primaryKey = createTableStatement.findPrimaryKey();
         if (primaryKey != null) {
             if (primaryKey.getColumns().size() > 1) {
-                throw new BusinessException(ErrorCode.BAD_PARAMETER,
-                    "表【" + this.parseTableName(createTableStatement) + "】存在联合主键，反向工程暂不支持联合主键");
+                throw new BusinessException(ErrorCode.BAD_PARAMETER, "表【" + this.parseTableName(createTableStatement) + "】存在联合主键，反向工程暂不支持联合主键");
             }
             return cleanQuote(primaryKey.getColumns().get(0).getExpr().toString());
         }
@@ -270,12 +266,7 @@ public class ReverseEngineeringService {
      * @param desc
      * @return
      */
-    private MetaFieldPO createField(MetaEntityPO entity,
-                                    String fieldName, String fieldType,
-                                    int fieldLength, int fieldScale,
-                                    boolean pk, boolean autoIncrement,
-                                    boolean notNull, int orderNo,
-                                    String defaultValue, String desc) {
+    private MetaFieldPO createField(MetaEntityPO entity, String fieldName, String fieldType, int fieldLength, int fieldScale, boolean pk, boolean autoIncrement, boolean notNull, int orderNo, String defaultValue, String desc) {
         JFieldType jFieldType = GuessUtil.guessJFieldType(fieldName, fieldType, fieldLength);
         String specialField = GuessUtil.guessSpecialField(fieldName, jFieldType);
         PrimaryKeyStrategy primaryKeyStrategy = GuessUtil.guessPkStrategy(fieldType, fieldLength, autoIncrement);
@@ -331,9 +322,7 @@ public class ReverseEngineeringService {
         metaIndexAddDTO.setEntityId(entity.getEntityId());
         metaIndexAddDTO.setUnique(unique);
         metaIndexAddDTO.setUniqueCheck(unique);
-        String fieldIds = fields.stream()
-            .map(field -> field.getFieldId().toString())
-            .collect(Collectors.joining(","));
+        String fieldIds = fields.stream().map(field -> field.getFieldId().toString()).collect(Collectors.joining(","));
         metaIndexAddDTO.setFieldIds(fieldIds);
         return metaIndexService.save(metaIndexAddDTO);
     }

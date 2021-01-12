@@ -72,12 +72,6 @@ public class MetaConstListVO extends AbstractVO {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
-            .append("constId", constId)
-            .append("projectId", projectId)
-            .append("constName", constName)
-            .append("constRemark", constRemark)
-            .append("constType", constType)
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("constId", constId).append("projectId", projectId).append("constName", constName).append("constRemark", constRemark).append("constType", constType).toString();
     }
 }

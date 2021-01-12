@@ -16,11 +16,11 @@ public enum SortType {
     /**
      * 升序
      */
-    ASC(1,"升序"),
+    ASC(1, "升序"),
     /**
      * 降序
      */
-    DESC(2,"降序");
+    DESC(2, "降序");
 
 
     private final Integer value;
@@ -49,9 +49,9 @@ public enum SortType {
         return LOOKUP.get(value);
     }
 
-    public static SortType findByDesc(String desc){
+    public static SortType findByDesc(String desc) {
         for (SortType e : SortType.values()) {
-            if(e.getDesc().equals(desc)){
+            if (e.getDesc().equals(desc)) {
                 return e;
             }
         }
@@ -91,9 +91,9 @@ public enum SortType {
      * 校验有效性
      */
     @Check
-    public static final boolean validate(Integer value){
+    public static final boolean validate(Integer value) {
         SortType theEnum = find(value);
-        return theEnum!=null;
+        return theEnum != null;
     }
 
     public Integer getValue() {

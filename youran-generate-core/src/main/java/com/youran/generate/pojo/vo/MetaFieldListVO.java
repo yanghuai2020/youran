@@ -372,38 +372,6 @@ public class MetaFieldListVO extends AbstractVO {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
-            .append("fieldId", fieldId)
-            .append("entityId", entityId)
-            .append("pkStrategy", pkStrategy)
-            .append("defaultValue", defaultValue)
-            .append("dicType", dicType)
-            .append("editType", editType)
-            .append("fieldComment", fieldComment)
-            .append("fieldDesc", fieldDesc)
-            .append("fieldExample", fieldExample)
-            .append("fieldLength", fieldLength)
-            .append("fieldName", fieldName)
-            .append("fieldScale", fieldScale)
-            .append("fieldType", fieldType)
-            .append("insert", insert)
-            .append("jfieldName", jfieldName)
-            .append("jfieldType", jfieldType)
-            .append("list", list)
-            .append("listSort", listSort)
-            .append("notNull", notNull)
-            .append("orderNo", orderNo)
-            .append("primaryKey", primaryKey)
-            .append("foreignKey", foreignKey)
-            .append("foreignEntityId", foreignEntityId)
-            .append("foreignFieldId", foreignFieldId)
-            .append("query", query)
-            .append("queryType", queryType)
-            .append("show", show)
-            .append("update", update)
-            .append("specialField", specialField)
-            .append("labels", labels)
-            .append("cascadeFieldNum", cascadeFieldNum)
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("fieldId", fieldId).append("entityId", entityId).append("pkStrategy", pkStrategy).append("defaultValue", defaultValue).append("dicType", dicType).append("editType", editType).append("fieldComment", fieldComment).append("fieldDesc", fieldDesc).append("fieldExample", fieldExample).append("fieldLength", fieldLength).append("fieldName", fieldName).append("fieldScale", fieldScale).append("fieldType", fieldType).append("insert", insert).append("jfieldName", jfieldName).append("jfieldType", jfieldType).append("list", list).append("listSort", listSort).append("notNull", notNull).append("orderNo", orderNo).append("primaryKey", primaryKey).append("foreignKey", foreignKey).append("foreignEntityId", foreignEntityId).append("foreignFieldId", foreignFieldId).append("query", query).append("queryType", queryType).append("show", show).append("update", update).append("specialField", specialField).append("labels", labels).append("cascadeFieldNum", cascadeFieldNum).toString();
     }
 }

@@ -47,8 +47,7 @@ public class WebConfig {
      */
     @Bean
     public Jackson2ObjectMapperBuilderCustomizer jacksonXSSCustomizer() {
-        return jacksonObjectMapperBuilder ->
-            jacksonObjectMapperBuilder.deserializerByType(String.class, new JacksonXSSDeserializer());
+        return jacksonObjectMapperBuilder -> jacksonObjectMapperBuilder.deserializerByType(String.class, new JacksonXSSDeserializer());
     }
 
     /**
@@ -63,12 +62,7 @@ public class WebConfig {
         @Override
         protected void configure(HttpSecurity http) throws Exception {
             if (generateProperties.isSecurityEnabled()) {
-                http.csrf().disable()
-                    .authorizeRequests()
-                    .anyRequest().authenticated()
-                    .and()
-                    .formLogin().and()
-                    .httpBasic();
+                http.csrf().disable().authorizeRequests().anyRequest().authenticated().and().formLogin().and().httpBasic();
             } else {
                 http.csrf().disable().authorizeRequests().anyRequest().permitAll();
             }

@@ -13,10 +13,10 @@ import static com.youran.generate.pojo.example.team.ProjectTeamMemberExample.*;
  */
 public class ProjectTeamMemberQO extends AbstractQO {
 
-    @ApiParam(value = N_TEAM_ID,example = E_TEAM_ID)
+    @ApiParam(value = N_TEAM_ID, example = E_TEAM_ID)
     private Integer teamId;
 
-    @ApiParam(value = "创建时间排序标识【1升序,-1降序,0不排序】",example = "1")
+    @ApiParam(value = "创建时间排序标识【1升序,-1降序,0不排序】", example = "1")
     private Integer createdTimeSortSign;
 
 

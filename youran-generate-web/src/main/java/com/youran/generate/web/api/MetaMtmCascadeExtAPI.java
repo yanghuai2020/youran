@@ -27,18 +27,14 @@ public interface MetaMtmCascadeExtAPI {
      * 新增【多对多级联扩展】
      */
     @ApiOperation(value = "新增【多对多级联扩展】")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "metaMtmCascadeExtAddDTO", dataType = "MetaMtmCascadeExtAddDTO", value = "新增【多对多级联扩展】参数", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "metaMtmCascadeExtAddDTO", dataType = "MetaMtmCascadeExtAddDTO", value = "新增【多对多级联扩展】参数", paramType = "body"),})
     ResponseEntity<MetaMtmCascadeExtShowVO> save(MetaMtmCascadeExtAddDTO metaMtmCascadeExtAddDTO) throws Exception;
 
     /**
      * 修改【多对多级联扩展】
      */
     @ApiOperation(value = "修改【多对多级联扩展】")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "metaMtmCascadeExtUpdateDTO", dataType = "MetaMtmCascadeExtUpdateDTO", value = "修改【多对多级联扩展】参数", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "metaMtmCascadeExtUpdateDTO", dataType = "MetaMtmCascadeExtUpdateDTO", value = "修改【多对多级联扩展】参数", paramType = "body"),})
     ResponseEntity<MetaMtmCascadeExtShowVO> update(MetaMtmCascadeExtUpdateDTO metaMtmCascadeExtUpdateDTO);
 
     /**
@@ -51,27 +47,21 @@ public interface MetaMtmCascadeExtAPI {
      * 查看【多对多级联扩展】详情
      */
     @ApiOperation(value = "查看【多对多级联扩展】详情")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "mtmCascadeExtId", dataType = "int", value = "【多对多级联扩展】id", paramType = "path"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "mtmCascadeExtId", dataType = "int", value = "【多对多级联扩展】id", paramType = "path"),})
     ResponseEntity<MetaMtmCascadeExtShowVO> show(Integer mtmCascadeExtId);
 
     /**
      * 删除单个【多对多级联扩展】
      */
     @ApiOperation(value = "删除单个【多对多级联扩展】")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "mtmCascadeExtId", dataType = "int", value = "【多对多级联扩展】id", paramType = "path"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "mtmCascadeExtId", dataType = "int", value = "【多对多级联扩展】id", paramType = "path"),})
     ResponseEntity<Integer> delete(Integer mtmCascadeExtId);
 
     /**
      * 批量删除【多对多级联扩展】
      */
     @ApiOperation(value = "批量删除【多对多级联扩展】")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "id", dataType = "int", value = "id数组", paramType = "body"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "id", dataType = "int", value = "id数组", paramType = "body"),})
     ResponseEntity<Integer> deleteBatch(Integer[] id);
 
 

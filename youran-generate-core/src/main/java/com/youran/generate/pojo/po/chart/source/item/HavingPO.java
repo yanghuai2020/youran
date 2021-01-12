@@ -38,10 +38,7 @@ public class HavingPO extends MetaChartSourceItemPO {
     public void assembleItem(MetaChartSourcePO chartSource) {
         super.assembleItem(chartSource);
         Map<Integer, MetricsPO> metricsMap = chartSource.getMetricsMap();
-        metricsMap.entrySet().stream()
-            .filter(entry -> entry.getKey().equals(this.getParentId()))
-            .findFirst()
-            .ifPresent(entry -> this.setParent(entry.getValue()));
+        metricsMap.entrySet().stream().filter(entry -> entry.getKey().equals(this.getParentId())).findFirst().ifPresent(entry -> this.setParent(entry.getValue()));
     }
 
 
@@ -52,8 +49,7 @@ public class HavingPO extends MetaChartSourceItemPO {
      * @param featureDeserialize
      * @return
      */
-    public static HavingPO fromSuperType(MetaChartSourceItemPO superPO,
-                                         boolean featureDeserialize) {
+    public static HavingPO fromSuperType(MetaChartSourceItemPO superPO, boolean featureDeserialize) {
         if (!SourceItemType.HAVING.getValue().equals(superPO.getType())) {
             throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "类型转换异常");
         }
@@ -96,7 +92,7 @@ public class HavingPO extends MetaChartSourceItemPO {
         this.filterValue = filterValue;
     }
 
-    static class FeatureDTO{
+    static class FeatureDTO {
         private Integer filterOperator;
         private String[] filterValue;
 

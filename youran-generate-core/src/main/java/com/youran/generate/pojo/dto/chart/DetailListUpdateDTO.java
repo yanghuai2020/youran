@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @ApiModel(description = "修改【明细表】入参")
 public class DetailListUpdateDTO extends DetailListAddDTO {
 
-    @ApiModelProperty(notes = "图表主键",example = "1",required = true)
+    @ApiModelProperty(notes = "图表主键", example = "1", required = true)
     @NotNull
     private Integer chartId;
 

@@ -39,10 +39,7 @@ public class TemplateFileControllerTest extends AbstractWebTest {
     public void save() throws Exception {
         CodeTemplatePO codeTemplate = codeTemplateHelper.saveCodeTemplateExample();
         TemplateFileAddDTO addDTO = templateFileHelper.getTemplateFileAddDTO(codeTemplate.getTemplateId());
-        restMockMvc.perform(post(getApiPath() + "/template_file")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(addDTO)))
-            .andExpect(status().isCreated());
+        restMockMvc.perform(post(getApiPath() + "/template_file").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(addDTO))).andExpect(status().isCreated());
     }
 
     /**
@@ -53,10 +50,7 @@ public class TemplateFileControllerTest extends AbstractWebTest {
         CodeTemplatePO codeTemplate = codeTemplateHelper.saveCodeTemplateExample();
         TemplateFilePO templateFile = templateFileHelper.saveTemplateFileExample(codeTemplate.getTemplateId());
         TemplateFileUpdateDTO updateDTO = templateFileHelper.getTemplateFileUpdateDTO(templateFile);
-        restMockMvc.perform(put(getApiPath() + "/template_file")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(updateDTO)))
-            .andExpect(status().isOk());
+        restMockMvc.perform(put(getApiPath() + "/template_file").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(updateDTO))).andExpect(status().isOk());
     }
 
     /**
@@ -66,9 +60,7 @@ public class TemplateFileControllerTest extends AbstractWebTest {
     public void list() throws Exception {
         CodeTemplatePO codeTemplate = codeTemplateHelper.saveCodeTemplateExample();
         TemplateFilePO templateFile = templateFileHelper.saveTemplateFileExample(codeTemplate.getTemplateId());
-        restMockMvc.perform(get(getApiPath() + "/template_file"))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.length()").value(is(1)));
+        restMockMvc.perform(get(getApiPath() + "/template_file")).andExpect(status().isOk()).andExpect(jsonPath("$.length()").value(is(1)));
     }
 
     /**
@@ -78,8 +70,7 @@ public class TemplateFileControllerTest extends AbstractWebTest {
     public void show() throws Exception {
         CodeTemplatePO codeTemplate = codeTemplateHelper.saveCodeTemplateExample();
         TemplateFilePO templateFile = templateFileHelper.saveTemplateFileExample(codeTemplate.getTemplateId());
-        restMockMvc.perform(get(getApiPath() + "/template_file/{fileId}", templateFile.getFileId()))
-            .andExpect(status().isOk());
+        restMockMvc.perform(get(getApiPath() + "/template_file/{fileId}", templateFile.getFileId())).andExpect(status().isOk());
     }
 
     /**
@@ -89,9 +80,7 @@ public class TemplateFileControllerTest extends AbstractWebTest {
     public void del() throws Exception {
         CodeTemplatePO codeTemplate = codeTemplateHelper.saveCodeTemplateExample();
         TemplateFilePO templateFile = templateFileHelper.saveTemplateFileExample(codeTemplate.getTemplateId());
-        restMockMvc.perform(delete(getApiPath() + "/template_file/{fileId}", templateFile.getFileId()))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$").value(is(1)));
+        restMockMvc.perform(delete(getApiPath() + "/template_file/{fileId}", templateFile.getFileId())).andExpect(status().isOk()).andExpect(jsonPath("$").value(is(1)));
     }
 
     /**
@@ -101,11 +90,7 @@ public class TemplateFileControllerTest extends AbstractWebTest {
     public void deleteBatch() throws Exception {
         CodeTemplatePO codeTemplate = codeTemplateHelper.saveCodeTemplateExample();
         TemplateFilePO templateFile = templateFileHelper.saveTemplateFileExample(codeTemplate.getTemplateId());
-        restMockMvc.perform(delete(getApiPath() + "/template_file")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(Lists.newArrayList(templateFile.getFileId()))))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$").value(is(1)));
+        restMockMvc.perform(delete(getApiPath() + "/template_file").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(Lists.newArrayList(templateFile.getFileId())))).andExpect(status().isOk()).andExpect(jsonPath("$").value(is(1)));
     }
 
 

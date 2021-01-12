@@ -13,10 +13,10 @@ import static com.youran.generate.pojo.example.chart.MetaChartSourceExample.*;
  */
 public class MetaChartSourceQO extends AbstractQO {
 
-    @ApiParam(value = N_PROJECT_ID,example = E_PROJECT_ID)
+    @ApiParam(value = N_PROJECT_ID, example = E_PROJECT_ID)
     private Integer projectId;
 
-    @ApiParam(value = N_AGGREGATION,example = E_AGGREGATION)
+    @ApiParam(value = N_AGGREGATION, example = E_AGGREGATION)
     private Boolean aggregation;
 
 

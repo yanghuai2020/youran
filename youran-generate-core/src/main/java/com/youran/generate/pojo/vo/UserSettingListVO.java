@@ -15,13 +15,13 @@ import static com.youran.generate.pojo.example.UserSettingExample.*;
 @ApiModel(description = "【用户配置】列表展示对象")
 public class UserSettingListVO extends AbstractVO {
 
-    @ApiModelProperty(notes = N_ID,example = E_ID)
+    @ApiModelProperty(notes = N_ID, example = E_ID)
     private Integer id;
 
-    @ApiModelProperty(notes = N_USERNAME,example = E_USERNAME)
+    @ApiModelProperty(notes = N_USERNAME, example = E_USERNAME)
     private String username;
 
-    @ApiModelProperty(notes = N_TEMPLATE_ENABLED,example = E_TEMPLATE_ENABLED)
+    @ApiModelProperty(notes = N_TEMPLATE_ENABLED, example = E_TEMPLATE_ENABLED)
     private Boolean templateEnabled;
 
 
@@ -48,7 +48,6 @@ public class UserSettingListVO extends AbstractVO {
     public void setTemplateEnabled(Boolean templateEnabled) {
         this.templateEnabled = templateEnabled;
     }
-
 
 
 }

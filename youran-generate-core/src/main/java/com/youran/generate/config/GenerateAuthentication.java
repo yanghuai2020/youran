@@ -7,6 +7,7 @@ import java.util.Collection;
 
 /**
  * 用户授权信息
+ *
  * @author cbb
  * @date 2019/12/13
  */

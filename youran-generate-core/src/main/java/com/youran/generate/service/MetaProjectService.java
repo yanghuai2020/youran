@@ -186,8 +186,7 @@ public class MetaProjectService {
      * @return
      */
     public List<MetaProjectListVO> list(MetaProjectQO metaProjectQO) {
-        Map<Integer, CodeTemplateListVO> templateMap = codeTemplateService.list(new CodeTemplateQO())
-            .stream().collect(Collectors.toMap(CodeTemplateListVO::getTemplateId, o -> o));
+        Map<Integer, CodeTemplateListVO> templateMap = codeTemplateService.list(new CodeTemplateQO()).stream().collect(Collectors.toMap(CodeTemplateListVO::getTemplateId, o -> o));
         List<MetaProjectListVO> list = metaProjectDAO.findListByQuery(metaProjectQO);
         list.forEach(vo -> {
             if (vo.getTemplateId() != null) {
@@ -301,11 +300,10 @@ public class MetaProjectService {
      */
     private void checkOperatorByProject(MetaProjectPO projectPO) {
         String currentUser = loginContext.getCurrentUser();
-        if(StringUtils.isBlank(currentUser)){
+        if (StringUtils.isBlank(currentUser)) {
             throw new BusinessException("获取当前登录用户失败");
         }
-        if (!currentUser.equals(projectPO.getCreatedBy())
-            && !projectTeamMemberService.checkMemberInTeam(projectPO.getTeamId(), currentUser)) {
+        if (!currentUser.equals(projectPO.getCreatedBy()) && !projectTeamMemberService.checkMemberInTeam(projectPO.getTeamId(), currentUser)) {
             throw new BusinessException("您无该项目的操作权限");
         }
     }

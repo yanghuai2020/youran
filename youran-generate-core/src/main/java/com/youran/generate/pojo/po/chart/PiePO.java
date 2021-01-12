@@ -51,8 +51,7 @@ public class PiePO extends MetaChartPO {
      * @param featureDeserialize
      * @return
      */
-    public static PiePO fromSuperType(MetaChartPO superPO,
-                                      boolean featureDeserialize) {
+    public static PiePO fromSuperType(MetaChartPO superPO, boolean featureDeserialize) {
         if (!ChartType.PIE.getValue().equals(superPO.getChartType())) {
             throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "类型转换异常");
         }
@@ -72,16 +71,14 @@ public class PiePO extends MetaChartPO {
         if (dimension != null) {
             this.dimension.setSourceItem(dimension);
         } else {
-            throw new BusinessException(ErrorCode.INNER_DATA_ERROR,
-                "图表【" + this.getTitle() + "】维度项不存在，sourceItemId=" + dimensionSourceItemId);
+            throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "图表【" + this.getTitle() + "】维度项不存在，sourceItemId=" + dimensionSourceItemId);
         }
         Integer metricsSourceItemId = metrics.getSourceItemId();
         MetricsPO metrics = chartSource.getMetricsMap().get(metricsSourceItemId);
         if (metrics != null) {
             this.metrics.setSourceItem(metrics);
         } else {
-            throw new BusinessException(ErrorCode.INNER_DATA_ERROR,
-                "图表【" + this.getTitle() + "】指标项不存在，sourceItemId=" + metricsSourceItemId);
+            throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "图表【" + this.getTitle() + "】指标项不存在，sourceItemId=" + metricsSourceItemId);
         }
     }
 

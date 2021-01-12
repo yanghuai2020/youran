@@ -20,10 +20,7 @@ public interface MetaValidateAPI {
      * 实体内部校验
      */
     @ApiOperation(value = "实体内部校验")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "path"),
-        @ApiImplicitParam(name = "entityId", dataType = "int", value = "实体id", paramType = "path"),
-    })
-    ResponseEntity<MetaEntityInnerValidateVO> validateEntityInner(Integer projectId,Integer entityId);
+    @ApiImplicitParams({@ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "path"), @ApiImplicitParam(name = "entityId", dataType = "int", value = "实体id", paramType = "path"),})
+    ResponseEntity<MetaEntityInnerValidateVO> validateEntityInner(Integer projectId, Integer entityId);
 
 }

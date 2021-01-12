@@ -98,8 +98,7 @@ public class TemplateImportExportService {
             throw new BusinessException("导入失败，" + TEMPLATE_FILE_DIR + "目录不存在");
         }
         // 读取模板json文件，并解析成po
-        CodeTemplatePO templateFromJson = JsonUtil.parseObjectFromFile(
-            new File(jsonDir + TEMPLATE_JSON_FILE), CodeTemplatePO.class);
+        CodeTemplatePO templateFromJson = JsonUtil.parseObjectFromFile(new File(jsonDir + TEMPLATE_JSON_FILE), CodeTemplatePO.class);
         if (templateFromJson == null) {
             throw new BusinessException("导入失败");
         }
@@ -136,8 +135,7 @@ public class TemplateImportExportService {
      * @param tplDir
      * @return
      */
-    private TemplateFilePO saveTemplateFile(TemplateFilePO templateFileFromJson,
-                                            Integer templateId, File tplDir) {
+    private TemplateFilePO saveTemplateFile(TemplateFilePO templateFileFromJson, Integer templateId, File tplDir) {
         TemplateFilePO po = TemplateFileMapper.INSTANCE.copy(templateFileFromJson);
         po.setTemplateId(templateId);
         String filePath = po.getFileDir() + File.separator + po.getFileName();
@@ -146,8 +144,7 @@ public class TemplateImportExportService {
             throw new BusinessException("模板文件缺失：" + po.fetchFilePath());
         }
         if (contentFile.length() > TemplateFilePO.TEMPLATE_FILE_LENGTH_LIMIT) {
-            throw new BusinessException("模板文件(" + filePath + ")超过最大长度限制：" +
-                FileUtils.byteCountToDisplaySize(TemplateFilePO.TEMPLATE_FILE_LENGTH_LIMIT));
+            throw new BusinessException("模板文件(" + filePath + ")超过最大长度限制：" + FileUtils.byteCountToDisplaySize(TemplateFilePO.TEMPLATE_FILE_LENGTH_LIMIT));
         }
         String content;
         try {

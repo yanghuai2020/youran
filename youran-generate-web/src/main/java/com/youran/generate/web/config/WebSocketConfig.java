@@ -44,10 +44,8 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // 注册websocket的url路径
-        registry.addEndpoint(wsApiPath)
-            .setAllowedOrigins("*")
-            .withSockJS()
-            .setInterceptors(httpSessionHandshakeInterceptor());;
+        registry.addEndpoint(wsApiPath).setAllowedOrigins("*").withSockJS().setInterceptors(httpSessionHandshakeInterceptor());
+        ;
     }
 
 
@@ -56,16 +54,15 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
         return new HandshakeInterceptor() {
             @Override
-            public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response,
-                                           WebSocketHandler wsHandler, Map<String, Object> attributes) throws Exception {
+            public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map<String, Object> attributes) throws Exception {
                 // 如果集成了外部单点登录，需要在此获取用户授权信息
                 GenerateAuthentication authentication = new GenerateAuthentication(GenerateLoginContext.MOCK_LOGIN_USER);
                 SecurityContextHolder.getContext().setAuthentication(authentication);
                 return true;
             }
+
             @Override
-            public void afterHandshake(ServerHttpRequest request, ServerHttpResponse response,
-                                       WebSocketHandler wsHandler, Exception exception) {
+            public void afterHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Exception exception) {
             }
         };
     }

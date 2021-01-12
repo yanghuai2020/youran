@@ -50,8 +50,7 @@ public class MetaMtmCascadeExtService {
         // 校验别名
         MetadataUtil.jfieldNameCheck(addDTO.getAlias());
         // 获取项目，并校验操作人
-        MetaProjectPO project = metaProjectService.getProjectByEntityId(addDTO.getEntityId(),
-            true);
+        MetaProjectPO project = metaProjectService.getProjectByEntityId(addDTO.getEntityId(), true);
         MetaMtmCascadeExtPO metaMtmCascadeExt = MetaMtmCascadeExtMapper.INSTANCE.fromAddDTO(addDTO);
         metaMtmCascadeExt.setProjectId(project.getProjectId());
         this.doSave(metaMtmCascadeExt);
@@ -164,8 +163,7 @@ public class MetaMtmCascadeExtService {
             throw new BusinessException(ErrorCode.BAD_PARAMETER, "查询字段别名有冲突：" + po.getAlias());
         }
         // 校验重复添加
-        boolean exists = metaMtmCascadeExtDAO.cascadeFieldIdExists(po.getMtmId(), po.getEntityId(),
-            po.getCascadeFieldId(), po.getMtmCascadeExtId());
+        boolean exists = metaMtmCascadeExtDAO.cascadeFieldIdExists(po.getMtmId(), po.getEntityId(), po.getCascadeFieldId(), po.getMtmCascadeExtId());
         if (exists) {
             throw new BusinessException(ErrorCode.BAD_PARAMETER, "字段重复");
         }

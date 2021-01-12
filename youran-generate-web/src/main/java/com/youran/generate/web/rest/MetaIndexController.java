@@ -42,8 +42,7 @@ public class MetaIndexController extends AbstractController implements MetaIndex
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<MetaIndexShowVO> save(@Valid @RequestBody MetaIndexAddDTO metaIndexAddDTO) throws Exception {
         MetaIndexPO metaIndex = metaIndexService.save(metaIndexAddDTO);
-        return ResponseEntity.created(new URI(apiPath + "/meta_index/" + metaIndex.getIndexId()))
-            .body(MetaIndexMapper.INSTANCE.toShowVO(metaIndex));
+        return ResponseEntity.created(new URI(apiPath + "/meta_index/" + metaIndex.getIndexId())).body(MetaIndexMapper.INSTANCE.toShowVO(metaIndex));
     }
 
     @Override

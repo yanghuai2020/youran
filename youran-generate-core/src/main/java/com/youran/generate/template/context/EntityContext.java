@@ -216,10 +216,7 @@ public class EntityContext extends BaseContext {
                 continue;
             }
             if (field.getNotNull()) {
-                sb.append(SwitchCaseUtil.lowerFirstWord(field.getForeignEntity().getClassName()))
-                    .append(".get")
-                    .append(StringUtils.capitalize(field.getForeignEntity().getPkField().getJfieldName()))
-                    .append("(), ");
+                sb.append(SwitchCaseUtil.lowerFirstWord(field.getForeignEntity().getClassName())).append(".get").append(StringUtils.capitalize(field.getForeignEntity().getPkField().getJfieldName())).append("(), ");
             } else {
                 sb.append("null, ");
             }
@@ -233,8 +230,9 @@ public class EntityContext extends BaseContext {
 
     /**
      * 打印单元测试中保存Example的代码
-     *
+     * <p>
      * TODO 需要重构，下沉到模板中
+     *
      * @return
      */
     public List<String> getPrintingSaveExample() {
@@ -251,8 +249,9 @@ public class EntityContext extends BaseContext {
 
     /**
      * 打印单元测试中保存多对多两个实体示例的代码
-     *
+     * <p>
      * TODO 需要重构，下沉到模板中
+     *
      * @param otherEntity 多对多中另一个实体
      * @return
      */
@@ -290,17 +289,15 @@ public class EntityContext extends BaseContext {
             String className = entity.getClassName();
             StringBuilder line = new StringBuilder();
             // 增加依赖
-            if(StringUtils.isNotBlank(entity.getModule())) {
-                this.addImport(this.packageName + ".pojo.po."+ entity.getModule()+ "." + className + "PO");
+            if (StringUtils.isNotBlank(entity.getModule())) {
+                this.addImport(this.packageName + ".pojo.po." + entity.getModule() + "." + className + "PO");
                 this.addAutowired(this.packageName + ".help." + entity.getModule(), className + "Helper");
-            }else{
+            } else {
                 this.addImport(this.packageName + ".pojo.po." + className + "PO");
                 this.addAutowired(this.packageName + ".help", className + "Helper");
             }
             // 增加注入
-            line.append(className).append("PO ").append(classNameLowerCase).append(" = ")
-                .append(classNameLowerCase).append("Helper.save").append(className).append("Example(")
-                .append(printSaveExampleArg(entity)).append(");");
+            line.append(className).append("PO ").append(classNameLowerCase).append(" = ").append(classNameLowerCase).append("Helper.save").append(className).append("Example(").append(printSaveExampleArg(entity)).append(");");
             lines.add(line.toString());
         }
         return lines;

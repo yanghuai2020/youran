@@ -37,8 +37,7 @@ public class PageVO<T> extends AbstractVO {
 
     public PageVO(List<T> list, int currentPage, int pageSize, int total) {
         if (pageSize <= 0) {
-            throw new IllegalArgumentException(
-                "Illegal paging arguments. [pageSize=" + pageSize + "]");
+            throw new IllegalArgumentException("Illegal paging arguments. [pageSize=" + pageSize + "]");
         }
         this.list = list;
         this.currentPage = currentPage;
@@ -56,15 +55,7 @@ public class PageVO<T> extends AbstractVO {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
-            .append("pageSize", pageSize)
-            .append("currentPage", currentPage)
-            .append("firstIndex", firstIndex)
-            .append("lastIndex", lastIndex)
-            .append("list", list)
-            .append("total", total)
-            .append("pageCount", pageCount)
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("pageSize", pageSize).append("currentPage", currentPage).append("firstIndex", firstIndex).append("lastIndex", lastIndex).append("list", list).append("total", total).append("pageCount", pageCount).toString();
     }
 
     public Integer getPageSize() {

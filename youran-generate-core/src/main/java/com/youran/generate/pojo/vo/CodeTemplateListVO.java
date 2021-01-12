@@ -41,7 +41,7 @@ public class CodeTemplateListVO extends AbstractVO {
     private String remark;
 
     @ApiModelProperty(notes = N_OPERATEDTIME, example = E_OPERATEDTIME)
-    @JsonFormat(pattern= JsonFieldConst.DEFAULT_DATETIME_FORMAT,timezone="GMT+8")
+    @JsonFormat(pattern = JsonFieldConst.DEFAULT_DATETIME_FORMAT, timezone = "GMT+8")
     private Date operatedTime;
 
     public Integer getTemplateId() {

@@ -73,12 +73,6 @@ public class MetaConstDetailListVO extends AbstractVO {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
-            .append("constDetailId", constDetailId)
-            .append("constId", constId)
-            .append("detailName", detailName)
-            .append("detailValue", detailValue)
-            .append("detailRemark", detailRemark)
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("constDetailId", constDetailId).append("constId", constId).append("detailName", detailName).append("detailValue", detailValue).append("detailRemark", detailRemark).toString();
     }
 }

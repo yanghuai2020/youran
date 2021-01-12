@@ -85,8 +85,7 @@ public class CommonTemplateFunction {
         if (StringUtils.isBlank(comment)) {
             return "";
         }
-        return comment.replaceAll("\'", "\"")
-            .replaceAll("\n", "");
+        return comment.replaceAll("\'", "\"").replaceAll("\n", "");
     }
 
     /**
@@ -132,11 +131,9 @@ public class CommonTemplateFunction {
         }
         StringBuilder sb = new StringBuilder();
         for (String[] split : splits) {
-            sb.append(split[0])
-                .append(tag);
+            sb.append(split[0]).append(tag);
             if (split[2].length() > 0) {
-                sb.append(StringUtils.rightPad(split[1], maxLength + 1))
-                    .append(split[2]);
+                sb.append(StringUtils.rightPad(split[1], maxLength + 1)).append(split[2]);
             } else {
                 sb.append(split[1]);
             }

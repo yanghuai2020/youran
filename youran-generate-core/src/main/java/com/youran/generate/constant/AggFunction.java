@@ -16,27 +16,27 @@ public enum AggFunction {
     /**
      * sum
      */
-    SUM(1,"sum"),
+    SUM(1, "sum"),
     /**
      * max
      */
-    MAX(2,"max"),
+    MAX(2, "max"),
     /**
      * min
      */
-    MIN(3,"min"),
+    MIN(3, "min"),
     /**
      * avg
      */
-    AVG(4,"avg"),
+    AVG(4, "avg"),
     /**
      * count
      */
-    COUNT(5,"count"),
+    COUNT(5, "count"),
     /**
      * count_distinct
      */
-    COUNT_DISTINCT(6,"count_distinct");
+    COUNT_DISTINCT(6, "count_distinct");
 
 
     private final Integer value;
@@ -65,9 +65,9 @@ public enum AggFunction {
         return LOOKUP.get(value);
     }
 
-    public static AggFunction findByDesc(String desc){
+    public static AggFunction findByDesc(String desc) {
         for (AggFunction e : AggFunction.values()) {
-            if(e.getDesc().equals(desc)){
+            if (e.getDesc().equals(desc)) {
                 return e;
             }
         }
@@ -107,9 +107,9 @@ public enum AggFunction {
      * 校验有效性
      */
     @Check
-    public static final boolean validate(Integer value){
+    public static final boolean validate(Integer value) {
         AggFunction theEnum = find(value);
-        return theEnum!=null;
+        return theEnum != null;
     }
 
     public Integer getValue() {

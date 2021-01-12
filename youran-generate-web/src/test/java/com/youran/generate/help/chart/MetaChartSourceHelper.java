@@ -18,10 +18,10 @@ public class MetaChartSourceHelper {
 
     /**
      * 生成add测试数据
+     *
      * @return
      */
-    public MetaChartSourceAddDTO getMetaChartSourceAddDTO(Integer projectId,
-                                                          Integer entityId){
+    public MetaChartSourceAddDTO getMetaChartSourceAddDTO(Integer projectId, Integer entityId) {
         MetaChartSourceAddDTO dto = new MetaChartSourceAddDTO();
         dto.setProjectId(projectId);
         dto.setAggregation(SafeUtil.getBoolean(E_AGGREGATION));
@@ -33,9 +33,10 @@ public class MetaChartSourceHelper {
 
     /**
      * 生成update测试数据
+     *
      * @return
      */
-    public MetaChartSourceUpdateDTO getMetaChartSourceUpdateDTO(MetaChartSourcePO metaChartSource){
+    public MetaChartSourceUpdateDTO getMetaChartSourceUpdateDTO(MetaChartSourcePO metaChartSource) {
         MetaChartSourceUpdateDTO dto = new MetaChartSourceUpdateDTO();
         dto.setSourceId(metaChartSource.getSourceId());
         dto.setProjectId(metaChartSource.getProjectId());
@@ -46,14 +47,13 @@ public class MetaChartSourceHelper {
 
     /**
      * 保存示例
+     *
      * @return
      */
-    public MetaChartSourcePO saveMetaChartSourceExample(Integer projectId,
-                                                        Integer entityId){
-        MetaChartSourceAddDTO addDTO = this.getMetaChartSourceAddDTO(projectId,entityId);
+    public MetaChartSourcePO saveMetaChartSourceExample(Integer projectId, Integer entityId) {
+        MetaChartSourceAddDTO addDTO = this.getMetaChartSourceAddDTO(projectId, entityId);
         return metaChartSourceService.save(addDTO);
     }
-
 
 
 }

@@ -71,12 +71,9 @@ public class ExceptionTranslator {
         List<ObjectError> errors = result.getAllErrors();
         String errorMsg = null;
         if (CollectionUtils.isNotEmpty(errors)) {
-            List<String> errorMsgs = errors.stream()
-                .map(error -> error.getDefaultMessage())
-                .collect(Collectors.toList());
+            List<String> errorMsgs = errors.stream().map(error -> error.getDefaultMessage()).collect(Collectors.toList());
             LOGGER.warn(JsonUtil.toJSONString(errorMsgs));
-            errorMsg = errorMsgs.stream()
-                .collect(Collectors.joining(";"));
+            errorMsg = errorMsgs.stream().collect(Collectors.joining(";"));
         }
         return buildErrorResponse(ErrorCode.BAD_PARAMETER, errorMsg);
     }
@@ -173,8 +170,7 @@ public class ExceptionTranslator {
         if (StringUtils.isBlank(message)) {
             message = errorCode.getDesc();
         }
-        return ResponseEntity.status(errorCode.getValue())
-            .body(new ReplyVO<>(errorCode.getValue().toString(), message));
+        return ResponseEntity.status(errorCode.getValue()).body(new ReplyVO<>(errorCode.getValue().toString(), message));
     }
 
 }

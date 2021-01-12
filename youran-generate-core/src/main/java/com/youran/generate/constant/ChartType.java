@@ -16,19 +16,19 @@ public enum ChartType {
     /**
      * 明细表
      */
-    DETAIL_LIST(1,"明细表"),
+    DETAIL_LIST(1, "明细表"),
     /**
      * 聚合表
      */
-    AGG_TABLE(2,"聚合表"),
+    AGG_TABLE(2, "聚合表"),
     /**
      * 柱线图
      */
-    BAR_LINE(3,"柱线图"),
+    BAR_LINE(3, "柱线图"),
     /**
      * 饼图
      */
-    PIE(4,"饼图");
+    PIE(4, "饼图");
 
 
     private final Integer value;
@@ -57,9 +57,9 @@ public enum ChartType {
         return LOOKUP.get(value);
     }
 
-    public static ChartType findByDesc(String desc){
+    public static ChartType findByDesc(String desc) {
         for (ChartType e : ChartType.values()) {
-            if(e.getDesc().equals(desc)){
+            if (e.getDesc().equals(desc)) {
                 return e;
             }
         }
@@ -99,9 +99,9 @@ public enum ChartType {
      * 校验有效性
      */
     @Check
-    public static final boolean validate(Integer value){
+    public static final boolean validate(Integer value) {
         ChartType theEnum = find(value);
-        return theEnum!=null;
+        return theEnum != null;
     }
 
     public Integer getValue() {

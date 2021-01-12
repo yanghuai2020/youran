@@ -170,9 +170,7 @@ public class MetaProjectPO extends BasePO {
             return null;
         }
         String[] split = projectName.split("-|_");
-        return stream(split)
-            .reduce((s, s2) -> s.concat(StringUtils.capitalize(s2)))
-            .get();
+        return stream(split).reduce((s, s2) -> s.concat(StringUtils.capitalize(s2))).get();
     }
 
     /**

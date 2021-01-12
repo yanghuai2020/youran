@@ -44,10 +44,7 @@ public class MetaIndexControllerTest extends AbstractWebTest {
     public void save() throws Exception {
         MetaFieldPO metaField2 = generateHelper.saveFieldExample(metaEntity.getEntityId());
         MetaIndexAddDTO addDTO = MetaIndexHelper.getAddDTO(metaField.getFieldId(), metaField2.getFieldId());
-        restMockMvc.perform(post(getApiPath() + "/meta_index/save")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(addDTO)))
-            .andExpect(MockMvcResultMatchers.status().isCreated());
+        restMockMvc.perform(post(getApiPath() + "/meta_index/save").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(addDTO))).andExpect(MockMvcResultMatchers.status().isCreated());
 
     }
 
@@ -56,38 +53,28 @@ public class MetaIndexControllerTest extends AbstractWebTest {
         MetaFieldPO metaField2 = generateHelper.saveFieldExample(metaEntity.getEntityId());
         MetaIndexPO metaIndex = generateHelper.saveIndexExample(metaField.getFieldId(), metaField2.getFieldId());
         MetaIndexUpdateDTO updateDTO = MetaIndexHelper.getUpdateDTO(metaIndex, metaField.getFieldId());
-        restMockMvc.perform(put(getApiPath() + "/meta_index/update")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(updateDTO)))
-            .andExpect(MockMvcResultMatchers.status().isOk());
+        restMockMvc.perform(put(getApiPath() + "/meta_index/update").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(updateDTO))).andExpect(MockMvcResultMatchers.status().isOk());
     }
 
 
     @Test
     public void list() throws Exception {
         generateHelper.saveIndexExample(metaField.getFieldId());
-        restMockMvc.perform(get(getApiPath() + "/meta_index/list")
-            .param("entityId", metaEntity.getEntityId() + ""))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(jsonPath("$.length()").value(is(1)));
+        restMockMvc.perform(get(getApiPath() + "/meta_index/list").param("entityId", metaEntity.getEntityId() + "")).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(jsonPath("$.length()").value(is(1)));
     }
 
     @Test
     public void show() throws Exception {
         MetaIndexPO metaIndex = generateHelper.saveIndexExample(metaField.getFieldId());
 
-        restMockMvc.perform(get(getApiPath() + "/meta_index/{indexId}", metaIndex.getIndexId()))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(jsonPath("$.indexId").value(is(metaIndex.getIndexId())));
+        restMockMvc.perform(get(getApiPath() + "/meta_index/{indexId}", metaIndex.getIndexId())).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(jsonPath("$.indexId").value(is(metaIndex.getIndexId())));
     }
 
     @Test
     public void del() throws Exception {
         MetaIndexPO metaIndex = generateHelper.saveIndexExample(metaField.getFieldId());
 
-        restMockMvc.perform(delete(getApiPath() + "/meta_index/{indexId}", metaIndex.getIndexId()))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andExpect(jsonPath("$").value(is(1)));
+        restMockMvc.perform(delete(getApiPath() + "/meta_index/{indexId}", metaIndex.getIndexId())).andExpect(MockMvcResultMatchers.status().isOk()).andExpect(jsonPath("$").value(is(1)));
     }
 
 

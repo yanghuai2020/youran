@@ -32,10 +32,7 @@ public class DetailOrderPO extends MetaChartSourceItemPO {
     public void assembleItem(MetaChartSourcePO chartSource) {
         super.assembleItem(chartSource);
         Map<Integer, DetailColumnPO> detailColumnMap = chartSource.getDetailColumnMap();
-        detailColumnMap.entrySet().stream()
-            .filter(entry -> entry.getKey().equals(this.getParentId()))
-            .findFirst()
-            .ifPresent(entry -> this.setParent(entry.getValue()));
+        detailColumnMap.entrySet().stream().filter(entry -> entry.getKey().equals(this.getParentId())).findFirst().ifPresent(entry -> this.setParent(entry.getValue()));
     }
 
     /**
@@ -45,8 +42,7 @@ public class DetailOrderPO extends MetaChartSourceItemPO {
      * @param featureDeserialize
      * @return
      */
-    public static DetailOrderPO fromSuperType(MetaChartSourceItemPO superPO,
-                                              boolean featureDeserialize) {
+    public static DetailOrderPO fromSuperType(MetaChartSourceItemPO superPO, boolean featureDeserialize) {
         if (!SourceItemType.DETAIL_ORDER.getValue().equals(superPO.getType())) {
             throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "类型转换异常");
         }
@@ -79,7 +75,7 @@ public class DetailOrderPO extends MetaChartSourceItemPO {
         this.sortType = sortType;
     }
 
-    static class FeatureDTO{
+    static class FeatureDTO {
         private Integer sortType;
 
         public Integer getSortType() {

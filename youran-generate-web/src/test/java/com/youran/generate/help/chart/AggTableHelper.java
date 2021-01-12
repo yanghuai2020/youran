@@ -22,10 +22,7 @@ public class AggTableHelper {
     /**
      * 生成add测试数据
      */
-    public AggTableAddDTO getAddDTO(Integer projectId,
-                                    Integer sourceId,
-                                    List<ChartItemDTO> dimensionList,
-                                    List<ChartItemDTO> metricsList){
+    public AggTableAddDTO getAddDTO(Integer projectId, Integer sourceId, List<ChartItemDTO> dimensionList, List<ChartItemDTO> metricsList) {
         AggTableAddDTO dto = new AggTableAddDTO();
         dto.setProjectId(projectId);
         dto.setSourceId(sourceId);
@@ -43,7 +40,7 @@ public class AggTableHelper {
     /**
      * 生成update测试数据
      */
-    public AggTableUpdateDTO getUpdateDTO(AggTablePO po){
+    public AggTableUpdateDTO getUpdateDTO(AggTablePO po) {
         AggTableUpdateDTO dto = new AggTableUpdateDTO();
         dto.setChartId(po.getChartId());
         dto.setProjectId(po.getProjectId());
@@ -51,12 +48,8 @@ public class AggTableHelper {
         dto.setChartName(po.getChartName());
         dto.setModule(po.getModule());
         dto.setTitle(po.getTitle());
-        dto.setDimensionList(po.getDimensionList()
-            .stream()
-            .collect(Collectors.toList()));
-        dto.setMetricsList(po.getMetricsList()
-            .stream()
-            .collect(Collectors.toList()));
+        dto.setDimensionList(po.getDimensionList().stream().collect(Collectors.toList()));
+        dto.setMetricsList(po.getMetricsList().stream().collect(Collectors.toList()));
         dto.setDefaultPageSize(po.getDefaultPageSize());
         dto.setExcelExport(po.getExcelExport());
         return dto;
@@ -64,14 +57,11 @@ public class AggTableHelper {
 
     /**
      * 保存示例
+     *
      * @return
      */
-    public AggTablePO saveExample(Integer projectId,
-                                  Integer sourceId,
-                                  List<ChartItemDTO> dimensionList,
-                                  List<ChartItemDTO> metricsList){
-        AggTableAddDTO addDTO = this.getAddDTO(projectId, sourceId,
-            dimensionList, metricsList);
+    public AggTablePO saveExample(Integer projectId, Integer sourceId, List<ChartItemDTO> dimensionList, List<ChartItemDTO> metricsList) {
+        AggTableAddDTO addDTO = this.getAddDTO(projectId, sourceId, dimensionList, metricsList);
         return aggTableService.save(addDTO);
     }
 

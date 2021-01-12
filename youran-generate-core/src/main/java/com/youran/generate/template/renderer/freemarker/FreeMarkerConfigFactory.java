@@ -44,33 +44,16 @@ public class FreeMarkerConfigFactory {
 
     private Map<Integer, Triple<Configuration, Integer, String>> cache;
     private BeansWrapperBuilder beansWrapperBuilder;
-    private Map<String,TemplateModel> staticModels;
+    private Map<String, TemplateModel> staticModels;
 
     public FreeMarkerConfigFactory() {
         this.cache = new ConcurrentHashMap<>();
         this.beansWrapperBuilder = new BeansWrapperBuilder(Configuration.VERSION_2_3_21);
         this.beansWrapperBuilder.setExposeFields(true);
-        Class[] staticModelClass = new Class[]{
-            MetaConstType.class,
-            JFieldType.class,
-            QueryType.class,
-            EditType.class,
-            CustomFieldType.class,
-            ChartType.class,
-            FilterOperator.class,
-            SortType.class,
-            JoinType.class,
-            Granularity.class,
-            AggFunction.class,
-            MetaSpecialField.class,
-            PrimaryKeyStrategy.class,
-            CommonTemplateFunction.class,
-            JavaTemplateFunction.class,
-            SqlTemplateFunction.class,
-        };
+        Class[] staticModelClass = new Class[]{MetaConstType.class, JFieldType.class, QueryType.class, EditType.class, CustomFieldType.class, ChartType.class, FilterOperator.class, SortType.class, JoinType.class, Granularity.class, AggFunction.class, MetaSpecialField.class, PrimaryKeyStrategy.class, CommonTemplateFunction.class, JavaTemplateFunction.class, SqlTemplateFunction.class,};
         this.staticModels = new HashMap<>(staticModelClass.length);
         for (Class modelClass : staticModelClass) {
-            this.staticModels.put(modelClass.getSimpleName(),getStaticModel(modelClass));
+            this.staticModels.put(modelClass.getSimpleName(), getStaticModel(modelClass));
         }
     }
 
@@ -113,8 +96,7 @@ public class FreeMarkerConfigFactory {
      */
     private Triple<Configuration, Integer, String> buildTriple(CodeTemplatePO templatePO) {
         String templateDir = dataDirService.getTemplateRecentDir(templatePO);
-        LOGGER.info("开始构建FreeMarker Configuration,templateId={},innerVersion={},模板文件输出目录：{}",
-            templatePO.getTemplateId(), templatePO.getInnerVersion(), templateDir);
+        LOGGER.info("开始构建FreeMarker Configuration,templateId={},innerVersion={},模板文件输出目录：{}", templatePO.getTemplateId(), templatePO.getInnerVersion(), templateDir);
         // 把模板输出到目录
         templateFileOutputService.outputTemplateFiles(templatePO.getTemplateFiles(), templateDir);
 

@@ -16,23 +16,23 @@ public enum EditType {
     /**
      * 文本框
      */
-    TEXT(1,"文本框"),
+    TEXT(1, "文本框"),
     /**
      * 单选下拉框
      */
-    SELECT(2,"单选下拉框"),
+    SELECT(2, "单选下拉框"),
     /**
      * 日期框
      */
-    DATE(3,"日期框"),
+    DATE(3, "日期框"),
     /**
      * 数字框
      */
-    NUMBER(4,"数字框"),
+    NUMBER(4, "数字框"),
     /**
      * 单选按钮
      */
-    RADIO(5,"单选按钮"),
+    RADIO(5, "单选按钮"),
     /**
      * 复选框
      */
@@ -40,7 +40,7 @@ public enum EditType {
     /**
      * 日期时间框
      */
-    DATETIME(7,"日期时间框"),
+    DATETIME(7, "日期时间框"),
     /**
      * 多选下拉框
      */
@@ -48,7 +48,7 @@ public enum EditType {
     /**
      * 多行文本框
      */
-    TEXTAREA(9,"多行文本框");
+    TEXTAREA(9, "多行文本框");
 
 
     private final Integer value;
@@ -77,9 +77,9 @@ public enum EditType {
         return LOOKUP.get(value);
     }
 
-    public static EditType findByDesc(String desc){
+    public static EditType findByDesc(String desc) {
         for (EditType e : EditType.values()) {
-            if(e.getDesc().equals(desc)){
+            if (e.getDesc().equals(desc)) {
                 return e;
             }
         }
@@ -90,9 +90,9 @@ public enum EditType {
      * 校验有效性
      */
     @Check
-    public static final boolean validate(Integer value){
+    public static final boolean validate(Integer value) {
         EditType theEnum = find(value);
-        return theEnum!=null;
+        return theEnum != null;
     }
 
     public Integer getValue() {

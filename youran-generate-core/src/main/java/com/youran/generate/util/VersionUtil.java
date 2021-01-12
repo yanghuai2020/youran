@@ -21,10 +21,7 @@ public class VersionUtil {
      * @return
      */
     public static int[] parseVersion(String version) {
-        return Arrays.stream(version.split("\\."))
-            .filter(s -> Pattern.matches(PatternConst.NUM, s))
-            .mapToInt(SafeUtil::getInteger)
-            .toArray();
+        return Arrays.stream(version.split("\\.")).filter(s -> Pattern.matches(PatternConst.NUM, s)).mapToInt(SafeUtil::getInteger).toArray();
     }
 
     /**

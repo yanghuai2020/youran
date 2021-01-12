@@ -30,17 +30,12 @@ public interface TemplateFileDAO extends DAO<TemplateFilePO> {
 
     int getCountByTemplateId(Integer templateId);
 
-    boolean notUnique(@Param("templateId") Integer templateId,
-                      @Param("fileDir") String fileDir,
-                      @Param("fileName") String fileName,
-                      @Param("fileId") Integer fileId);
+    boolean notUnique(@Param("templateId") Integer templateId, @Param("fileDir") String fileDir, @Param("fileName") String fileName, @Param("fileId") Integer fileId);
 
     List<TemplateFilePO> findAll(Integer templateId);
 
 
-    boolean dirPathExists(@Param("templateId") Integer templateId,
-                          @Param("fileType") Integer fileType,
-                          @Param("fileDir") String fileDir);
+    boolean dirPathExists(@Param("templateId") Integer templateId, @Param("fileType") Integer fileType, @Param("fileDir") String fileDir);
 }
 
 

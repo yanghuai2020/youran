@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 
 /**
  * 【系统用户】API
+ *
  * @author cbb
  * @date 2019/10/23
  */
@@ -20,10 +21,8 @@ public interface SystemUserAPI {
     /**
      * 修改【用户配置】
      */
-    @ApiOperation(value="修改【用户配置】")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "userSettingUpdateDTO", dataType = "UserSettingUpdateDTO", value = "修改【用户配置】参数", paramType = "body"),
-    })
+    @ApiOperation(value = "修改【用户配置】")
+    @ApiImplicitParams({@ApiImplicitParam(name = "userSettingUpdateDTO", dataType = "UserSettingUpdateDTO", value = "修改【用户配置】参数", paramType = "body"),})
     ResponseEntity<UserSettingShowVO> updateSetting(UserSettingUpdateDTO userSettingUpdateDTO);
 
 

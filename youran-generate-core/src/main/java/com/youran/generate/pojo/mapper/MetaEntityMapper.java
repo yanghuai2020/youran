@@ -44,16 +44,7 @@ public interface MetaEntityMapper {
     MetaEntityShowVO toShowVO(MetaEntityPO metaEntityPO);
 
     @BeanMapping(ignoreByDefault = true)
-    @Mappings({
-        @Mapping(target = "schemaName"),
-        @Mapping(target = "className"),
-        @Mapping(target = "tableName"),
-        @Mapping(target = "title"),
-        @Mapping(target = "desc"),
-        @Mapping(target = "pageSign"),
-        @Mapping(target = "feature"),
-        @Mapping(target = "labels"),
-    })
+    @Mappings({@Mapping(target = "schemaName"), @Mapping(target = "className"), @Mapping(target = "tableName"), @Mapping(target = "title"), @Mapping(target = "desc"), @Mapping(target = "pageSign"), @Mapping(target = "feature"), @Mapping(target = "labels"),})
     MetaEntityPO copy(MetaEntityPO entity);
 
 

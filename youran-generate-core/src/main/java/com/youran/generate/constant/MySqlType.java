@@ -43,20 +43,7 @@ public class MySqlType {
      */
     @Check
     public static final boolean validate(String mysqlType) {
-        return INT.equals(mysqlType) ||
-            VARCHAR.equals(mysqlType) ||
-            TEXT.equals(mysqlType) ||
-            DATE.equals(mysqlType) ||
-            DATETIME.equals(mysqlType) ||
-            FLOAT.equals(mysqlType) ||
-            DOUBLE.equals(mysqlType) ||
-            DECIMAL.equals(mysqlType) ||
-            BIGINT.equals(mysqlType) ||
-            SMALLINT.equals(mysqlType) ||
-            MEDIUMINT.equals(mysqlType) ||
-            TINYINT.equals(mysqlType) ||
-            TIMESTAMP.equals(mysqlType) ||
-            CHAR.equals(mysqlType);
+        return INT.equals(mysqlType) || VARCHAR.equals(mysqlType) || TEXT.equals(mysqlType) || DATE.equals(mysqlType) || DATETIME.equals(mysqlType) || FLOAT.equals(mysqlType) || DOUBLE.equals(mysqlType) || DECIMAL.equals(mysqlType) || BIGINT.equals(mysqlType) || SMALLINT.equals(mysqlType) || MEDIUMINT.equals(mysqlType) || TINYINT.equals(mysqlType) || TIMESTAMP.equals(mysqlType) || CHAR.equals(mysqlType);
     }
 
     /**
@@ -66,9 +53,7 @@ public class MySqlType {
      * @return
      */
     public static boolean isStringType(String mySqlType) {
-        return TEXT.equals(mySqlType)
-            || VARCHAR.equals(mySqlType)
-            || CHAR.equals(mySqlType);
+        return TEXT.equals(mySqlType) || VARCHAR.equals(mySqlType) || CHAR.equals(mySqlType);
     }
 
     /**
@@ -78,14 +63,7 @@ public class MySqlType {
      * @return
      */
     public static boolean isNumberType(String mySqlType) {
-        return INT.equals(mySqlType)
-            || BIGINT.equals(mySqlType)
-            || SMALLINT.equals(mySqlType)
-            || MEDIUMINT.equals(mySqlType)
-            || TINYINT.equals(mySqlType)
-            || FLOAT.equals(mySqlType)
-            || DOUBLE.equals(mySqlType)
-            || DECIMAL.equals(mySqlType);
+        return INT.equals(mySqlType) || BIGINT.equals(mySqlType) || SMALLINT.equals(mySqlType) || MEDIUMINT.equals(mySqlType) || TINYINT.equals(mySqlType) || FLOAT.equals(mySqlType) || DOUBLE.equals(mySqlType) || DECIMAL.equals(mySqlType);
     }
 
     /**

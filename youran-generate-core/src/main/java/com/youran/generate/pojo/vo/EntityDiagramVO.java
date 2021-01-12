@@ -50,9 +50,6 @@ public class EntityDiagramVO extends AbstractVO {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
-            .append("key", key)
-            .append("fields", fields)
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("key", key).append("fields", fields).toString();
     }
 }

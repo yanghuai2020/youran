@@ -21,6 +21,7 @@ public interface MetaDashboardDAO extends DAO<MetaDashboardPO> {
 
     /**
      * 根据条件查询【看板】列表
+     *
      * @param metaDashboardQO
      * @return
      */
@@ -29,6 +30,7 @@ public interface MetaDashboardDAO extends DAO<MetaDashboardPO> {
 
     /**
      * 根据项目id查询所有【看板】列表
+     *
      * @param projectId
      * @return
      */

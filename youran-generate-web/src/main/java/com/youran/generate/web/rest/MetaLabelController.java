@@ -34,14 +34,12 @@ public class MetaLabelController extends AbstractController implements MetaLabel
 
     @Override
     @GetMapping
-    public ResponseEntity<List<MetaLabelDTO>> getMetaLabel(@RequestParam(required = false) Integer projectId,
-                                                           @RequestParam(required = false) List<Integer> templateId,
-                                                           @RequestParam String labelType) {
+    public ResponseEntity<List<MetaLabelDTO>> getMetaLabel(@RequestParam(required = false) Integer projectId, @RequestParam(required = false) List<Integer> templateId, @RequestParam String labelType) {
         if (!LabelType.check(labelType)) {
             throw new BusinessException(ErrorCode.BAD_REQUEST, "标签类型不存在");
         }
         List<MetaLabelDTO> list = new ArrayList<>();
-        if(CollectionUtils.isNotEmpty(templateId)){
+        if (CollectionUtils.isNotEmpty(templateId)) {
             list = metaLabelService.getMetaLabelByTemplateId(templateId, labelType);
         } else if (projectId != null) {
             list = metaLabelService.getMetaLabelByProjectId(projectId, labelType);

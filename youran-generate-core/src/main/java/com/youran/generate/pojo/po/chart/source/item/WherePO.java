@@ -100,8 +100,7 @@ public class WherePO extends MetaChartSourceItemPO {
      * @param featureDeserialize
      * @return
      */
-    public static WherePO fromSuperType(MetaChartSourceItemPO superPO,
-                                        boolean featureDeserialize) {
+    public static WherePO fromSuperType(MetaChartSourceItemPO superPO, boolean featureDeserialize) {
         if (!SourceItemType.WHERE.getValue().equals(superPO.getType())) {
             throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "类型转换异常");
         }

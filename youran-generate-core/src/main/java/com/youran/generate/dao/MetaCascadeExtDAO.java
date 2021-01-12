@@ -43,9 +43,6 @@ public interface MetaCascadeExtDAO extends DAO<MetaCascadeExtPO> {
      * @param cascadeExtId    需要排除的主键
      * @return
      */
-    boolean cascadeFieldIdExists(@Param("fieldId") Integer fieldId,
-                                 @Param("cascadeEntityId") Integer cascadeEntityId,
-                                 @Param("cascadeFieldId") Integer cascadeFieldId,
-                                 @Param("cascadeExtId") Integer cascadeExtId);
+    boolean cascadeFieldIdExists(@Param("fieldId") Integer fieldId, @Param("cascadeEntityId") Integer cascadeEntityId, @Param("cascadeFieldId") Integer cascadeFieldId, @Param("cascadeExtId") Integer cascadeExtId);
 
 }

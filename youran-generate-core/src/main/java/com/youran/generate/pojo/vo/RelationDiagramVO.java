@@ -52,11 +52,6 @@ public class RelationDiagramVO extends AbstractVO {
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE)
-            .append("from", from)
-            .append("to", to)
-            .append("text", text)
-            .append("toText", toText)
-            .toString();
+        return new ToStringBuilder(this, ToStringStyle.JSON_STYLE).append("from", from).append("to", to).append("text", text).append("toText", toText).toString();
     }
 }

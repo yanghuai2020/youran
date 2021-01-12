@@ -43,12 +43,7 @@ public interface MetaCascadeExtMapper {
     MetaCascadeExtShowVO toShowVO(MetaCascadeExtPO po);
 
     @BeanMapping(ignoreByDefault = true)
-    @Mappings({
-        @Mapping(target = "alias"),
-        @Mapping(target = "list"),
-        @Mapping(target = "show"),
-        @Mapping(target = "query"),
-    })
+    @Mappings({@Mapping(target = "alias"), @Mapping(target = "list"), @Mapping(target = "show"), @Mapping(target = "query"),})
     MetaCascadeExtPO copy(MetaCascadeExtPO cascadeExtFromJson);
 
 

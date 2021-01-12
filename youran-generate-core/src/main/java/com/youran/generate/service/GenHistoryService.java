@@ -37,8 +37,7 @@ public class GenHistoryService {
      * @return
      */
     @Transactional(rollbackFor = RuntimeException.class)
-    public GenHistoryPO save(MetaProjectPO project, CodeTemplatePO codeTemplate,
-                             String remoteUrl, String commit, String branch) {
+    public GenHistoryPO save(MetaProjectPO project, CodeTemplatePO codeTemplate, String remoteUrl, String commit, String branch) {
         GenHistoryPO genHistory = new GenHistoryPO();
         genHistory.setProjectId(project.getProjectId());
         genHistory.setRemoteUrl(remoteUrl);
@@ -114,11 +113,7 @@ public class GenHistoryService {
      * @param genHistory   上一次生成历史
      */
     public boolean checkVersion(MetaProjectPO project, CodeTemplatePO codeTemplate, GenHistoryPO genHistory) {
-        if (Objects.equals(genHistory.getProjectVersion(), project.getProjectVersion())
-            && Objects.equals(genHistory.getSysVersion(), generateProperties.getVersion())
-            && Objects.equals(codeTemplate.getTemplateId(), genHistory.getTemplateId())
-            && Objects.equals(codeTemplate.getInnerVersion(), genHistory.getTemplateInnerVersion())
-        ) {
+        if (Objects.equals(genHistory.getProjectVersion(), project.getProjectVersion()) && Objects.equals(genHistory.getSysVersion(), generateProperties.getVersion()) && Objects.equals(codeTemplate.getTemplateId(), genHistory.getTemplateId()) && Objects.equals(codeTemplate.getInnerVersion(), genHistory.getTemplateInnerVersion())) {
             return false;
         }
         return true;

@@ -17,8 +17,7 @@ import org.springframework.stereotype.Repository;
 public interface GenHistoryDAO extends DAO<GenHistoryPO> {
 
 
-    GenHistoryPO findByProjectIdAndRemoteUrl(@Param("projectId") Integer projectId,
-                                             @Param("remoteUrl") String remoteUrl);
+    GenHistoryPO findByProjectIdAndRemoteUrl(@Param("projectId") Integer projectId, @Param("remoteUrl") String remoteUrl);
 
 
 }

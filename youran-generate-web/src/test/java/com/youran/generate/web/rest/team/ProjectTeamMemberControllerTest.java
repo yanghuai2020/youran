@@ -38,10 +38,7 @@ public class ProjectTeamMemberControllerTest extends AbstractWebTest {
     public void save() throws Exception {
         ProjectTeamPO projectTeam = projectTeamHelper.saveProjectTeamExample();
         ProjectTeamMemberAddDTO addDTO = projectTeamMemberHelper.getProjectTeamMemberAddDTO(projectTeam.getTeamId());
-        restMockMvc.perform(post(getApiPath() + "/project_team_member")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(addDTO)))
-            .andExpect(status().isCreated());
+        restMockMvc.perform(post(getApiPath() + "/project_team_member").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(addDTO))).andExpect(status().isCreated());
     }
 
     /**
@@ -51,9 +48,7 @@ public class ProjectTeamMemberControllerTest extends AbstractWebTest {
     public void list() throws Exception {
         ProjectTeamPO projectTeam = projectTeamHelper.saveProjectTeamExample();
         projectTeamMemberHelper.saveProjectTeamMemberExample(projectTeam.getTeamId());
-        restMockMvc.perform(get(getApiPath() + "/project_team_member"))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$.length()").value(is(1)));
+        restMockMvc.perform(get(getApiPath() + "/project_team_member")).andExpect(status().isOk()).andExpect(jsonPath("$.length()").value(is(1)));
     }
 
 
@@ -64,13 +59,8 @@ public class ProjectTeamMemberControllerTest extends AbstractWebTest {
     public void deleteBatch() throws Exception {
         ProjectTeamPO projectTeam = projectTeamHelper.saveProjectTeamExample();
         ProjectTeamMemberPO projectTeamMember = projectTeamMemberHelper.saveProjectTeamMemberExample(projectTeam.getTeamId());
-        restMockMvc.perform(delete(getApiPath() + "/project_team_member")
-            .contentType(MediaType.APPLICATION_JSON)
-            .content(JsonUtil.toJSONString(Lists.newArrayList(projectTeamMember.getId()))))
-            .andExpect(status().isOk())
-            .andExpect(jsonPath("$").value(is(1)));
+        restMockMvc.perform(delete(getApiPath() + "/project_team_member").contentType(MediaType.APPLICATION_JSON).content(JsonUtil.toJSONString(Lists.newArrayList(projectTeamMember.getId())))).andExpect(status().isOk()).andExpect(jsonPath("$").value(is(1)));
     }
-
 
 
 }

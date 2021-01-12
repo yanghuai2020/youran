@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @ApiModel(description = "修改【明细排序】入参")
 public class DetailOrderUpdateDTO extends DetailOrderAddDTO {
 
-    @ApiModelProperty(notes = "主键ID",example = "1",required = true)
+    @ApiModelProperty(notes = "主键ID", example = "1", required = true)
     @NotNull
     private Integer sourceItemId;
 

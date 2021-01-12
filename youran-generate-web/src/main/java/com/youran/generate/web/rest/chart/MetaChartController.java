@@ -51,8 +51,7 @@ public class MetaChartController extends AbstractController implements MetaChart
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<AggTableVO> saveAggTable(@Valid @RequestBody AggTableAddDTO addDTO) throws Exception {
         AggTablePO po = aggTableService.save(addDTO);
-        return ResponseEntity.created(new URI(apiPath + "/meta_chart/agg_table/" + po.getChartId()))
-            .body(MetaChartMapper.INSTANCE.toAggTableVO(po));
+        return ResponseEntity.created(new URI(apiPath + "/meta_chart/agg_table/" + po.getChartId())).body(MetaChartMapper.INSTANCE.toAggTableVO(po));
     }
 
     @Override
@@ -74,8 +73,7 @@ public class MetaChartController extends AbstractController implements MetaChart
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<DetailListVO> saveDetailList(@Valid @RequestBody DetailListAddDTO addDTO) throws Exception {
         DetailListPO po = detailListService.save(addDTO);
-        return ResponseEntity.created(new URI(apiPath + "/meta_chart/detail_list/" + po.getChartId()))
-            .body(MetaChartMapper.INSTANCE.toDetailListVO(po));
+        return ResponseEntity.created(new URI(apiPath + "/meta_chart/detail_list/" + po.getChartId())).body(MetaChartMapper.INSTANCE.toDetailListVO(po));
     }
 
     @Override
@@ -98,8 +96,7 @@ public class MetaChartController extends AbstractController implements MetaChart
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<BarLineVO> saveBarLine(@Valid @RequestBody BarLineAddDTO addDTO) throws Exception {
         BarLinePO po = barLineService.save(addDTO);
-        return ResponseEntity.created(new URI(apiPath + "/meta_chart/bar_line/" + po.getChartId()))
-            .body(MetaChartMapper.INSTANCE.toBarLineVO(po));
+        return ResponseEntity.created(new URI(apiPath + "/meta_chart/bar_line/" + po.getChartId())).body(MetaChartMapper.INSTANCE.toBarLineVO(po));
     }
 
     @Override
@@ -121,8 +118,7 @@ public class MetaChartController extends AbstractController implements MetaChart
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<PieVO> savePie(@Valid @RequestBody PieAddDTO addDTO) throws Exception {
         PiePO po = pieService.save(addDTO);
-        return ResponseEntity.created(new URI(apiPath + "/meta_chart/pie/" + po.getChartId()))
-            .body(MetaChartMapper.INSTANCE.toPieVO(po));
+        return ResponseEntity.created(new URI(apiPath + "/meta_chart/pie/" + po.getChartId())).body(MetaChartMapper.INSTANCE.toPieVO(po));
     }
 
     @Override
@@ -149,7 +145,7 @@ public class MetaChartController extends AbstractController implements MetaChart
     @Override
     @DeleteMapping
     public ResponseEntity<Integer> deleteBatch(@RequestBody Integer[] id) {
-        if(ArrayUtils.isEmpty(id)){
+        if (ArrayUtils.isEmpty(id)) {
             throw new BusinessException(ErrorCode.PARAM_IS_NULL);
         }
         int count = metaChartService.delete(id);

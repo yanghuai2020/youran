@@ -36,9 +36,7 @@ public interface MetaManyToManyDAO extends DAO<MetaManyToManyPO> {
      * @param mtmId     排除的多对多id
      * @return
      */
-    boolean findManyToManyExists(@Param("entityId1") Integer entityId1,
-                                 @Param("entityId2") Integer entityId2,
-                                 @Param("mtmId") Integer mtmId);
+    boolean findManyToManyExists(@Param("entityId1") Integer entityId1, @Param("entityId2") Integer entityId2, @Param("mtmId") Integer mtmId);
 
 
 }

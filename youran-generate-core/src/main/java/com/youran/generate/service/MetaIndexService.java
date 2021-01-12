@@ -50,8 +50,7 @@ public class MetaIndexService {
     @Transactional(rollbackFor = RuntimeException.class)
     public MetaIndexPO save(MetaIndexAddDTO metaIndexAddDTO) {
         // 查询项目,同时校验用户权限
-        MetaProjectPO project = metaProjectService.getProjectByEntityId(metaIndexAddDTO.getEntityId(),
-            true);
+        MetaProjectPO project = metaProjectService.getProjectByEntityId(metaIndexAddDTO.getEntityId(), true);
         //映射属性
         MetaIndexPO metaIndex = MetaIndexMapper.INSTANCE.fromAddDTO(metaIndexAddDTO);
         metaIndex.setProjectId(project.getProjectId());

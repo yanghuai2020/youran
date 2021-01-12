@@ -17,7 +17,7 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface MetaChartSourceMapper {
 
-    MetaChartSourceMapper INSTANCE = Mappers.getMapper( MetaChartSourceMapper.class );
+    MetaChartSourceMapper INSTANCE = Mappers.getMapper(MetaChartSourceMapper.class);
 
     /**
      * addDTO映射po
@@ -47,10 +47,7 @@ public interface MetaChartSourceMapper {
     MetaChartSourceWithItemsShowVO toWithItemsShowVO(MetaChartSourcePO po);
 
     @BeanMapping(ignoreByDefault = true)
-    @Mappings({
-        @Mapping(target = "feature"),
-        @Mapping(target = "aggregation"),
-    })
+    @Mappings({@Mapping(target = "feature"), @Mapping(target = "aggregation"),})
     MetaChartSourcePO copy(MetaChartSourcePO metaChartSourcePO);
 }
 

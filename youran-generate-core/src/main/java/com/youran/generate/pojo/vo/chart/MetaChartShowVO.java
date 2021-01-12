@@ -16,25 +16,25 @@ import static com.youran.generate.pojo.example.chart.MetaChartExample.*;
 @ApiModel(description = "【图表】详情展示对象")
 public class MetaChartShowVO extends AbstractVO {
 
-    @ApiModelProperty(notes = N_CHART_ID,example = E_CHART_ID)
+    @ApiModelProperty(notes = N_CHART_ID, example = E_CHART_ID)
     private Integer chartId;
 
-    @ApiModelProperty(notes = N_PROJECT_ID,example = E_PROJECT_ID)
+    @ApiModelProperty(notes = N_PROJECT_ID, example = E_PROJECT_ID)
     private Integer projectId;
 
-    @ApiModelProperty(notes = N_SOURCE_ID,example = E_SOURCE_ID)
+    @ApiModelProperty(notes = N_SOURCE_ID, example = E_SOURCE_ID)
     private Integer sourceId;
 
-    @ApiModelProperty(notes = N_CHART_TYPE,example = E_CHART_TYPE, allowableValues = ChartType.VALUES_STR)
+    @ApiModelProperty(notes = N_CHART_TYPE, example = E_CHART_TYPE, allowableValues = ChartType.VALUES_STR)
     private Integer chartType;
 
-    @ApiModelProperty(notes = N_CHART_NAME,example = E_CHART_NAME)
+    @ApiModelProperty(notes = N_CHART_NAME, example = E_CHART_NAME)
     private String chartName;
 
-    @ApiModelProperty(notes = N_MODULE,example = E_MODULE)
+    @ApiModelProperty(notes = N_MODULE, example = E_MODULE)
     private String module;
 
-    @ApiModelProperty(notes = N_TITLE,example = E_TITLE)
+    @ApiModelProperty(notes = N_TITLE, example = E_TITLE)
     private String title;
 
     public Integer getChartId() {

@@ -43,13 +43,7 @@ public interface TemplateFileMapper {
     TemplateFileShowVO toShowVO(TemplateFilePO templateFilePO);
 
     @BeanMapping(ignoreByDefault = true)
-    @Mappings({
-        @Mapping(target = "fileName"),
-        @Mapping(target = "fileDir"),
-        @Mapping(target = "contextType"),
-        @Mapping(target = "fileType"),
-        @Mapping(target = "content"),
-    })
+    @Mappings({@Mapping(target = "fileName"), @Mapping(target = "fileDir"), @Mapping(target = "contextType"), @Mapping(target = "fileType"), @Mapping(target = "content"),})
     TemplateFilePO copy(TemplateFilePO po);
 
 }

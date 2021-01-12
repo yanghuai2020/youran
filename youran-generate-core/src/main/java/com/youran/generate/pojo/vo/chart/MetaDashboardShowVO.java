@@ -18,22 +18,22 @@ import static com.youran.generate.pojo.example.chart.MetaDashboardExample.*;
 @ApiModel(description = "【看板】详情展示对象")
 public class MetaDashboardShowVO extends AbstractVO {
 
-    @ApiModelProperty(notes = N_DASHBOARD_ID,example = E_DASHBOARD_ID)
+    @ApiModelProperty(notes = N_DASHBOARD_ID, example = E_DASHBOARD_ID)
     private Integer dashboardId;
 
-    @ApiModelProperty(notes = N_NAME,example = E_NAME)
+    @ApiModelProperty(notes = N_NAME, example = E_NAME)
     private String name;
 
-    @ApiModelProperty(notes = N_TITLE,example = E_TITLE)
+    @ApiModelProperty(notes = N_TITLE, example = E_TITLE)
     private String title;
 
-    @ApiModelProperty(notes = N_MODULE,example = E_MODULE)
+    @ApiModelProperty(notes = N_MODULE, example = E_MODULE)
     private String module;
 
-    @ApiModelProperty(notes = N_FEATURE,example = E_FEATURE)
+    @ApiModelProperty(notes = N_FEATURE, example = E_FEATURE)
     private String feature;
 
-    @ApiModelProperty(notes = N_PROJECT_ID,example = E_PROJECT_ID)
+    @ApiModelProperty(notes = N_PROJECT_ID, example = E_PROJECT_ID)
     private Integer projectId;
 
     /**
@@ -96,7 +96,6 @@ public class MetaDashboardShowVO extends AbstractVO {
     public void setProjectId(Integer projectId) {
         this.projectId = projectId;
     }
-
 
 
 }

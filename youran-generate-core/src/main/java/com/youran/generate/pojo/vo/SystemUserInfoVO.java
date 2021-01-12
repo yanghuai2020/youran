@@ -14,10 +14,10 @@ import static com.youran.generate.pojo.example.UserSettingExample.E_TEMPLATE_ENA
  */
 public class SystemUserInfoVO extends AbstractVO {
 
-    @ApiModelProperty(notes = N_ID,example = E_ID)
+    @ApiModelProperty(notes = N_ID, example = E_ID)
     private Integer id;
 
-    @ApiModelProperty(notes = N_TEMPLATE_ENABLED,example = E_TEMPLATE_ENABLED)
+    @ApiModelProperty(notes = N_TEMPLATE_ENABLED, example = E_TEMPLATE_ENABLED)
     private Boolean templateEnabled;
 
     @ApiModelProperty(notes = "当前用户", example = "admin")
@@ -29,7 +29,7 @@ public class SystemUserInfoVO extends AbstractVO {
     @ApiModelProperty(notes = "系统中存在模板", example = "false")
     private Boolean templateExists;
 
-    @ApiModelProperty(notes = "启用项目组共享功能",example = "false")
+    @ApiModelProperty(notes = "启用项目组共享功能", example = "false")
     private Boolean teamEnabled;
 
     public String getUsername() {

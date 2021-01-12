@@ -44,26 +44,21 @@ public class MetaValidateService {
         // 获取装配完成的枚举
         List<MetaConstPO> consts = project.getConsts();
         List<MetaEntityPO> entities = project.getEntities();
-        MetaEntityPO entity = entities.stream()
-            .filter(e -> e.getEntityId().equals(entityId))
-            .findFirst()
-            .orElseThrow(() -> new BusinessException(ErrorCode.RECORD_NOT_FIND, "实体不存在"));
+        MetaEntityPO entity = entities.stream().filter(e -> e.getEntityId().equals(entityId)).findFirst().orElseThrow(() -> new BusinessException(ErrorCode.RECORD_NOT_FIND, "实体不存在"));
         Map<Integer, MetaFieldPO> fields = entity.getFields();
         // 是否需要标记标题候选字段
         boolean mustSetTitle = false;
         // 判断当前实体是否被外键级联
-        if(CollectionUtils.isNotEmpty(entity.getForeignEntities())){
+        if (CollectionUtils.isNotEmpty(entity.getForeignEntities())) {
             mustSetTitle = true;
         }
         // 判断当前实体是否被多对多级联hold
-        else if(!entity.getMtmsForOpp().isEmpty()){
+        else if (!entity.getMtmsForOpp().isEmpty()) {
             mustSetTitle = true;
         }
         boolean finalMustSetTitle = mustSetTitle;
         // 校验实体中的所有字段
-        List<MetaFieldValidateVO> fieldValidateVOS = fields.values().stream()
-            .map(field -> this.doValidateField(field, fields, consts, finalMustSetTitle))
-            .collect(Collectors.toList());
+        List<MetaFieldValidateVO> fieldValidateVOS = fields.values().stream().map(field -> this.doValidateField(field, fields, consts, finalMustSetTitle)).collect(Collectors.toList());
 
         MetaEntityInnerValidateVO vo = new MetaEntityInnerValidateVO();
         vo.setFields(fieldValidateVOS);
@@ -79,16 +74,12 @@ public class MetaValidateService {
      * @param mustSetTitle 是否必须要标记标题字段
      * @return
      */
-    private MetaFieldValidateVO doValidateField(MetaFieldPO field,
-                                                Map<Integer, MetaFieldPO> fields,
-                                                List<MetaConstPO> consts,
-                                                boolean mustSetTitle) {
+    private MetaFieldValidateVO doValidateField(MetaFieldPO field, Map<Integer, MetaFieldPO> fields, List<MetaConstPO> consts, boolean mustSetTitle) {
         MetaFieldValidateVO vo = new MetaFieldValidateVO(field.getFieldId());
         // 校验枚举是否存在
         String dic = field.getDicType();
         if (StringUtils.isNotBlank(dic)) {
-            Optional<MetaConstPO> optional = consts.stream().filter(metaConstPO -> dic.equals(metaConstPO.getConstName()))
-                .findAny();
+            Optional<MetaConstPO> optional = consts.stream().filter(metaConstPO -> dic.equals(metaConstPO.getConstName())).findAny();
             if (!optional.isPresent()) {
                 vo.dicNotExistError(field);
             }
@@ -108,9 +99,7 @@ public class MetaValidateService {
             }
         }
         // 标记标题候选字段，前提条件是：非主键 && 非外键 && 非特殊字段 && 是字符串
-        if (!field.getPrimaryKey() && !field.getForeignKey()
-            && StringUtils.isBlank(field.getSpecialField())
-            && JFieldType.STRING.getJavaType().equals(field.getJfieldType())) {
+        if (!field.getPrimaryKey() && !field.getForeignKey() && StringUtils.isBlank(field.getSpecialField()) && JFieldType.STRING.getJavaType().equals(field.getJfieldType())) {
             if (mustSetTitle) {
                 // 较高级别
                 vo.setTitleCandidate(2);

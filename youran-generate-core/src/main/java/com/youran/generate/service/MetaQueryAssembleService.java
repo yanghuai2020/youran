@@ -99,10 +99,7 @@ public class MetaQueryAssembleService implements InitializingBean {
         List<Integer> entityIds = metaEntityService.findIdsByProject(projectId);
         if (CollectionUtils.isNotEmpty(entityIds)) {
             // 获取组装后的实体列表
-            List<MetaEntityPO> metaEntities = entityIds
-                .stream()
-                .map(entityId -> getAssembledEntity(entityId, true))
-                .collect(Collectors.toList());
+            List<MetaEntityPO> metaEntities = entityIds.stream().map(entityId -> getAssembledEntity(entityId, true)).collect(Collectors.toList());
             project.setEntities(metaEntities);
             // 装配外键实体和外键字段
             this.assembleForeign(metaEntities, true);
@@ -135,9 +132,7 @@ public class MetaQueryAssembleService implements InitializingBean {
      * @param charts
      * @param dashboards
      */
-    private void checkNameDuplicate(List<MetaEntityPO> metaEntities,
-                                    List<MetaChartPO> charts,
-                                    List<MetaDashboardPO> dashboards) {
+    private void checkNameDuplicate(List<MetaEntityPO> metaEntities, List<MetaChartPO> charts, List<MetaDashboardPO> dashboards) {
         Set<String> names = new HashSet<>();
         if (metaEntities != null) {
             for (MetaEntityPO metaEntity : metaEntities) {
@@ -176,34 +171,28 @@ public class MetaQueryAssembleService implements InitializingBean {
      * @param manyToManies
      * @return 装配完成的图表元数据
      */
-    private List<MetaChartPO> getAllAssembledCharts(Integer projectId,
-                                                    List<MetaEntityPO> metaEntities,
-                                                    List<MetaManyToManyPO> manyToManies) {
+    private List<MetaChartPO> getAllAssembledCharts(Integer projectId, List<MetaEntityPO> metaEntities, List<MetaManyToManyPO> manyToManies) {
         // 查询图表列表
         List<MetaChartPO> charts = metaChartService.findByProjectId(projectId, true);
         if (CollectionUtils.isEmpty(charts)) {
             return Collections.emptyList();
         }
         //将实体列表转成map
-        Map<Integer, MetaEntityPO> entityMap = metaEntities.stream()
-            .collect(Collectors.toMap(MetaEntityPO::getEntityId, e -> e));
+        Map<Integer, MetaEntityPO> entityMap = metaEntities.stream().collect(Collectors.toMap(MetaEntityPO::getEntityId, e -> e));
 
         //将多对多列表转成map
-        Map<Integer, MetaManyToManyPO> mtmMap = manyToManies.stream()
-            .collect(Collectors.toMap(MetaManyToManyPO::getMtmId, e -> e));
+        Map<Integer, MetaManyToManyPO> mtmMap = manyToManies.stream().collect(Collectors.toMap(MetaManyToManyPO::getMtmId, e -> e));
 
         // 查询图表数据源列表
         List<MetaChartSourcePO> chartSources = metaChartSourceService.findByProjectId(projectId);
 
         //将图表数据源列表转成map
-        Map<Integer, MetaChartSourcePO> sourceMap = chartSources.stream()
-            .collect(Collectors.toMap(MetaChartSourcePO::getSourceId, e -> e));
+        Map<Integer, MetaChartSourcePO> sourceMap = chartSources.stream().collect(Collectors.toMap(MetaChartSourcePO::getSourceId, e -> e));
 
         // 查询图表数据项列表
         List<MetaChartSourceItemPO> sourceItems = metaChartSourceItemService.findByProjectId(projectId, true);
         //将图表数据项列表转成map
-        Map<Integer, List<MetaChartSourceItemPO>> sourceItemMap = sourceItems.stream()
-            .collect(Collectors.groupingBy(MetaChartSourceItemPO::getSourceId));
+        Map<Integer, List<MetaChartSourceItemPO>> sourceItemMap = sourceItems.stream().collect(Collectors.groupingBy(MetaChartSourceItemPO::getSourceId));
 
         for (MetaChartPO chart : charts) {
             MetaChartSourcePO chartSource = sourceMap.get(chart.getSourceId());
@@ -233,8 +222,7 @@ public class MetaQueryAssembleService implements InitializingBean {
             return Collections.emptyList();
         }
         //将图表列表转成map
-        Map<Integer, MetaChartPO> chartMap = charts.stream()
-            .collect(Collectors.toMap(MetaChartPO::getChartId, e -> e));
+        Map<Integer, MetaChartPO> chartMap = charts.stream().collect(Collectors.toMap(MetaChartPO::getChartId, e -> e));
         for (MetaDashboardPO dashboard : dashboards) {
             // 看板装配数据
             dashboard.assemble(chartMap);
@@ -253,10 +241,7 @@ public class MetaQueryAssembleService implements InitializingBean {
         // 查询常量id列表
         List<Integer> constIds = metaConstService.findIdsByProject(projectId);
         // 返回组装后的常量列表
-        return constIds
-            .stream()
-            .map(constId -> this.getAssembledConst(constId, withConstDetail))
-            .collect(Collectors.toList());
+        return constIds.stream().map(constId -> this.getAssembledConst(constId, withConstDetail)).collect(Collectors.toList());
     }
 
     /**
@@ -362,8 +347,7 @@ public class MetaQueryAssembleService implements InitializingBean {
      */
     private void assembleIndexForEntity(MetaEntityPO metaEntity, List<MetaFieldPO> fieldList) {
         //将list转化为map
-        Map<Integer, MetaFieldPO> fieldMap = fieldList.stream()
-            .collect(Collectors.toMap(MetaFieldPO::getFieldId, f -> f));
+        Map<Integer, MetaFieldPO> fieldMap = fieldList.stream().collect(Collectors.toMap(MetaFieldPO::getFieldId, f -> f));
         List<MetaIndexPO> metaIndexes = metaIndexService.findByEntityId(metaEntity.getEntityId());
         //有效索引列表
         List<MetaIndexPO> validList = new ArrayList<>();
@@ -379,8 +363,7 @@ public class MetaQueryAssembleService implements InitializingBean {
                 fieldIds.stream().forEach(fieldId -> {
                     MetaFieldPO field = fieldMap.get(fieldId);
                     if (field == null) {
-                        throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "索引字段非本实体字段，indexId=" +
-                            metaIndex.getIndexId() + ",fieldId=" + fieldId);
+                        throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "索引字段非本实体字段，indexId=" + metaIndex.getIndexId() + ",fieldId=" + fieldId);
                     }
                     metaIndex.addMetaField(field);
                 });
@@ -403,16 +386,13 @@ public class MetaQueryAssembleService implements InitializingBean {
      * @param withMtmCascade 是否装配多对多级联扩展
      * @return 装配及过滤后的多对多列表
      */
-    public List<MetaManyToManyPO> assembleManyToManyWithEntities(List<MetaEntityPO> metaEntities,
-                                                                 List<MetaManyToManyPO> manyToManies,
-                                                                 boolean withMtmCascade) {
+    public List<MetaManyToManyPO> assembleManyToManyWithEntities(List<MetaEntityPO> metaEntities, List<MetaManyToManyPO> manyToManies, boolean withMtmCascade) {
         List<MetaManyToManyPO> result = new ArrayList<>(manyToManies.size());
         if (CollectionUtils.isEmpty(manyToManies) || CollectionUtils.isEmpty(metaEntities)) {
             return result;
         }
         //将实体列表转成map
-        Map<Integer, MetaEntityPO> entityMap = metaEntities.stream()
-            .collect(Collectors.toMap(MetaEntityPO::getEntityId, e -> e));
+        Map<Integer, MetaEntityPO> entityMap = metaEntities.stream().collect(Collectors.toMap(MetaEntityPO::getEntityId, e -> e));
         for (MetaManyToManyPO mtm : manyToManies) {
             MetaEntityPO entity1 = entityMap.get(mtm.getEntityId1());
             MetaEntityPO entity2 = entityMap.get(mtm.getEntityId2());
@@ -453,10 +433,8 @@ public class MetaQueryAssembleService implements InitializingBean {
     private void assembleMtmCascadeExt(MetaManyToManyPO mtm, Map<Integer, MetaEntityPO> entitys) {
         MetaEntityPO entity1 = mtm.getRefer1();
         MetaEntityPO entity2 = mtm.getRefer2();
-        List<MetaMtmCascadeExtPO> cascadeExtList1 = metaMtmCascadeExtService.findByMtmIdAndEntityId(mtm.getMtmId(),
-            entity1.getEntityId());
-        List<MetaMtmCascadeExtPO> cascadeExtList2 = metaMtmCascadeExtService.findByMtmIdAndEntityId(mtm.getMtmId(),
-            entity2.getEntityId());
+        List<MetaMtmCascadeExtPO> cascadeExtList1 = metaMtmCascadeExtService.findByMtmIdAndEntityId(mtm.getMtmId(), entity1.getEntityId());
+        List<MetaMtmCascadeExtPO> cascadeExtList2 = metaMtmCascadeExtService.findByMtmIdAndEntityId(mtm.getMtmId(), entity2.getEntityId());
         // 过滤并装配多对对级联扩展
         List<MetaMtmCascadeExtPO> filteredCascadeExtList1 = this.filterAndAssembleMtmCascadeExt(cascadeExtList1, entitys);
         List<MetaMtmCascadeExtPO> filteredCascadeExtList2 = this.filterAndAssembleMtmCascadeExt(cascadeExtList2, entitys);
@@ -475,8 +453,7 @@ public class MetaQueryAssembleService implements InitializingBean {
      * @param cascadeExtList
      * @return
      */
-    private List<MetaMtmCascadeExtPO> filterAndAssembleMtmCascadeExt(List<MetaMtmCascadeExtPO> cascadeExtList,
-                                                                     Map<Integer, MetaEntityPO> entitys) {
+    private List<MetaMtmCascadeExtPO> filterAndAssembleMtmCascadeExt(List<MetaMtmCascadeExtPO> cascadeExtList, Map<Integer, MetaEntityPO> entitys) {
         List<MetaMtmCascadeExtPO> filteredCascadeExtList = new ArrayList<>();
         for (MetaMtmCascadeExtPO cascadeExtPO : cascadeExtList) {
             Integer cascadeEntityId = cascadeExtPO.getCascadeEntityId();
@@ -520,12 +497,10 @@ public class MetaQueryAssembleService implements InitializingBean {
                 //获取外键关联的主键字段
                 MetaFieldPO foreignField = foreignEntity.getPkField();
                 if (!Objects.equals(foreignField.getFieldType(), metaFieldPO.getFieldType())) {
-                    throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "外键字段" + metaEntity.getTableName() + "." + metaFieldPO.getFieldName() + "与"
-                        + foreignEntity.getTableName() + "." + foreignField.getFieldName() + "字段类型不一致");
+                    throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "外键字段" + metaEntity.getTableName() + "." + metaFieldPO.getFieldName() + "与" + foreignEntity.getTableName() + "." + foreignField.getFieldName() + "字段类型不一致");
                 }
                 if (!Objects.equals(foreignField.getJfieldType(), metaFieldPO.getJfieldType())) {
-                    throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "java字段" + metaEntity.getClassName() + "." + metaFieldPO.getJfieldName() + "与"
-                        + foreignEntity.getClassName() + "." + foreignField.getJfieldName() + "字段类型不一致");
+                    throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "java字段" + metaEntity.getClassName() + "." + metaFieldPO.getJfieldName() + "与" + foreignEntity.getClassName() + "." + foreignField.getJfieldName() + "字段类型不一致");
                 }
                 metaFieldPO.setForeignField(foreignField);
                 // 装配级联扩展列表
@@ -577,8 +552,7 @@ public class MetaQueryAssembleService implements InitializingBean {
      * @return
      */
     private MetaEntityPO findMetaEntityById(List<MetaEntityPO> metaEntities, Integer entityId) {
-        Optional<MetaEntityPO> first = metaEntities.stream()
-            .filter(entityPO -> entityPO.getEntityId().equals(entityId)).findFirst();
+        Optional<MetaEntityPO> first = metaEntities.stream().filter(entityPO -> entityPO.getEntityId().equals(entityId)).findFirst();
         if (first.isPresent()) {
             return first.get();
         }
@@ -635,10 +609,7 @@ public class MetaQueryAssembleService implements InitializingBean {
                     versionCount++;
                 }
 
-                if (StringUtils.isNotBlank(field.getDicType())
-                    && checkConst
-                    && !constMap.containsKey(field.getDicType())
-                    && !defaultConst.contains(field.getDicType())) {
+                if (StringUtils.isNotBlank(field.getDicType()) && checkConst && !constMap.containsKey(field.getDicType()) && !defaultConst.contains(field.getDicType())) {
                     throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "实体【" + entity.getTitle() + "】的字段【" + field.getFieldDesc() + "】中指定的枚举字典【" + field.getDicType() + "】不存在");
                 }
 
@@ -667,15 +638,13 @@ public class MetaQueryAssembleService implements InitializingBean {
             if (versionCount > 1) {
                 throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "实体【" + entity.getTitle() + "】中存在" + versionCount + "个乐观锁版本字段");
             }
-            if (CollectionUtils.isNotEmpty(entity.getForeignEntities())
-                && entity.getTitleField() == null) {
+            if (CollectionUtils.isNotEmpty(entity.getForeignEntities()) && entity.getTitleField() == null) {
                 throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "实体【" + entity.getTitle() + "】被外键关联，需要设置标题字段");
             }
             // 校验被持有的多对多实体
             for (MetaEntityPO otherEntity : entity.getHolds().keySet()) {
                 if (otherEntity.getTitleField() == null) {
-                    throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "实体【" + otherEntity.getTitle() +
-                        "】被【" + entity.getTitle() + "】多对多持有，需要设置标题字段");
+                    throw new BusinessException(ErrorCode.INNER_DATA_ERROR, "实体【" + otherEntity.getTitle() + "】被【" + entity.getTitle() + "】多对多持有，需要设置标题字段");
                 }
             }
         }
@@ -687,11 +656,9 @@ public class MetaQueryAssembleService implements InitializingBean {
         List<MetaChartPO> charts = project.getCharts();
         if (CollectionUtils.isNotEmpty(charts)) {
             //将实体列表转成map
-            Map<Integer, MetaEntityPO> entityMap = project.getEntities().stream()
-                .collect(Collectors.toMap(MetaEntityPO::getEntityId, e -> e));
+            Map<Integer, MetaEntityPO> entityMap = project.getEntities().stream().collect(Collectors.toMap(MetaEntityPO::getEntityId, e -> e));
             //将多对多列表转成map
-            Map<Integer, MetaManyToManyPO> mtmMap = project.getMtms().stream()
-                .collect(Collectors.toMap(MetaManyToManyPO::getMtmId, e -> e));
+            Map<Integer, MetaManyToManyPO> mtmMap = project.getMtms().stream().collect(Collectors.toMap(MetaManyToManyPO::getMtmId, e -> e));
             for (MetaChartPO chart : charts) {
                 chart.check(entityMap, mtmMap);
             }
@@ -721,10 +688,7 @@ public class MetaQueryAssembleService implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        projectCache = Caffeine.newBuilder()
-            .expireAfterWrite(15, TimeUnit.MINUTES)
-            .maximumSize(100)
-            .build();
+        projectCache = Caffeine.newBuilder().expireAfterWrite(15, TimeUnit.MINUTES).maximumSize(100).build();
     }
 
     /**

@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @ApiModel(description = "修改【聚合表】入参")
 public class AggTableUpdateDTO extends AggTableAddDTO {
 
-    @ApiModelProperty(notes = "图表主键",example = "1",required = true)
+    @ApiModelProperty(notes = "图表主键", example = "1", required = true)
     @NotNull
     private Integer chartId;
 

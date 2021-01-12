@@ -17,19 +17,19 @@ public enum PrimaryKeyStrategy {
     /**
      * 无
      */
-    NONE(0,"无"),
+    NONE(0, "无"),
     /**
      * 数据库自增
      */
-    AUTO_INCREMENT(1,"数据库自增"),
+    AUTO_INCREMENT(1, "数据库自增"),
     /**
      * 32位UUID
      */
-    UUID_32(2,"32位UUID"),
+    UUID_32(2, "32位UUID"),
     /**
      * 16位UUID
      */
-    UUID_16(3,"16位UUID");
+    UUID_16(3, "16位UUID");
 
 
     private final Integer value;
@@ -58,9 +58,9 @@ public enum PrimaryKeyStrategy {
         return LOOKUP.get(value);
     }
 
-    public static PrimaryKeyStrategy findByDesc(String desc){
+    public static PrimaryKeyStrategy findByDesc(String desc) {
         for (PrimaryKeyStrategy e : PrimaryKeyStrategy.values()) {
-            if(e.getDesc().equals(desc)){
+            if (e.getDesc().equals(desc)) {
                 return e;
             }
         }
@@ -100,9 +100,9 @@ public enum PrimaryKeyStrategy {
      * 校验有效性
      */
     @Check
-    public static final boolean validate(Integer value){
+    public static final boolean validate(Integer value) {
         PrimaryKeyStrategy theEnum = find(value);
-        return theEnum!=null;
+        return theEnum != null;
     }
 
     public Integer getValue() {

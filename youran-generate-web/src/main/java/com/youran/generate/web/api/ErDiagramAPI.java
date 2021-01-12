@@ -26,10 +26,7 @@ public interface ErDiagramAPI {
      * @return
      */
     @ApiOperation(value = "ER图查看")
-    @ApiImplicitParams({
-        @ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "query"),
-        @ApiImplicitParam(name = "entityIds", dataType = "int", value = "实体id", paramType = "query"),
-    })
+    @ApiImplicitParams({@ApiImplicitParam(name = "projectId", dataType = "int", value = "项目id", paramType = "query"), @ApiImplicitParam(name = "entityIds", dataType = "int", value = "实体id", paramType = "query"),})
     ResponseEntity<ErDiagramVO> show(Integer projectId, List<Integer> entityIds);
 
 

@@ -16,15 +16,15 @@ public enum JoinType {
     /**
      * inner_join
      */
-    INNER_JOIN(1,"inner_join"),
+    INNER_JOIN(1, "inner_join"),
     /**
      * left_join
      */
-    LEFT_JOIN(2,"left_join"),
+    LEFT_JOIN(2, "left_join"),
     /**
      * right_join
      */
-    RIGHT_JOIN(3,"right_join");
+    RIGHT_JOIN(3, "right_join");
 
 
     private final Integer value;
@@ -53,9 +53,9 @@ public enum JoinType {
         return LOOKUP.get(value);
     }
 
-    public static JoinType findByDesc(String desc){
+    public static JoinType findByDesc(String desc) {
         for (JoinType e : JoinType.values()) {
-            if(e.getDesc().equals(desc)){
+            if (e.getDesc().equals(desc)) {
                 return e;
             }
         }
@@ -95,9 +95,9 @@ public enum JoinType {
      * 校验有效性
      */
     @Check
-    public static final boolean validate(Integer value){
+    public static final boolean validate(Integer value) {
         JoinType theEnum = find(value);
-        return theEnum!=null;
+        return theEnum != null;
     }
 
     public Integer getValue() {

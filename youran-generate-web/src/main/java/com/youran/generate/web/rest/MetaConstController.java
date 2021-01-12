@@ -42,8 +42,7 @@ public class MetaConstController extends AbstractController implements MetaConst
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<MetaConstShowVO> save(@Valid @RequestBody MetaConstAddDTO metaConstAddDTO) throws Exception {
         MetaConstPO metaConstPO = metaConstService.save(metaConstAddDTO);
-        return ResponseEntity.created(new URI(apiPath + "/meta_const/" + metaConstPO.getConstId()))
-            .body(MetaConstMapper.INSTANCE.toShowVO(metaConstPO));
+        return ResponseEntity.created(new URI(apiPath + "/meta_const/" + metaConstPO.getConstId())).body(MetaConstMapper.INSTANCE.toShowVO(metaConstPO));
     }
 
     @Override

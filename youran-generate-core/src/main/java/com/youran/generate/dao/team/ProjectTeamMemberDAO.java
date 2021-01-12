@@ -37,8 +37,7 @@ public interface ProjectTeamMemberDAO extends DAO<ProjectTeamMemberPO> {
      * @param username
      * @return
      */
-    boolean checkExist(@Param("teamId") Integer teamId,
-                       @Param("username") String username);
+    boolean checkExist(@Param("teamId") Integer teamId, @Param("username") String username);
 
     /**
      * 根据用户名查询项目组id

@@ -16,9 +16,10 @@ public class ProjectTeamMemberHelper {
 
     /**
      * 生成add测试数据
+     *
      * @return
      */
-    public ProjectTeamMemberAddDTO getProjectTeamMemberAddDTO(Integer teamId){
+    public ProjectTeamMemberAddDTO getProjectTeamMemberAddDTO(Integer teamId) {
         ProjectTeamMemberAddDTO dto = new ProjectTeamMemberAddDTO();
         dto.setTeamId(teamId);
         dto.setUsername(E_USERNAME);
@@ -27,9 +28,10 @@ public class ProjectTeamMemberHelper {
 
     /**
      * 保存示例
+     *
      * @return
      */
-    public ProjectTeamMemberPO saveProjectTeamMemberExample(Integer teamId){
+    public ProjectTeamMemberPO saveProjectTeamMemberExample(Integer teamId) {
         return projectTeamMemberService.save(teamId, E_USERNAME);
     }
 
