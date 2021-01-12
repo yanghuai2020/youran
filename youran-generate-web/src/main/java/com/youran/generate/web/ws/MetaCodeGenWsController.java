@@ -80,8 +80,7 @@ public class MetaCodeGenWsController extends AbstractController {
             // 初始化进度条
             ProgressVO.initProgress(sessionId);
             // 生成代码压缩包
-            metaCodeGenService.genProjectCodeIfNotExists(projectId, templateId,
-                progressVO -> this.replyProgress(topic, progressVO));
+            metaCodeGenService.genProjectCodeIfNotExists(projectId, templateId, progressVO -> this.replyProgress(topic, progressVO));
             this.replyProgress(topic, ProgressVO.success("代码生成完毕"));
         } catch (BusinessException e) {
             // 如果捕获到异常，则将异常也通知给前端浏览器
@@ -175,8 +174,7 @@ public class MetaCodeGenWsController extends AbstractController {
             // 初始化进度条
             ProgressVO.initProgress(sessionId);
             // 提交到仓库
-            GenHistoryPO history = metaCodeGenService.gitCommit(projectId, templateId,
-                progressVO -> this.replyProgress(topic, progressVO));
+            GenHistoryPO history = metaCodeGenService.gitCommit(projectId, templateId, progressVO -> this.replyProgress(topic, progressVO));
             this.replyProgress(topic, ProgressVO.success("已在【" + history.getBranch() + "】分支提交最新代码，并push到远程"));
         } catch (BusinessException e) {
             // 如果捕获到异常，则将异常也通知给前端浏览器
@@ -209,8 +207,7 @@ public class MetaCodeGenWsController extends AbstractController {
             // 初始化进度条
             ProgressVO.initProgress(sessionId);
             // 提交到仓库
-            String diffText = metaCodeGenService.showGitDiff(projectId, templateId,
-                progressVO -> this.replyProgress(topic, progressVO));
+            String diffText = metaCodeGenService.showGitDiff(projectId, templateId, progressVO -> this.replyProgress(topic, progressVO));
             this.replyProgress(topic, ProgressVO.success("成功获取代码差异", diffText));
         } catch (BusinessException e) {
             // 如果捕获到异常，则将异常也通知给前端浏览器

@@ -1,0 +1,41 @@
+server:
+    servlet:
+        context-path: /
+        encoding:
+            force: true
+    port: 8088
+spring:
+    application:
+        name: youran-generate
+    profiles:
+        active: local
+    security:
+        user:
+            name: admin
+            password: 123456
+    servlet:
+        multipart:
+            max-request-size: 100MB
+            max-file-size: 100MB
+springfox:
+    documentation:
+        enabled: true
+mybatis:
+    config-location: classpath:mybatis-config.xml
+
+youran:
+    # 自动生成代码的分支名
+    auto-branch-name: auto
+    # aes对称加密Key
+    aes-key: orpNB6YGbiiDcrrubk2rFQ==
+    # 版本号，跟pom一致
+    version: 3.5.0
+    # rest-api路径前缀
+    api-path: /api
+    # websocket-api路径前缀
+    ws-api-path: /ws_api
+    # 是否启用spring-secrity安全校验
+    security-enabled: false
+    # 是否启用小组管理及项目共享功能，默认关闭（只有集成了统一登录才有意义）
+    team-enabled: false
+

@@ -1,6 +1,8 @@
 spring:
     datasource:
-        url: jdbc:h2:mem:testdb;MODE=MYSQL;DB_CLOSE_DELAY=-1
+        url: jdbc:mysql://10.182.10.28:3358/youran?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&failOverReadOnly=false&useSSL=false&serverTimezone=Asia/Shanghai
+        username: root
+        password: wmsroot
 logging:
     level:
         root: info
@@ -9,6 +11,13 @@ logging:
         com:
             youran: trace
 youran:
-    devMode: 1
-    dev-project-dir: D:\\workspace_cbb\\youran-sample
+    # 缓存数据目录，用来临时存储模板文件、生成的代码文件，每次启动都会清空该目录
+    data-dir: /Users/yanghuai/Documents/youran-data
+    # 启动时初始化用户表
+    default-user-init: true
+    # 0:非开发模式 1:开发模式-全量替换 2:开发模式-增量替换
+    dev-mode: 0
+    # 开发模式下，自动生成代码到该路径
+    dev-project-dir: /Users/yanghuai/Documents/youran/auto
+    # 是否启用登录校验，一般不启用，除非部署到公开网络环境，不想让外人访问
     security-enabled: false
